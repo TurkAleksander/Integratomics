@@ -1,0 +1,1761 @@
+# installing zipimport hook
+import zipimport # builtin
+# installed zipimport hook
+# /usr/lib/python2.7/site.pyc matches /usr/lib/python2.7/site.py
+import site # precompiled from /usr/lib/python2.7/site.pyc
+# /usr/lib/python2.7/os.pyc matches /usr/lib/python2.7/os.py
+import os # precompiled from /usr/lib/python2.7/os.pyc
+import errno # builtin
+import posix # builtin
+# /usr/lib/python2.7/posixpath.pyc matches /usr/lib/python2.7/posixpath.py
+import posixpath # precompiled from /usr/lib/python2.7/posixpath.pyc
+# /usr/lib/python2.7/stat.pyc matches /usr/lib/python2.7/stat.py
+import stat # precompiled from /usr/lib/python2.7/stat.pyc
+# /usr/lib/python2.7/genericpath.pyc matches /usr/lib/python2.7/genericpath.py
+import genericpath # precompiled from /usr/lib/python2.7/genericpath.pyc
+# /usr/lib/python2.7/warnings.pyc matches /usr/lib/python2.7/warnings.py
+import warnings # precompiled from /usr/lib/python2.7/warnings.pyc
+# /usr/lib/python2.7/linecache.pyc matches /usr/lib/python2.7/linecache.py
+import linecache # precompiled from /usr/lib/python2.7/linecache.pyc
+# /usr/lib/python2.7/types.pyc matches /usr/lib/python2.7/types.py
+import types # precompiled from /usr/lib/python2.7/types.pyc
+# /usr/lib/python2.7/UserDict.pyc matches /usr/lib/python2.7/UserDict.py
+import UserDict # precompiled from /usr/lib/python2.7/UserDict.pyc
+# /usr/lib/python2.7/_abcoll.pyc matches /usr/lib/python2.7/_abcoll.py
+import _abcoll # precompiled from /usr/lib/python2.7/_abcoll.pyc
+# /usr/lib/python2.7/abc.pyc matches /usr/lib/python2.7/abc.py
+import abc # precompiled from /usr/lib/python2.7/abc.pyc
+# /usr/lib/python2.7/_weakrefset.pyc matches /usr/lib/python2.7/_weakrefset.py
+import _weakrefset # precompiled from /usr/lib/python2.7/_weakrefset.pyc
+import _weakref # builtin
+# /usr/lib/python2.7/copy_reg.pyc matches /usr/lib/python2.7/copy_reg.py
+import copy_reg # precompiled from /usr/lib/python2.7/copy_reg.pyc
+# /usr/lib/python2.7/traceback.pyc matches /usr/lib/python2.7/traceback.py
+import traceback # precompiled from /usr/lib/python2.7/traceback.pyc
+# /usr/lib/python2.7/sysconfig.pyc matches /usr/lib/python2.7/sysconfig.py
+import sysconfig # precompiled from /usr/lib/python2.7/sysconfig.pyc
+# /usr/lib/python2.7/re.pyc matches /usr/lib/python2.7/re.py
+import re # precompiled from /usr/lib/python2.7/re.pyc
+# /usr/lib/python2.7/sre_compile.pyc matches /usr/lib/python2.7/sre_compile.py
+import sre_compile # precompiled from /usr/lib/python2.7/sre_compile.pyc
+import _sre # builtin
+# /usr/lib/python2.7/sre_parse.pyc matches /usr/lib/python2.7/sre_parse.py
+import sre_parse # precompiled from /usr/lib/python2.7/sre_parse.pyc
+# /usr/lib/python2.7/sre_constants.pyc matches /usr/lib/python2.7/sre_constants.py
+import sre_constants # precompiled from /usr/lib/python2.7/sre_constants.pyc
+# /usr/lib/python2.7/sitecustomize.pyc matches /usr/lib/python2.7/sitecustomize.py
+import sitecustomize # precompiled from /usr/lib/python2.7/sitecustomize.pyc
+# /usr/lib/python2.7/dist-packages/apport_python_hook.pyc matches /usr/lib/python2.7/dist-packages/apport_python_hook.py
+import apport_python_hook # precompiled from /usr/lib/python2.7/dist-packages/apport_python_hook.pyc
+import encodings # directory /usr/lib/python2.7/encodings
+# /usr/lib/python2.7/encodings/__init__.pyc matches /usr/lib/python2.7/encodings/__init__.py
+import encodings # precompiled from /usr/lib/python2.7/encodings/__init__.pyc
+# /usr/lib/python2.7/codecs.pyc matches /usr/lib/python2.7/codecs.py
+import codecs # precompiled from /usr/lib/python2.7/codecs.pyc
+import _codecs # builtin
+# /usr/lib/python2.7/encodings/aliases.pyc matches /usr/lib/python2.7/encodings/aliases.py
+import encodings.aliases # precompiled from /usr/lib/python2.7/encodings/aliases.pyc
+# /usr/lib/python2.7/encodings/utf_8.pyc matches /usr/lib/python2.7/encodings/utf_8.py
+import encodings.utf_8 # precompiled from /usr/lib/python2.7/encodings/utf_8.pyc
+Python 2.7.3 (default, Apr 10 2013, 06:20:15) 
+[GCC 4.6.3] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+./Linux_Integratomics_v0_4_2.py: inconsistent use of tabs and spaces in indentation
+import cherrypy # directory /usr/lib/pymodules/python2.7/cherrypy
+# /usr/lib/pymodules/python2.7/cherrypy/__init__.pyc matches /usr/lib/pymodules/python2.7/cherrypy/__init__.py
+import cherrypy # precompiled from /usr/lib/pymodules/python2.7/cherrypy/__init__.pyc
+dlopen("/usr/lib/python2.7/lib-dynload/datetime.so", 2);
+import datetime # dynamically loaded from /usr/lib/python2.7/lib-dynload/datetime.so
+# /usr/lib/pymodules/python2.7/cherrypy/_cperror.pyc matches /usr/lib/pymodules/python2.7/cherrypy/_cperror.py
+import cherrypy._cperror # precompiled from /usr/lib/pymodules/python2.7/cherrypy/_cperror.pyc
+# /usr/lib/python2.7/urllib.pyc matches /usr/lib/python2.7/urllib.py
+import urllib # precompiled from /usr/lib/python2.7/urllib.pyc
+# /usr/lib/python2.7/string.pyc matches /usr/lib/python2.7/string.py
+import string # precompiled from /usr/lib/python2.7/string.pyc
+import strop # builtin
+# /usr/lib/python2.7/socket.pyc matches /usr/lib/python2.7/socket.py
+import socket # precompiled from /usr/lib/python2.7/socket.pyc
+import _socket # builtin
+# /usr/lib/python2.7/functools.pyc matches /usr/lib/python2.7/functools.py
+import functools # precompiled from /usr/lib/python2.7/functools.pyc
+import _functools # builtin
+import _ssl # builtin
+import cStringIO # builtin
+import time # builtin
+# /usr/lib/python2.7/base64.pyc matches /usr/lib/python2.7/base64.py
+import base64 # precompiled from /usr/lib/python2.7/base64.pyc
+# /usr/lib/python2.7/struct.pyc matches /usr/lib/python2.7/struct.py
+import struct # precompiled from /usr/lib/python2.7/struct.pyc
+import _struct # builtin
+import binascii # builtin
+# /usr/lib/python2.7/urlparse.pyc matches /usr/lib/python2.7/urlparse.py
+import urlparse # precompiled from /usr/lib/python2.7/urlparse.pyc
+# /usr/lib/python2.7/collections.pyc matches /usr/lib/python2.7/collections.py
+import collections # precompiled from /usr/lib/python2.7/collections.pyc
+import _collections # builtin
+import operator # builtin
+# /usr/lib/python2.7/keyword.pyc matches /usr/lib/python2.7/keyword.py
+import keyword # precompiled from /usr/lib/python2.7/keyword.pyc
+# /usr/lib/python2.7/heapq.pyc matches /usr/lib/python2.7/heapq.py
+import heapq # precompiled from /usr/lib/python2.7/heapq.pyc
+import itertools # builtin
+# /usr/lib/python2.7/bisect.pyc matches /usr/lib/python2.7/bisect.py
+import bisect # precompiled from /usr/lib/python2.7/bisect.pyc
+import _bisect # builtin
+dlopen("/usr/lib/python2.7/lib-dynload/_heapq.so", 2);
+import _heapq # dynamically loaded from /usr/lib/python2.7/lib-dynload/_heapq.so
+import thread # builtin
+# /usr/lib/python2.7/ssl.pyc matches /usr/lib/python2.7/ssl.py
+import ssl # precompiled from /usr/lib/python2.7/ssl.pyc
+# /usr/lib/python2.7/textwrap.pyc matches /usr/lib/python2.7/textwrap.py
+import textwrap # precompiled from /usr/lib/python2.7/textwrap.pyc
+# /usr/lib/pymodules/python2.7/cherrypy/config.pyc matches /usr/lib/pymodules/python2.7/cherrypy/config.py
+import cherrypy.config # precompiled from /usr/lib/pymodules/python2.7/cherrypy/config.pyc
+# /usr/lib/python2.7/ConfigParser.pyc matches /usr/lib/python2.7/ConfigParser.py
+import ConfigParser # precompiled from /usr/lib/python2.7/ConfigParser.pyc
+# /usr/lib/pymodules/python2.7/cherrypy/_cputil.pyc matches /usr/lib/pymodules/python2.7/cherrypy/_cputil.py
+import cherrypy._cputil # precompiled from /usr/lib/pymodules/python2.7/cherrypy/_cputil.pyc
+# /usr/lib/python2.7/cgi.pyc matches /usr/lib/python2.7/cgi.py
+import cgi # precompiled from /usr/lib/python2.7/cgi.pyc
+# /usr/lib/python2.7/mimetools.pyc matches /usr/lib/python2.7/mimetools.py
+import mimetools # precompiled from /usr/lib/python2.7/mimetools.pyc
+# /usr/lib/python2.7/tempfile.pyc matches /usr/lib/python2.7/tempfile.py
+import tempfile # precompiled from /usr/lib/python2.7/tempfile.pyc
+# /usr/lib/python2.7/random.pyc matches /usr/lib/python2.7/random.py
+import random # precompiled from /usr/lib/python2.7/random.pyc
+# /usr/lib/python2.7/__future__.pyc matches /usr/lib/python2.7/__future__.py
+import __future__ # precompiled from /usr/lib/python2.7/__future__.pyc
+import math # builtin
+# /usr/lib/python2.7/hashlib.pyc matches /usr/lib/python2.7/hashlib.py
+import hashlib # precompiled from /usr/lib/python2.7/hashlib.pyc
+import _hashlib # builtin
+import _random # builtin
+import fcntl # builtin
+# /usr/lib/python2.7/rfc822.pyc matches /usr/lib/python2.7/rfc822.py
+import rfc822 # precompiled from /usr/lib/python2.7/rfc822.pyc
+import cherrypy.lib # directory /usr/lib/pymodules/python2.7/cherrypy/lib
+# /usr/lib/pymodules/python2.7/cherrypy/lib/__init__.pyc matches /usr/lib/pymodules/python2.7/cherrypy/lib/__init__.py
+import cherrypy.lib # precompiled from /usr/lib/pymodules/python2.7/cherrypy/lib/__init__.pyc
+# /usr/lib/pymodules/python2.7/cherrypy/lib/httptools.pyc matches /usr/lib/pymodules/python2.7/cherrypy/lib/httptools.py
+import cherrypy.lib.httptools # precompiled from /usr/lib/pymodules/python2.7/cherrypy/lib/httptools.pyc
+# /usr/lib/python2.7/BaseHTTPServer.pyc matches /usr/lib/python2.7/BaseHTTPServer.py
+import BaseHTTPServer # precompiled from /usr/lib/python2.7/BaseHTTPServer.pyc
+# /usr/lib/python2.7/SocketServer.pyc matches /usr/lib/python2.7/SocketServer.py
+import SocketServer # precompiled from /usr/lib/python2.7/SocketServer.pyc
+import select # builtin
+# /usr/lib/python2.7/threading.pyc matches /usr/lib/python2.7/threading.py
+import threading # precompiled from /usr/lib/python2.7/threading.pyc
+import email # directory /usr/lib/python2.7/email
+# /usr/lib/python2.7/email/__init__.pyc matches /usr/lib/python2.7/email/__init__.py
+import email # precompiled from /usr/lib/python2.7/email/__init__.pyc
+import email.mime # directory /usr/lib/python2.7/email/mime
+# /usr/lib/python2.7/email/mime/__init__.pyc matches /usr/lib/python2.7/email/mime/__init__.py
+import email.mime # precompiled from /usr/lib/python2.7/email/mime/__init__.pyc
+# /usr/lib/python2.7/email/header.pyc matches /usr/lib/python2.7/email/header.py
+import email.header # precompiled from /usr/lib/python2.7/email/header.pyc
+# /usr/lib/python2.7/email/quoprimime.pyc matches /usr/lib/python2.7/email/quoprimime.py
+import email.quoprimime # precompiled from /usr/lib/python2.7/email/quoprimime.pyc
+# /usr/lib/python2.7/email/utils.pyc matches /usr/lib/python2.7/email/utils.py
+import email.utils # precompiled from /usr/lib/python2.7/email/utils.pyc
+# /usr/lib/python2.7/email/_parseaddr.pyc matches /usr/lib/python2.7/email/_parseaddr.py
+import email._parseaddr # precompiled from /usr/lib/python2.7/email/_parseaddr.pyc
+# /usr/lib/python2.7/quopri.pyc matches /usr/lib/python2.7/quopri.py
+import quopri # precompiled from /usr/lib/python2.7/quopri.pyc
+# /usr/lib/python2.7/email/encoders.pyc matches /usr/lib/python2.7/email/encoders.py
+import email.encoders # precompiled from /usr/lib/python2.7/email/encoders.pyc
+# /usr/lib/python2.7/email/base64mime.pyc matches /usr/lib/python2.7/email/base64mime.py
+import email.base64mime # precompiled from /usr/lib/python2.7/email/base64mime.pyc
+# /usr/lib/python2.7/email/errors.pyc matches /usr/lib/python2.7/email/errors.py
+import email.errors # precompiled from /usr/lib/python2.7/email/errors.pyc
+# /usr/lib/python2.7/email/charset.pyc matches /usr/lib/python2.7/email/charset.py
+import email.charset # precompiled from /usr/lib/python2.7/email/charset.pyc
+# /usr/lib/python2.7/encodings/ascii.pyc matches /usr/lib/python2.7/encodings/ascii.py
+import encodings.ascii # precompiled from /usr/lib/python2.7/encodings/ascii.pyc
+# /usr/lib/pymodules/python2.7/cherrypy/lib/autoreload.pyc matches /usr/lib/pymodules/python2.7/cherrypy/lib/autoreload.py
+import cherrypy.lib.autoreload # precompiled from /usr/lib/pymodules/python2.7/cherrypy/lib/autoreload.pyc
+# /usr/lib/pymodules/python2.7/cherrypy/lib/cptools.pyc matches /usr/lib/pymodules/python2.7/cherrypy/lib/cptools.py
+import cherrypy.lib.cptools # precompiled from /usr/lib/pymodules/python2.7/cherrypy/lib/cptools.pyc
+# /usr/lib/python2.7/md5.pyc matches /usr/lib/python2.7/md5.py
+import md5 # precompiled from /usr/lib/python2.7/md5.pyc
+# /usr/lib/python2.7/mimetypes.pyc matches /usr/lib/python2.7/mimetypes.py
+import mimetypes # precompiled from /usr/lib/python2.7/mimetypes.pyc
+import cherrypy.filters # directory /usr/lib/pymodules/python2.7/cherrypy/filters
+# /usr/lib/pymodules/python2.7/cherrypy/filters/__init__.pyc matches /usr/lib/pymodules/python2.7/cherrypy/filters/__init__.py
+import cherrypy.filters # precompiled from /usr/lib/pymodules/python2.7/cherrypy/filters/__init__.pyc
+# /usr/lib/pymodules/python2.7/cherrypy/filters/wsgiappfilter.pyc matches /usr/lib/pymodules/python2.7/cherrypy/filters/wsgiappfilter.py
+import cherrypy.filters.wsgiappfilter # precompiled from /usr/lib/pymodules/python2.7/cherrypy/filters/wsgiappfilter.pyc
+# /usr/lib/pymodules/python2.7/cherrypy/filters/basefilter.pyc matches /usr/lib/pymodules/python2.7/cherrypy/filters/basefilter.py
+import cherrypy.filters.basefilter # precompiled from /usr/lib/pymodules/python2.7/cherrypy/filters/basefilter.pyc
+# /usr/lib/pymodules/python2.7/cherrypy/_cptree.pyc matches /usr/lib/pymodules/python2.7/cherrypy/_cptree.py
+import cherrypy._cptree # precompiled from /usr/lib/pymodules/python2.7/cherrypy/_cptree.pyc
+# /usr/lib/pymodules/python2.7/cherrypy/_cpserver.pyc matches /usr/lib/pymodules/python2.7/cherrypy/_cpserver.py
+import cherrypy._cpserver # precompiled from /usr/lib/pymodules/python2.7/cherrypy/_cpserver.pyc
+# /usr/lib/pymodules/python2.7/cherrypy/_cphttptools.pyc matches /usr/lib/pymodules/python2.7/cherrypy/_cphttptools.py
+import cherrypy._cphttptools # precompiled from /usr/lib/pymodules/python2.7/cherrypy/_cphttptools.pyc
+# /usr/lib/python2.7/Cookie.pyc matches /usr/lib/python2.7/Cookie.py
+import Cookie # precompiled from /usr/lib/python2.7/Cookie.pyc
+import cPickle # builtin
+# /usr/lib/pymodules/python2.7/cherrypy/_cpcgifs.pyc matches /usr/lib/pymodules/python2.7/cherrypy/_cpcgifs.py
+import cherrypy._cpcgifs # precompiled from /usr/lib/pymodules/python2.7/cherrypy/_cpcgifs.pyc
+# /usr/lib/pymodules/python2.7/cherrypy/lib/profiler.pyc matches /usr/lib/pymodules/python2.7/cherrypy/lib/profiler.py
+import cherrypy.lib.profiler # precompiled from /usr/lib/pymodules/python2.7/cherrypy/lib/profiler.pyc
+# /usr/lib/python2.7/profile.pyc matches /usr/lib/python2.7/profile.py
+import profile # precompiled from /usr/lib/python2.7/profile.pyc
+import marshal # builtin
+# /usr/lib/python2.7/optparse.pyc matches /usr/lib/python2.7/optparse.py
+import optparse # precompiled from /usr/lib/python2.7/optparse.pyc
+# /usr/lib/python2.7/gettext.pyc matches /usr/lib/python2.7/gettext.py
+import gettext # precompiled from /usr/lib/python2.7/gettext.pyc
+# /usr/lib/python2.7/locale.pyc matches /usr/lib/python2.7/locale.py
+import locale # precompiled from /usr/lib/python2.7/locale.pyc
+import _locale # builtin
+# /usr/lib/python2.7/copy.pyc matches /usr/lib/python2.7/copy.py
+import copy # precompiled from /usr/lib/python2.7/copy.pyc
+# /usr/lib/python2.7/weakref.pyc matches /usr/lib/python2.7/weakref.py
+import weakref # precompiled from /usr/lib/python2.7/weakref.pyc
+dlopen("/usr/lib/python2.7/lib-dynload/resource.so", 2);
+import resource # dynamically loaded from /usr/lib/python2.7/lib-dynload/resource.so
+# /usr/lib/python2.7/pstats.pyc matches /usr/lib/python2.7/pstats.py
+import pstats # precompiled from /usr/lib/python2.7/pstats.pyc
+# /usr/lib/pymodules/python2.7/cherrypy/_cpengine.pyc matches /usr/lib/pymodules/python2.7/cherrypy/_cpengine.py
+import cherrypy._cpengine # precompiled from /usr/lib/pymodules/python2.7/cherrypy/_cpengine.pyc
+# /usr/lib/pymodules/python2.7/cherrypy/filters/sessionfilter.pyc matches /usr/lib/pymodules/python2.7/cherrypy/filters/sessionfilter.py
+import cherrypy.filters.sessionfilter # precompiled from /usr/lib/pymodules/python2.7/cherrypy/filters/sessionfilter.pyc
+# /usr/lib/python2.7/sha.pyc matches /usr/lib/python2.7/sha.py
+import sha # precompiled from /usr/lib/python2.7/sha.pyc
+import sqlite3 # directory /usr/lib/python2.7/sqlite3
+# /usr/lib/python2.7/sqlite3/__init__.pyc matches /usr/lib/python2.7/sqlite3/__init__.py
+import sqlite3 # precompiled from /usr/lib/python2.7/sqlite3/__init__.pyc
+# /usr/lib/python2.7/sqlite3/dbapi2.pyc matches /usr/lib/python2.7/sqlite3/dbapi2.py
+import sqlite3.dbapi2 # precompiled from /usr/lib/python2.7/sqlite3/dbapi2.pyc
+dlopen("/usr/lib/python2.7/lib-dynload/_sqlite3.so", 2);
+import _sqlite3 # dynamically loaded from /usr/lib/python2.7/lib-dynload/_sqlite3.so
+import numpy # directory /usr/lib/python2.7/dist-packages/numpy
+# /usr/lib/python2.7/dist-packages/numpy/__init__.pyc matches /usr/lib/python2.7/dist-packages/numpy/__init__.py
+import numpy # precompiled from /usr/lib/python2.7/dist-packages/numpy/__init__.pyc
+# /usr/lib/python2.7/dist-packages/numpy/__config__.pyc matches /usr/lib/python2.7/dist-packages/numpy/__config__.py
+import numpy.__config__ # precompiled from /usr/lib/python2.7/dist-packages/numpy/__config__.pyc
+# /usr/lib/python2.7/dist-packages/numpy/version.pyc matches /usr/lib/python2.7/dist-packages/numpy/version.py
+import numpy.version # precompiled from /usr/lib/python2.7/dist-packages/numpy/version.pyc
+# /usr/lib/python2.7/dist-packages/numpy/_import_tools.pyc matches /usr/lib/python2.7/dist-packages/numpy/_import_tools.py
+import numpy._import_tools # precompiled from /usr/lib/python2.7/dist-packages/numpy/_import_tools.pyc
+# /usr/lib/python2.7/dist-packages/numpy/add_newdocs.pyc matches /usr/lib/python2.7/dist-packages/numpy/add_newdocs.py
+import numpy.add_newdocs # precompiled from /usr/lib/python2.7/dist-packages/numpy/add_newdocs.pyc
+import numpy.lib # directory /usr/lib/python2.7/dist-packages/numpy/lib
+# /usr/lib/python2.7/dist-packages/numpy/lib/__init__.pyc matches /usr/lib/python2.7/dist-packages/numpy/lib/__init__.py
+import numpy.lib # precompiled from /usr/lib/python2.7/dist-packages/numpy/lib/__init__.pyc
+# /usr/lib/python2.7/dist-packages/numpy/lib/info.pyc matches /usr/lib/python2.7/dist-packages/numpy/lib/info.py
+import numpy.lib.info # precompiled from /usr/lib/python2.7/dist-packages/numpy/lib/info.pyc
+# /usr/lib/python2.7/dist-packages/numpy/lib/type_check.pyc matches /usr/lib/python2.7/dist-packages/numpy/lib/type_check.py
+import numpy.lib.type_check # precompiled from /usr/lib/python2.7/dist-packages/numpy/lib/type_check.pyc
+import numpy.core # directory /usr/lib/python2.7/dist-packages/numpy/core
+# /usr/lib/python2.7/dist-packages/numpy/core/__init__.pyc matches /usr/lib/python2.7/dist-packages/numpy/core/__init__.py
+import numpy.core # precompiled from /usr/lib/python2.7/dist-packages/numpy/core/__init__.pyc
+# /usr/lib/python2.7/dist-packages/numpy/core/info.pyc matches /usr/lib/python2.7/dist-packages/numpy/core/info.py
+import numpy.core.info # precompiled from /usr/lib/python2.7/dist-packages/numpy/core/info.pyc
+dlopen("/usr/lib/python2.7/dist-packages/numpy/core/multiarray.so", 2);
+import numpy.core.multiarray # dynamically loaded from /usr/lib/python2.7/dist-packages/numpy/core/multiarray.so
+dlopen("/usr/lib/python2.7/dist-packages/numpy/core/umath.so", 2);
+import numpy.core.umath # dynamically loaded from /usr/lib/python2.7/dist-packages/numpy/core/umath.so
+# /usr/lib/python2.7/dist-packages/numpy/core/_internal.pyc matches /usr/lib/python2.7/dist-packages/numpy/core/_internal.py
+import numpy.core._internal # precompiled from /usr/lib/python2.7/dist-packages/numpy/core/_internal.pyc
+import numpy.compat # directory /usr/lib/python2.7/dist-packages/numpy/compat
+# /usr/lib/python2.7/dist-packages/numpy/compat/__init__.pyc matches /usr/lib/python2.7/dist-packages/numpy/compat/__init__.py
+import numpy.compat # precompiled from /usr/lib/python2.7/dist-packages/numpy/compat/__init__.pyc
+# /usr/lib/python2.7/dist-packages/numpy/compat/_inspect.pyc matches /usr/lib/python2.7/dist-packages/numpy/compat/_inspect.py
+import numpy.compat._inspect # precompiled from /usr/lib/python2.7/dist-packages/numpy/compat/_inspect.pyc
+# /usr/lib/python2.7/dist-packages/numpy/compat/py3k.pyc matches /usr/lib/python2.7/dist-packages/numpy/compat/py3k.py
+import numpy.compat.py3k # precompiled from /usr/lib/python2.7/dist-packages/numpy/compat/py3k.pyc
+# /usr/lib/python2.7/dist-packages/numpy/core/numerictypes.pyc matches /usr/lib/python2.7/dist-packages/numpy/core/numerictypes.py
+import numpy.core.numerictypes # precompiled from /usr/lib/python2.7/dist-packages/numpy/core/numerictypes.pyc
+dlopen("/usr/lib/python2.7/dist-packages/numpy/core/_sort.so", 2);
+import numpy.core._sort # dynamically loaded from /usr/lib/python2.7/dist-packages/numpy/core/_sort.so
+# /usr/lib/python2.7/dist-packages/numpy/core/numeric.pyc matches /usr/lib/python2.7/dist-packages/numpy/core/numeric.py
+import numpy.core.numeric # precompiled from /usr/lib/python2.7/dist-packages/numpy/core/numeric.pyc
+dlopen("/usr/lib/python2.7/dist-packages/numpy/core/_dotblas.so", 2);
+import numpy.core._dotblas # dynamically loaded from /usr/lib/python2.7/dist-packages/numpy/core/_dotblas.so
+# /usr/lib/python2.7/dist-packages/numpy/core/arrayprint.pyc matches /usr/lib/python2.7/dist-packages/numpy/core/arrayprint.py
+import numpy.core.arrayprint # precompiled from /usr/lib/python2.7/dist-packages/numpy/core/arrayprint.pyc
+# /usr/lib/python2.7/dist-packages/numpy/core/fromnumeric.pyc matches /usr/lib/python2.7/dist-packages/numpy/core/fromnumeric.py
+import numpy.core.fromnumeric # precompiled from /usr/lib/python2.7/dist-packages/numpy/core/fromnumeric.pyc
+# /usr/lib/python2.7/dist-packages/numpy/core/defchararray.pyc matches /usr/lib/python2.7/dist-packages/numpy/core/defchararray.py
+import numpy.core.defchararray # precompiled from /usr/lib/python2.7/dist-packages/numpy/core/defchararray.pyc
+# /usr/lib/python2.7/dist-packages/numpy/core/records.pyc matches /usr/lib/python2.7/dist-packages/numpy/core/records.py
+import numpy.core.records # precompiled from /usr/lib/python2.7/dist-packages/numpy/core/records.pyc
+# /usr/lib/python2.7/dist-packages/numpy/core/memmap.pyc matches /usr/lib/python2.7/dist-packages/numpy/core/memmap.py
+import numpy.core.memmap # precompiled from /usr/lib/python2.7/dist-packages/numpy/core/memmap.pyc
+dlopen("/usr/lib/python2.7/dist-packages/numpy/core/scalarmath.so", 2);
+import numpy.core.scalarmath # dynamically loaded from /usr/lib/python2.7/dist-packages/numpy/core/scalarmath.so
+# /usr/lib/python2.7/dist-packages/numpy/core/function_base.pyc matches /usr/lib/python2.7/dist-packages/numpy/core/function_base.py
+import numpy.core.function_base # precompiled from /usr/lib/python2.7/dist-packages/numpy/core/function_base.pyc
+# /usr/lib/python2.7/dist-packages/numpy/core/machar.pyc matches /usr/lib/python2.7/dist-packages/numpy/core/machar.py
+import numpy.core.machar # precompiled from /usr/lib/python2.7/dist-packages/numpy/core/machar.pyc
+# /usr/lib/python2.7/dist-packages/numpy/core/getlimits.pyc matches /usr/lib/python2.7/dist-packages/numpy/core/getlimits.py
+import numpy.core.getlimits # precompiled from /usr/lib/python2.7/dist-packages/numpy/core/getlimits.pyc
+# /usr/lib/python2.7/dist-packages/numpy/core/shape_base.pyc matches /usr/lib/python2.7/dist-packages/numpy/core/shape_base.py
+import numpy.core.shape_base # precompiled from /usr/lib/python2.7/dist-packages/numpy/core/shape_base.pyc
+import numpy.testing # directory /usr/lib/python2.7/dist-packages/numpy/testing
+# /usr/lib/python2.7/dist-packages/numpy/testing/__init__.pyc matches /usr/lib/python2.7/dist-packages/numpy/testing/__init__.py
+import numpy.testing # precompiled from /usr/lib/python2.7/dist-packages/numpy/testing/__init__.pyc
+import unittest # directory /usr/lib/python2.7/unittest
+# /usr/lib/python2.7/unittest/__init__.pyc matches /usr/lib/python2.7/unittest/__init__.py
+import unittest # precompiled from /usr/lib/python2.7/unittest/__init__.pyc
+# /usr/lib/python2.7/unittest/result.pyc matches /usr/lib/python2.7/unittest/result.py
+import unittest.result # precompiled from /usr/lib/python2.7/unittest/result.pyc
+# /usr/lib/python2.7/StringIO.pyc matches /usr/lib/python2.7/StringIO.py
+import StringIO # precompiled from /usr/lib/python2.7/StringIO.pyc
+# /usr/lib/python2.7/unittest/util.pyc matches /usr/lib/python2.7/unittest/util.py
+import unittest.util # precompiled from /usr/lib/python2.7/unittest/util.pyc
+# /usr/lib/python2.7/unittest/case.pyc matches /usr/lib/python2.7/unittest/case.py
+import unittest.case # precompiled from /usr/lib/python2.7/unittest/case.pyc
+# /usr/lib/python2.7/difflib.pyc matches /usr/lib/python2.7/difflib.py
+import difflib # precompiled from /usr/lib/python2.7/difflib.pyc
+# /usr/lib/python2.7/pprint.pyc matches /usr/lib/python2.7/pprint.py
+import pprint # precompiled from /usr/lib/python2.7/pprint.pyc
+# /usr/lib/python2.7/unittest/suite.pyc matches /usr/lib/python2.7/unittest/suite.py
+import unittest.suite # precompiled from /usr/lib/python2.7/unittest/suite.pyc
+# /usr/lib/python2.7/unittest/loader.pyc matches /usr/lib/python2.7/unittest/loader.py
+import unittest.loader # precompiled from /usr/lib/python2.7/unittest/loader.pyc
+# /usr/lib/python2.7/fnmatch.pyc matches /usr/lib/python2.7/fnmatch.py
+import fnmatch # precompiled from /usr/lib/python2.7/fnmatch.pyc
+# /usr/lib/python2.7/unittest/main.pyc matches /usr/lib/python2.7/unittest/main.py
+import unittest.main # precompiled from /usr/lib/python2.7/unittest/main.pyc
+# /usr/lib/python2.7/unittest/runner.pyc matches /usr/lib/python2.7/unittest/runner.py
+import unittest.runner # precompiled from /usr/lib/python2.7/unittest/runner.pyc
+# /usr/lib/python2.7/unittest/signals.pyc matches /usr/lib/python2.7/unittest/signals.py
+import unittest.signals # precompiled from /usr/lib/python2.7/unittest/signals.pyc
+# /usr/lib/python2.7/dist-packages/numpy/testing/decorators.pyc matches /usr/lib/python2.7/dist-packages/numpy/testing/decorators.py
+import numpy.testing.decorators # precompiled from /usr/lib/python2.7/dist-packages/numpy/testing/decorators.pyc
+# /usr/lib/python2.7/dist-packages/numpy/testing/utils.pyc matches /usr/lib/python2.7/dist-packages/numpy/testing/utils.py
+import numpy.testing.utils # precompiled from /usr/lib/python2.7/dist-packages/numpy/testing/utils.pyc
+# /usr/lib/python2.7/dist-packages/numpy/testing/nosetester.pyc matches /usr/lib/python2.7/dist-packages/numpy/testing/nosetester.py
+import numpy.testing.nosetester # precompiled from /usr/lib/python2.7/dist-packages/numpy/testing/nosetester.pyc
+# /usr/lib/python2.7/dist-packages/numpy/testing/numpytest.pyc matches /usr/lib/python2.7/dist-packages/numpy/testing/numpytest.py
+import numpy.testing.numpytest # precompiled from /usr/lib/python2.7/dist-packages/numpy/testing/numpytest.pyc
+# /usr/lib/python2.7/dist-packages/numpy/lib/ufunclike.pyc matches /usr/lib/python2.7/dist-packages/numpy/lib/ufunclike.py
+import numpy.lib.ufunclike # precompiled from /usr/lib/python2.7/dist-packages/numpy/lib/ufunclike.pyc
+# /usr/lib/python2.7/dist-packages/numpy/lib/index_tricks.pyc matches /usr/lib/python2.7/dist-packages/numpy/lib/index_tricks.py
+import numpy.lib.index_tricks # precompiled from /usr/lib/python2.7/dist-packages/numpy/lib/index_tricks.pyc
+# /usr/lib/python2.7/dist-packages/numpy/lib/function_base.pyc matches /usr/lib/python2.7/dist-packages/numpy/lib/function_base.py
+import numpy.lib.function_base # precompiled from /usr/lib/python2.7/dist-packages/numpy/lib/function_base.pyc
+# /usr/lib/python2.7/dist-packages/numpy/lib/twodim_base.pyc matches /usr/lib/python2.7/dist-packages/numpy/lib/twodim_base.py
+import numpy.lib.twodim_base # precompiled from /usr/lib/python2.7/dist-packages/numpy/lib/twodim_base.pyc
+dlopen("/usr/lib/python2.7/dist-packages/numpy/lib/_compiled_base.so", 2);
+import numpy.lib._compiled_base # dynamically loaded from /usr/lib/python2.7/dist-packages/numpy/lib/_compiled_base.so
+# /usr/lib/python2.7/dist-packages/numpy/lib/arraysetops.pyc matches /usr/lib/python2.7/dist-packages/numpy/lib/arraysetops.py
+import numpy.lib.arraysetops # precompiled from /usr/lib/python2.7/dist-packages/numpy/lib/arraysetops.pyc
+# /usr/lib/python2.7/dist-packages/numpy/lib/utils.pyc matches /usr/lib/python2.7/dist-packages/numpy/lib/utils.py
+import numpy.lib.utils # precompiled from /usr/lib/python2.7/dist-packages/numpy/lib/utils.pyc
+import numpy.matrixlib # directory /usr/lib/python2.7/dist-packages/numpy/matrixlib
+# /usr/lib/python2.7/dist-packages/numpy/matrixlib/__init__.pyc matches /usr/lib/python2.7/dist-packages/numpy/matrixlib/__init__.py
+import numpy.matrixlib # precompiled from /usr/lib/python2.7/dist-packages/numpy/matrixlib/__init__.pyc
+# /usr/lib/python2.7/dist-packages/numpy/matrixlib/defmatrix.pyc matches /usr/lib/python2.7/dist-packages/numpy/matrixlib/defmatrix.py
+import numpy.matrixlib.defmatrix # precompiled from /usr/lib/python2.7/dist-packages/numpy/matrixlib/defmatrix.pyc
+# /usr/lib/python2.7/dist-packages/numpy/lib/shape_base.pyc matches /usr/lib/python2.7/dist-packages/numpy/lib/shape_base.py
+import numpy.lib.shape_base # precompiled from /usr/lib/python2.7/dist-packages/numpy/lib/shape_base.pyc
+# /usr/lib/python2.7/dist-packages/numpy/lib/stride_tricks.pyc matches /usr/lib/python2.7/dist-packages/numpy/lib/stride_tricks.py
+import numpy.lib.stride_tricks # precompiled from /usr/lib/python2.7/dist-packages/numpy/lib/stride_tricks.pyc
+# /usr/lib/python2.7/dist-packages/numpy/lib/scimath.pyc matches /usr/lib/python2.7/dist-packages/numpy/lib/scimath.py
+import numpy.lib.scimath # precompiled from /usr/lib/python2.7/dist-packages/numpy/lib/scimath.pyc
+# /usr/lib/python2.7/dist-packages/numpy/lib/polynomial.pyc matches /usr/lib/python2.7/dist-packages/numpy/lib/polynomial.py
+import numpy.lib.polynomial # precompiled from /usr/lib/python2.7/dist-packages/numpy/lib/polynomial.pyc
+import numpy.linalg # directory /usr/lib/python2.7/dist-packages/numpy/linalg
+# /usr/lib/python2.7/dist-packages/numpy/linalg/__init__.pyc matches /usr/lib/python2.7/dist-packages/numpy/linalg/__init__.py
+import numpy.linalg # precompiled from /usr/lib/python2.7/dist-packages/numpy/linalg/__init__.pyc
+# /usr/lib/python2.7/dist-packages/numpy/linalg/info.pyc matches /usr/lib/python2.7/dist-packages/numpy/linalg/info.py
+import numpy.linalg.info # precompiled from /usr/lib/python2.7/dist-packages/numpy/linalg/info.pyc
+# /usr/lib/python2.7/dist-packages/numpy/linalg/linalg.pyc matches /usr/lib/python2.7/dist-packages/numpy/linalg/linalg.py
+import numpy.linalg.linalg # precompiled from /usr/lib/python2.7/dist-packages/numpy/linalg/linalg.pyc
+dlopen("/usr/lib/python2.7/dist-packages/numpy/linalg/lapack_lite.so", 2);
+import numpy.linalg.lapack_lite # dynamically loaded from /usr/lib/python2.7/dist-packages/numpy/linalg/lapack_lite.so
+# /usr/lib/python2.7/dist-packages/numpy/lib/npyio.pyc matches /usr/lib/python2.7/dist-packages/numpy/lib/npyio.py
+import numpy.lib.npyio # precompiled from /usr/lib/python2.7/dist-packages/numpy/lib/npyio.pyc
+# /usr/lib/python2.7/dist-packages/numpy/lib/format.pyc matches /usr/lib/python2.7/dist-packages/numpy/lib/format.py
+import numpy.lib.format # precompiled from /usr/lib/python2.7/dist-packages/numpy/lib/format.pyc
+# /usr/lib/python2.7/dist-packages/numpy/lib/_datasource.pyc matches /usr/lib/python2.7/dist-packages/numpy/lib/_datasource.py
+import numpy.lib._datasource # precompiled from /usr/lib/python2.7/dist-packages/numpy/lib/_datasource.pyc
+# /usr/lib/python2.7/shutil.pyc matches /usr/lib/python2.7/shutil.py
+import shutil # precompiled from /usr/lib/python2.7/shutil.pyc
+import pwd # builtin
+import grp # builtin
+# /usr/lib/python2.7/dist-packages/numpy/lib/_iotools.pyc matches /usr/lib/python2.7/dist-packages/numpy/lib/_iotools.py
+import numpy.lib._iotools # precompiled from /usr/lib/python2.7/dist-packages/numpy/lib/_iotools.pyc
+# /usr/lib/python2.7/dist-packages/numpy/lib/financial.pyc matches /usr/lib/python2.7/dist-packages/numpy/lib/financial.py
+import numpy.lib.financial # precompiled from /usr/lib/python2.7/dist-packages/numpy/lib/financial.pyc
+# /usr/lib/python2.7/dist-packages/numpy/lib/arrayterator.pyc matches /usr/lib/python2.7/dist-packages/numpy/lib/arrayterator.py
+import numpy.lib.arrayterator # precompiled from /usr/lib/python2.7/dist-packages/numpy/lib/arrayterator.pyc
+import numpy.fft # directory /usr/lib/python2.7/dist-packages/numpy/fft
+# /usr/lib/python2.7/dist-packages/numpy/fft/__init__.pyc matches /usr/lib/python2.7/dist-packages/numpy/fft/__init__.py
+import numpy.fft # precompiled from /usr/lib/python2.7/dist-packages/numpy/fft/__init__.pyc
+# /usr/lib/python2.7/dist-packages/numpy/fft/info.pyc matches /usr/lib/python2.7/dist-packages/numpy/fft/info.py
+import numpy.fft.info # precompiled from /usr/lib/python2.7/dist-packages/numpy/fft/info.pyc
+# /usr/lib/python2.7/dist-packages/numpy/fft/fftpack.pyc matches /usr/lib/python2.7/dist-packages/numpy/fft/fftpack.py
+import numpy.fft.fftpack # precompiled from /usr/lib/python2.7/dist-packages/numpy/fft/fftpack.pyc
+dlopen("/usr/lib/python2.7/dist-packages/numpy/fft/fftpack_lite.so", 2);
+import numpy.fft.fftpack_lite # dynamically loaded from /usr/lib/python2.7/dist-packages/numpy/fft/fftpack_lite.so
+# /usr/lib/python2.7/dist-packages/numpy/fft/helper.pyc matches /usr/lib/python2.7/dist-packages/numpy/fft/helper.py
+import numpy.fft.helper # precompiled from /usr/lib/python2.7/dist-packages/numpy/fft/helper.pyc
+import numpy.polynomial # directory /usr/lib/python2.7/dist-packages/numpy/polynomial
+# /usr/lib/python2.7/dist-packages/numpy/polynomial/__init__.pyc matches /usr/lib/python2.7/dist-packages/numpy/polynomial/__init__.py
+import numpy.polynomial # precompiled from /usr/lib/python2.7/dist-packages/numpy/polynomial/__init__.pyc
+# /usr/lib/python2.7/dist-packages/numpy/polynomial/polynomial.pyc matches /usr/lib/python2.7/dist-packages/numpy/polynomial/polynomial.py
+import numpy.polynomial.polynomial # precompiled from /usr/lib/python2.7/dist-packages/numpy/polynomial/polynomial.pyc
+# /usr/lib/python2.7/dist-packages/numpy/polynomial/polyutils.pyc matches /usr/lib/python2.7/dist-packages/numpy/polynomial/polyutils.py
+import numpy.polynomial.polyutils # precompiled from /usr/lib/python2.7/dist-packages/numpy/polynomial/polyutils.pyc
+# /usr/lib/python2.7/dist-packages/numpy/polynomial/polytemplate.pyc matches /usr/lib/python2.7/dist-packages/numpy/polynomial/polytemplate.py
+import numpy.polynomial.polytemplate # precompiled from /usr/lib/python2.7/dist-packages/numpy/polynomial/polytemplate.pyc
+# /usr/lib/python2.7/dist-packages/numpy/polynomial/chebyshev.pyc matches /usr/lib/python2.7/dist-packages/numpy/polynomial/chebyshev.py
+import numpy.polynomial.chebyshev # precompiled from /usr/lib/python2.7/dist-packages/numpy/polynomial/chebyshev.pyc
+# /usr/lib/python2.7/dist-packages/numpy/polynomial/legendre.pyc matches /usr/lib/python2.7/dist-packages/numpy/polynomial/legendre.py
+import numpy.polynomial.legendre # precompiled from /usr/lib/python2.7/dist-packages/numpy/polynomial/legendre.pyc
+# /usr/lib/python2.7/dist-packages/numpy/polynomial/hermite.pyc matches /usr/lib/python2.7/dist-packages/numpy/polynomial/hermite.py
+import numpy.polynomial.hermite # precompiled from /usr/lib/python2.7/dist-packages/numpy/polynomial/hermite.pyc
+# /usr/lib/python2.7/dist-packages/numpy/polynomial/hermite_e.pyc matches /usr/lib/python2.7/dist-packages/numpy/polynomial/hermite_e.py
+import numpy.polynomial.hermite_e # precompiled from /usr/lib/python2.7/dist-packages/numpy/polynomial/hermite_e.pyc
+# /usr/lib/python2.7/dist-packages/numpy/polynomial/laguerre.pyc matches /usr/lib/python2.7/dist-packages/numpy/polynomial/laguerre.py
+import numpy.polynomial.laguerre # precompiled from /usr/lib/python2.7/dist-packages/numpy/polynomial/laguerre.pyc
+import numpy.random # directory /usr/lib/python2.7/dist-packages/numpy/random
+# /usr/lib/python2.7/dist-packages/numpy/random/__init__.pyc matches /usr/lib/python2.7/dist-packages/numpy/random/__init__.py
+import numpy.random # precompiled from /usr/lib/python2.7/dist-packages/numpy/random/__init__.pyc
+# /usr/lib/python2.7/dist-packages/numpy/random/info.pyc matches /usr/lib/python2.7/dist-packages/numpy/random/info.py
+import numpy.random.info # precompiled from /usr/lib/python2.7/dist-packages/numpy/random/info.pyc
+dlopen("/usr/lib/python2.7/dist-packages/numpy/random/mtrand.so", 2);
+import numpy.random.mtrand # dynamically loaded from /usr/lib/python2.7/dist-packages/numpy/random/mtrand.so
+# /usr/lib/python2.7/dist-packages/numpy/ctypeslib.pyc matches /usr/lib/python2.7/dist-packages/numpy/ctypeslib.py
+import numpy.ctypeslib # precompiled from /usr/lib/python2.7/dist-packages/numpy/ctypeslib.pyc
+import ctypes # directory /usr/lib/python2.7/ctypes
+# /usr/lib/python2.7/ctypes/__init__.pyc matches /usr/lib/python2.7/ctypes/__init__.py
+import ctypes # precompiled from /usr/lib/python2.7/ctypes/__init__.pyc
+dlopen("/usr/lib/python2.7/lib-dynload/_ctypes.so", 2);
+import _ctypes # dynamically loaded from /usr/lib/python2.7/lib-dynload/_ctypes.so
+# /usr/lib/python2.7/ctypes/_endian.pyc matches /usr/lib/python2.7/ctypes/_endian.py
+import ctypes._endian # precompiled from /usr/lib/python2.7/ctypes/_endian.pyc
+import numpy.ma # directory /usr/lib/python2.7/dist-packages/numpy/ma
+# /usr/lib/python2.7/dist-packages/numpy/ma/__init__.pyc matches /usr/lib/python2.7/dist-packages/numpy/ma/__init__.py
+import numpy.ma # precompiled from /usr/lib/python2.7/dist-packages/numpy/ma/__init__.pyc
+# /usr/lib/python2.7/dist-packages/numpy/ma/core.pyc matches /usr/lib/python2.7/dist-packages/numpy/ma/core.py
+import numpy.ma.core # precompiled from /usr/lib/python2.7/dist-packages/numpy/ma/core.pyc
+# /usr/lib/python2.7/dist-packages/numpy/ma/extras.pyc matches /usr/lib/python2.7/dist-packages/numpy/ma/extras.py
+import numpy.ma.extras # precompiled from /usr/lib/python2.7/dist-packages/numpy/ma/extras.pyc
+import multiprocessing # directory /usr/lib/python2.7/multiprocessing
+# /usr/lib/python2.7/multiprocessing/__init__.pyc matches /usr/lib/python2.7/multiprocessing/__init__.py
+import multiprocessing # precompiled from /usr/lib/python2.7/multiprocessing/__init__.pyc
+# /usr/lib/python2.7/multiprocessing/process.pyc matches /usr/lib/python2.7/multiprocessing/process.py
+import multiprocessing.process # precompiled from /usr/lib/python2.7/multiprocessing/process.pyc
+# /usr/lib/python2.7/multiprocessing/util.pyc matches /usr/lib/python2.7/multiprocessing/util.py
+import multiprocessing.util # precompiled from /usr/lib/python2.7/multiprocessing/util.pyc
+# /usr/lib/python2.7/atexit.pyc matches /usr/lib/python2.7/atexit.py
+import atexit # precompiled from /usr/lib/python2.7/atexit.pyc
+dlopen("/usr/lib/python2.7/lib-dynload/_multiprocessing.so", 2);
+import _multiprocessing # dynamically loaded from /usr/lib/python2.7/lib-dynload/_multiprocessing.so
+import scipy # directory /usr/lib/python2.7/dist-packages/scipy
+# /usr/lib/python2.7/dist-packages/scipy/__init__.pyc matches /usr/lib/python2.7/dist-packages/scipy/__init__.py
+import scipy # precompiled from /usr/lib/python2.7/dist-packages/scipy/__init__.pyc
+import numpy.oldnumeric # directory /usr/lib/python2.7/dist-packages/numpy/oldnumeric
+# /usr/lib/python2.7/dist-packages/numpy/oldnumeric/__init__.pyc matches /usr/lib/python2.7/dist-packages/numpy/oldnumeric/__init__.py
+import numpy.oldnumeric # precompiled from /usr/lib/python2.7/dist-packages/numpy/oldnumeric/__init__.pyc
+# /usr/lib/python2.7/dist-packages/numpy/oldnumeric/compat.pyc matches /usr/lib/python2.7/dist-packages/numpy/oldnumeric/compat.py
+import numpy.oldnumeric.compat # precompiled from /usr/lib/python2.7/dist-packages/numpy/oldnumeric/compat.pyc
+# /usr/lib/python2.7/dist-packages/numpy/oldnumeric/functions.pyc matches /usr/lib/python2.7/dist-packages/numpy/oldnumeric/functions.py
+import numpy.oldnumeric.functions # precompiled from /usr/lib/python2.7/dist-packages/numpy/oldnumeric/functions.pyc
+# /usr/lib/python2.7/dist-packages/numpy/oldnumeric/typeconv.pyc matches /usr/lib/python2.7/dist-packages/numpy/oldnumeric/typeconv.py
+import numpy.oldnumeric.typeconv # precompiled from /usr/lib/python2.7/dist-packages/numpy/oldnumeric/typeconv.pyc
+# /usr/lib/python2.7/pickle.pyc matches /usr/lib/python2.7/pickle.py
+import pickle # precompiled from /usr/lib/python2.7/pickle.pyc
+# /usr/lib/python2.7/dist-packages/numpy/oldnumeric/precision.pyc matches /usr/lib/python2.7/dist-packages/numpy/oldnumeric/precision.py
+import numpy.oldnumeric.precision # precompiled from /usr/lib/python2.7/dist-packages/numpy/oldnumeric/precision.pyc
+# /usr/lib/python2.7/dist-packages/numpy/oldnumeric/ufuncs.pyc matches /usr/lib/python2.7/dist-packages/numpy/oldnumeric/ufuncs.py
+import numpy.oldnumeric.ufuncs # precompiled from /usr/lib/python2.7/dist-packages/numpy/oldnumeric/ufuncs.pyc
+# /usr/lib/python2.7/dist-packages/numpy/oldnumeric/misc.pyc matches /usr/lib/python2.7/dist-packages/numpy/oldnumeric/misc.py
+import numpy.oldnumeric.misc # precompiled from /usr/lib/python2.7/dist-packages/numpy/oldnumeric/misc.pyc
+# /usr/lib/python2.7/dist-packages/numpy/oldnumeric/array_printer.pyc matches /usr/lib/python2.7/dist-packages/numpy/oldnumeric/array_printer.py
+import numpy.oldnumeric.array_printer # precompiled from /usr/lib/python2.7/dist-packages/numpy/oldnumeric/array_printer.pyc
+# /usr/lib/python2.7/dist-packages/scipy/__config__.pyc matches /usr/lib/python2.7/dist-packages/scipy/__config__.py
+import scipy.__config__ # precompiled from /usr/lib/python2.7/dist-packages/scipy/__config__.pyc
+# /usr/lib/python2.7/dist-packages/scipy/version.pyc matches /usr/lib/python2.7/dist-packages/scipy/version.py
+import scipy.version # precompiled from /usr/lib/python2.7/dist-packages/scipy/version.pyc
+import imp # builtin
+# /usr/lib/python2.7/glob.pyc matches /usr/lib/python2.7/glob.py
+import glob # precompiled from /usr/lib/python2.7/glob.pyc
+# /usr/lib/python2.7/dist-packages/scipy/ndimage/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/ndimage/info.py
+import scipy.ndimage.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/ndimage/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/odr/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/odr/info.py
+import scipy.odr.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/odr/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/special/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/special/info.py
+import scipy.special.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/special/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/maxentropy/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/maxentropy/info.py
+import scipy.maxentropy.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/maxentropy/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/optimize/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/optimize/info.py
+import scipy.optimize.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/optimize/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/signal/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/signal/info.py
+import scipy.signal.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/signal/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/info.py
+import scipy.sparse.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/info.py
+import scipy.sparse.linalg.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/info.py
+import scipy.sparse.linalg.eigen.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/lobpcg/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/lobpcg/info.py
+import scipy.sparse.linalg.eigen.lobpcg.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/lobpcg/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/arpack/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/arpack/info.py
+import scipy.sparse.linalg.eigen.arpack.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/arpack/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/info.py
+import scipy.sparse.linalg.dsolve.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/umfpack/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/umfpack/info.py
+import scipy.sparse.linalg.dsolve.umfpack.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/umfpack/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/lib/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/lib/info.py
+import scipy.lib.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/lib/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/lib/lapack/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/lib/lapack/info.py
+import scipy.lib.lapack.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/lib/lapack/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/lib/blas/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/lib/blas/info.py
+import scipy.lib.blas.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/lib/blas/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/fftpack/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/fftpack/info.py
+import scipy.fftpack.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/fftpack/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/weave/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/weave/info.py
+import scipy.weave.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/weave/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/io/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/io/info.py
+import scipy.io.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/io/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/misc/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/misc/info.py
+import scipy.misc.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/misc/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/spatial/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/spatial/info.py
+import scipy.spatial.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/spatial/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/interpolate/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/interpolate/info.py
+import scipy.interpolate.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/interpolate/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/stats/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/stats/info.py
+import scipy.stats.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/stats/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/linalg/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/linalg/info.py
+import scipy.linalg.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/linalg/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/cluster/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/cluster/info.py
+import scipy.cluster.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/cluster/info.pyc
+# /usr/lib/python2.7/dist-packages/scipy/integrate/info.pyc matches /usr/lib/python2.7/dist-packages/scipy/integrate/info.py
+import scipy.integrate.info # precompiled from /usr/lib/python2.7/dist-packages/scipy/integrate/info.pyc
+import scipy.misc # directory /usr/lib/python2.7/dist-packages/scipy/misc
+# /usr/lib/python2.7/dist-packages/scipy/misc/__init__.pyc matches /usr/lib/python2.7/dist-packages/scipy/misc/__init__.py
+import scipy.misc # precompiled from /usr/lib/python2.7/dist-packages/scipy/misc/__init__.pyc
+# /usr/lib/python2.7/dist-packages/scipy/misc/common.pyc matches /usr/lib/python2.7/dist-packages/scipy/misc/common.py
+import scipy.misc.common # precompiled from /usr/lib/python2.7/dist-packages/scipy/misc/common.pyc
+# /usr/lib/python2.7/dist-packages/scipy/misc/pilutil.pyc matches /usr/lib/python2.7/dist-packages/scipy/misc/pilutil.py
+import scipy.misc.pilutil # precompiled from /usr/lib/python2.7/dist-packages/scipy/misc/pilutil.pyc
+# /usr/lib/python2.7/dist-packages/PIL/Image.pyc matches /usr/lib/python2.7/dist-packages/PIL/Image.py
+import Image # precompiled from /usr/lib/python2.7/dist-packages/PIL/Image.pyc
+# /usr/lib/python2.7/lib-tk/FixTk.pyc matches /usr/lib/python2.7/lib-tk/FixTk.py
+import FixTk # precompiled from /usr/lib/python2.7/lib-tk/FixTk.pyc
+dlopen("/usr/lib/python2.7/dist-packages/PIL/_imaging.so", 2);
+import _imaging # dynamically loaded from /usr/lib/python2.7/dist-packages/PIL/_imaging.so
+# /usr/lib/python2.7/dist-packages/PIL/ImageMode.pyc matches /usr/lib/python2.7/dist-packages/PIL/ImageMode.py
+import ImageMode # precompiled from /usr/lib/python2.7/dist-packages/PIL/ImageMode.pyc
+# /usr/lib/python2.7/dist-packages/PIL/ImagePalette.pyc matches /usr/lib/python2.7/dist-packages/PIL/ImagePalette.py
+import ImagePalette # precompiled from /usr/lib/python2.7/dist-packages/PIL/ImagePalette.pyc
+import array # builtin
+# /usr/lib/python2.7/dist-packages/PIL/ImageColor.pyc matches /usr/lib/python2.7/dist-packages/PIL/ImageColor.py
+import ImageColor # precompiled from /usr/lib/python2.7/dist-packages/PIL/ImageColor.pyc
+# /usr/lib/python2.7/dist-packages/PIL/ImageFilter.pyc matches /usr/lib/python2.7/dist-packages/PIL/ImageFilter.py
+import ImageFilter # precompiled from /usr/lib/python2.7/dist-packages/PIL/ImageFilter.pyc
+import matplotlib # directory /usr/lib/pymodules/python2.7/matplotlib
+# /usr/lib/pymodules/python2.7/matplotlib/__init__.pyc matches /usr/lib/pymodules/python2.7/matplotlib/__init__.py
+import matplotlib # precompiled from /usr/lib/pymodules/python2.7/matplotlib/__init__.pyc
+# /usr/lib/python2.7/subprocess.pyc matches /usr/lib/python2.7/subprocess.py
+import subprocess # precompiled from /usr/lib/python2.7/subprocess.pyc
+import gc # builtin
+import distutils # directory /usr/lib/python2.7/distutils
+# /usr/lib/python2.7/distutils/__init__.pyc matches /usr/lib/python2.7/distutils/__init__.py
+import distutils # precompiled from /usr/lib/python2.7/distutils/__init__.pyc
+# /usr/lib/python2.7/distutils/sysconfig.pyc matches /usr/lib/python2.7/distutils/sysconfig.py
+import distutils.sysconfig # precompiled from /usr/lib/python2.7/distutils/sysconfig.pyc
+# /usr/lib/python2.7/distutils/errors.pyc matches /usr/lib/python2.7/distutils/errors.py
+import distutils.errors # precompiled from /usr/lib/python2.7/distutils/errors.pyc
+# /usr/lib/python2.7/distutils/version.pyc matches /usr/lib/python2.7/distutils/version.py
+import distutils.version # precompiled from /usr/lib/python2.7/distutils/version.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/rcsetup.pyc matches /usr/lib/pymodules/python2.7/matplotlib/rcsetup.py
+import matplotlib.rcsetup # precompiled from /usr/lib/pymodules/python2.7/matplotlib/rcsetup.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/fontconfig_pattern.pyc matches /usr/lib/pymodules/python2.7/matplotlib/fontconfig_pattern.py
+import matplotlib.fontconfig_pattern # precompiled from /usr/lib/pymodules/python2.7/matplotlib/fontconfig_pattern.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/pyparsing.pyc matches /usr/lib/pymodules/python2.7/matplotlib/pyparsing.py
+import matplotlib.pyparsing # precompiled from /usr/lib/pymodules/python2.7/matplotlib/pyparsing.pyc
+import xml # directory /usr/lib/python2.7/xml
+# /usr/lib/python2.7/xml/__init__.pyc matches /usr/lib/python2.7/xml/__init__.py
+import xml # precompiled from /usr/lib/python2.7/xml/__init__.pyc
+import xml.sax # directory /usr/lib/python2.7/xml/sax
+# /usr/lib/python2.7/xml/sax/__init__.pyc matches /usr/lib/python2.7/xml/sax/__init__.py
+import xml.sax # precompiled from /usr/lib/python2.7/xml/sax/__init__.pyc
+# /usr/lib/python2.7/xml/sax/xmlreader.pyc matches /usr/lib/python2.7/xml/sax/xmlreader.py
+import xml.sax.xmlreader # precompiled from /usr/lib/python2.7/xml/sax/xmlreader.pyc
+# /usr/lib/python2.7/xml/sax/handler.pyc matches /usr/lib/python2.7/xml/sax/handler.py
+import xml.sax.handler # precompiled from /usr/lib/python2.7/xml/sax/handler.pyc
+# /usr/lib/python2.7/xml/sax/_exceptions.pyc matches /usr/lib/python2.7/xml/sax/_exceptions.py
+import xml.sax._exceptions # precompiled from /usr/lib/python2.7/xml/sax/_exceptions.pyc
+# /usr/lib/python2.7/xml/sax/saxutils.pyc matches /usr/lib/python2.7/xml/sax/saxutils.py
+import xml.sax.saxutils # precompiled from /usr/lib/python2.7/xml/sax/saxutils.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/colors.pyc matches /usr/lib/pymodules/python2.7/matplotlib/colors.py
+import matplotlib.colors # precompiled from /usr/lib/pymodules/python2.7/matplotlib/colors.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/cbook.pyc matches /usr/lib/pymodules/python2.7/matplotlib/cbook.py
+import matplotlib.cbook # precompiled from /usr/lib/pymodules/python2.7/matplotlib/cbook.pyc
+# /usr/lib/python2.7/new.pyc matches /usr/lib/python2.7/new.py
+import new # precompiled from /usr/lib/python2.7/new.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/pyplot.pyc matches /usr/lib/pymodules/python2.7/matplotlib/pyplot.py
+import matplotlib.pyplot # precompiled from /usr/lib/pymodules/python2.7/matplotlib/pyplot.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/_pylab_helpers.pyc matches /usr/lib/pymodules/python2.7/matplotlib/_pylab_helpers.py
+import matplotlib._pylab_helpers # precompiled from /usr/lib/pymodules/python2.7/matplotlib/_pylab_helpers.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/docstring.pyc matches /usr/lib/pymodules/python2.7/matplotlib/docstring.py
+import matplotlib.docstring # precompiled from /usr/lib/pymodules/python2.7/matplotlib/docstring.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/figure.pyc matches /usr/lib/pymodules/python2.7/matplotlib/figure.py
+import matplotlib.figure # precompiled from /usr/lib/pymodules/python2.7/matplotlib/figure.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/artist.pyc matches /usr/lib/pymodules/python2.7/matplotlib/artist.py
+import matplotlib.artist # precompiled from /usr/lib/pymodules/python2.7/matplotlib/artist.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/transforms.pyc matches /usr/lib/pymodules/python2.7/matplotlib/transforms.py
+import matplotlib.transforms # precompiled from /usr/lib/pymodules/python2.7/matplotlib/transforms.pyc
+dlopen("/usr/lib/pymodules/python2.7/matplotlib/_path.so", 2);
+import matplotlib._path # dynamically loaded from /usr/lib/pymodules/python2.7/matplotlib/_path.so
+# /usr/lib/pymodules/python2.7/matplotlib/path.pyc matches /usr/lib/pymodules/python2.7/matplotlib/path.py
+import matplotlib.path # precompiled from /usr/lib/pymodules/python2.7/matplotlib/path.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/axes.pyc matches /usr/lib/pymodules/python2.7/matplotlib/axes.py
+import matplotlib.axes # precompiled from /usr/lib/pymodules/python2.7/matplotlib/axes.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/axis.pyc matches /usr/lib/pymodules/python2.7/matplotlib/axis.py
+import matplotlib.axis # precompiled from /usr/lib/pymodules/python2.7/matplotlib/axis.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/font_manager.pyc matches /usr/lib/pymodules/python2.7/matplotlib/font_manager.py
+import matplotlib.font_manager # precompiled from /usr/lib/pymodules/python2.7/matplotlib/font_manager.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/afm.pyc matches /usr/lib/pymodules/python2.7/matplotlib/afm.py
+import matplotlib.afm # precompiled from /usr/lib/pymodules/python2.7/matplotlib/afm.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/_mathtext_data.pyc matches /usr/lib/pymodules/python2.7/matplotlib/_mathtext_data.py
+import matplotlib._mathtext_data # precompiled from /usr/lib/pymodules/python2.7/matplotlib/_mathtext_data.pyc
+dlopen("/usr/lib/pymodules/python2.7/matplotlib/ft2font.so", 2);
+import matplotlib.ft2font # dynamically loaded from /usr/lib/pymodules/python2.7/matplotlib/ft2font.so
+# /usr/lib/pymodules/python2.7/matplotlib/lines.pyc matches /usr/lib/pymodules/python2.7/matplotlib/lines.py
+import matplotlib.lines # precompiled from /usr/lib/pymodules/python2.7/matplotlib/lines.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/markers.pyc matches /usr/lib/pymodules/python2.7/matplotlib/markers.py
+import matplotlib.markers # precompiled from /usr/lib/pymodules/python2.7/matplotlib/markers.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/patches.pyc matches /usr/lib/pymodules/python2.7/matplotlib/patches.py
+import matplotlib.patches # precompiled from /usr/lib/pymodules/python2.7/matplotlib/patches.pyc
+# /usr/lib/python2.7/inspect.pyc matches /usr/lib/python2.7/inspect.py
+import inspect # precompiled from /usr/lib/python2.7/inspect.pyc
+# /usr/lib/python2.7/dis.pyc matches /usr/lib/python2.7/dis.py
+import dis # precompiled from /usr/lib/python2.7/dis.pyc
+# /usr/lib/python2.7/opcode.pyc matches /usr/lib/python2.7/opcode.py
+import opcode # precompiled from /usr/lib/python2.7/opcode.pyc
+# /usr/lib/python2.7/tokenize.pyc matches /usr/lib/python2.7/tokenize.py
+import tokenize # precompiled from /usr/lib/python2.7/tokenize.pyc
+# /usr/lib/python2.7/token.pyc matches /usr/lib/python2.7/token.py
+import token # precompiled from /usr/lib/python2.7/token.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/bezier.pyc matches /usr/lib/pymodules/python2.7/matplotlib/bezier.py
+import matplotlib.bezier # precompiled from /usr/lib/pymodules/python2.7/matplotlib/bezier.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/scale.pyc matches /usr/lib/pymodules/python2.7/matplotlib/scale.py
+import matplotlib.scale # precompiled from /usr/lib/pymodules/python2.7/matplotlib/scale.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/ticker.pyc matches /usr/lib/pymodules/python2.7/matplotlib/ticker.py
+import matplotlib.ticker # precompiled from /usr/lib/pymodules/python2.7/matplotlib/ticker.pyc
+# /usr/lib/python2.7/decimal.pyc matches /usr/lib/python2.7/decimal.py
+import decimal # precompiled from /usr/lib/python2.7/decimal.pyc
+# /usr/lib/python2.7/numbers.pyc matches /usr/lib/python2.7/numbers.py
+import numbers # precompiled from /usr/lib/python2.7/numbers.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/text.pyc matches /usr/lib/pymodules/python2.7/matplotlib/text.py
+import matplotlib.text # precompiled from /usr/lib/pymodules/python2.7/matplotlib/text.pyc
+dlopen("/usr/lib/pymodules/python2.7/matplotlib/nxutils.so", 2);
+import matplotlib.nxutils # dynamically loaded from /usr/lib/pymodules/python2.7/matplotlib/nxutils.so
+# /usr/lib/pymodules/python2.7/matplotlib/backend_bases.pyc matches /usr/lib/pymodules/python2.7/matplotlib/backend_bases.py
+import matplotlib.backend_bases # precompiled from /usr/lib/pymodules/python2.7/matplotlib/backend_bases.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/widgets.pyc matches /usr/lib/pymodules/python2.7/matplotlib/widgets.py
+import matplotlib.widgets # precompiled from /usr/lib/pymodules/python2.7/matplotlib/widgets.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/mlab.pyc matches /usr/lib/pymodules/python2.7/matplotlib/mlab.py
+import matplotlib.mlab # precompiled from /usr/lib/pymodules/python2.7/matplotlib/mlab.pyc
+# /usr/lib/python2.7/csv.pyc matches /usr/lib/python2.7/csv.py
+import csv # precompiled from /usr/lib/python2.7/csv.pyc
+dlopen("/usr/lib/python2.7/lib-dynload/_csv.so", 2);
+import _csv # dynamically loaded from /usr/lib/python2.7/lib-dynload/_csv.so
+# /usr/lib/pymodules/python2.7/matplotlib/tight_bbox.pyc matches /usr/lib/pymodules/python2.7/matplotlib/tight_bbox.py
+import matplotlib.tight_bbox # precompiled from /usr/lib/pymodules/python2.7/matplotlib/tight_bbox.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/textpath.pyc matches /usr/lib/pymodules/python2.7/matplotlib/textpath.py
+import matplotlib.textpath # precompiled from /usr/lib/pymodules/python2.7/matplotlib/textpath.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/mathtext.pyc matches /usr/lib/pymodules/python2.7/matplotlib/mathtext.py
+import matplotlib.mathtext # precompiled from /usr/lib/pymodules/python2.7/matplotlib/mathtext.pyc
+import unicodedata # builtin
+dlopen("/usr/lib/pymodules/python2.7/matplotlib/_png.so", 2);
+import matplotlib._png # dynamically loaded from /usr/lib/pymodules/python2.7/matplotlib/_png.so
+# /usr/lib/pymodules/python2.7/matplotlib/dviread.pyc matches /usr/lib/pymodules/python2.7/matplotlib/dviread.py
+import matplotlib.dviread # precompiled from /usr/lib/pymodules/python2.7/matplotlib/dviread.pyc
+import PIL # directory /usr/lib/python2.7/dist-packages/PIL
+# /usr/lib/python2.7/dist-packages/PIL/__init__.pyc matches /usr/lib/python2.7/dist-packages/PIL/__init__.py
+import PIL # precompiled from /usr/lib/python2.7/dist-packages/PIL/__init__.pyc
+# /usr/lib/python2.7/dist-packages/PIL/Image.pyc matches /usr/lib/python2.7/dist-packages/PIL/Image.py
+import PIL.Image # precompiled from /usr/lib/python2.7/dist-packages/PIL/Image.pyc
+import PIL._imaging # previously loaded (/usr/lib/python2.7/dist-packages/PIL/_imaging.so)
+# /usr/lib/python2.7/dist-packages/PIL/ImageMode.pyc matches /usr/lib/python2.7/dist-packages/PIL/ImageMode.py
+import PIL.ImageMode # precompiled from /usr/lib/python2.7/dist-packages/PIL/ImageMode.pyc
+# /usr/lib/python2.7/dist-packages/PIL/ImagePalette.pyc matches /usr/lib/python2.7/dist-packages/PIL/ImagePalette.py
+import PIL.ImagePalette # precompiled from /usr/lib/python2.7/dist-packages/PIL/ImagePalette.pyc
+# /usr/lib/python2.7/dist-packages/PIL/ImageColor.pyc matches /usr/lib/python2.7/dist-packages/PIL/ImageColor.py
+import PIL.ImageColor # precompiled from /usr/lib/python2.7/dist-packages/PIL/ImageColor.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/units.pyc matches /usr/lib/pymodules/python2.7/matplotlib/units.py
+import matplotlib.units # precompiled from /usr/lib/pymodules/python2.7/matplotlib/units.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/collections.pyc matches /usr/lib/pymodules/python2.7/matplotlib/collections.py
+import matplotlib.collections # precompiled from /usr/lib/pymodules/python2.7/matplotlib/collections.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/cm.pyc matches /usr/lib/pymodules/python2.7/matplotlib/cm.py
+import matplotlib.cm # precompiled from /usr/lib/pymodules/python2.7/matplotlib/cm.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/_cm.pyc matches /usr/lib/pymodules/python2.7/matplotlib/_cm.py
+import matplotlib._cm # precompiled from /usr/lib/pymodules/python2.7/matplotlib/_cm.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/contour.pyc matches /usr/lib/pymodules/python2.7/matplotlib/contour.py
+import matplotlib.contour # precompiled from /usr/lib/pymodules/python2.7/matplotlib/contour.pyc
+dlopen("/usr/lib/pymodules/python2.7/matplotlib/_cntr.so", 2);
+import matplotlib._cntr # dynamically loaded from /usr/lib/pymodules/python2.7/matplotlib/_cntr.so
+# /usr/lib/pymodules/python2.7/matplotlib/texmanager.pyc matches /usr/lib/pymodules/python2.7/matplotlib/texmanager.py
+import matplotlib.texmanager # precompiled from /usr/lib/pymodules/python2.7/matplotlib/texmanager.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/blocking_input.pyc matches /usr/lib/pymodules/python2.7/matplotlib/blocking_input.py
+import matplotlib.blocking_input # precompiled from /usr/lib/pymodules/python2.7/matplotlib/blocking_input.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/dates.pyc matches /usr/lib/pymodules/python2.7/matplotlib/dates.py
+import matplotlib.dates # precompiled from /usr/lib/pymodules/python2.7/matplotlib/dates.pyc
+import dateutil # directory /usr/lib/python2.7/dist-packages/dateutil
+# /usr/lib/python2.7/dist-packages/dateutil/__init__.pyc matches /usr/lib/python2.7/dist-packages/dateutil/__init__.py
+import dateutil # precompiled from /usr/lib/python2.7/dist-packages/dateutil/__init__.pyc
+# /usr/lib/python2.7/dist-packages/dateutil/rrule.pyc matches /usr/lib/python2.7/dist-packages/dateutil/rrule.py
+import dateutil.rrule # precompiled from /usr/lib/python2.7/dist-packages/dateutil/rrule.pyc
+# /usr/lib/python2.7/calendar.pyc matches /usr/lib/python2.7/calendar.py
+import calendar # precompiled from /usr/lib/python2.7/calendar.pyc
+# /usr/lib/python2.7/dist-packages/dateutil/relativedelta.pyc matches /usr/lib/python2.7/dist-packages/dateutil/relativedelta.py
+import dateutil.relativedelta # precompiled from /usr/lib/python2.7/dist-packages/dateutil/relativedelta.pyc
+# /usr/lib/python2.7/dist-packages/dateutil/parser.pyc matches /usr/lib/python2.7/dist-packages/dateutil/parser.py
+import dateutil.parser # precompiled from /usr/lib/python2.7/dist-packages/dateutil/parser.pyc
+# /usr/lib/python2.7/dist-packages/dateutil/tz.pyc matches /usr/lib/python2.7/dist-packages/dateutil/tz.py
+import dateutil.tz # precompiled from /usr/lib/python2.7/dist-packages/dateutil/tz.pyc
+# /usr/lib/python2.7/dist-packages/dateutil/tzwin.pyc matches /usr/lib/python2.7/dist-packages/dateutil/tzwin.py
+import dateutil.tzwin # precompiled from /usr/lib/python2.7/dist-packages/dateutil/tzwin.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/image.pyc matches /usr/lib/pymodules/python2.7/matplotlib/image.py
+import matplotlib.image # precompiled from /usr/lib/pymodules/python2.7/matplotlib/image.pyc
+dlopen("/usr/lib/pymodules/python2.7/matplotlib/_image.so", 2);
+import matplotlib._image # dynamically loaded from /usr/lib/pymodules/python2.7/matplotlib/_image.so
+# /usr/lib/pymodules/python2.7/matplotlib/legend.pyc matches /usr/lib/pymodules/python2.7/matplotlib/legend.py
+import matplotlib.legend # precompiled from /usr/lib/pymodules/python2.7/matplotlib/legend.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/offsetbox.pyc matches /usr/lib/pymodules/python2.7/matplotlib/offsetbox.py
+import matplotlib.offsetbox # precompiled from /usr/lib/pymodules/python2.7/matplotlib/offsetbox.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/container.pyc matches /usr/lib/pymodules/python2.7/matplotlib/container.py
+import matplotlib.container # precompiled from /usr/lib/pymodules/python2.7/matplotlib/container.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/legend_handler.pyc matches /usr/lib/pymodules/python2.7/matplotlib/legend_handler.py
+import matplotlib.legend_handler # precompiled from /usr/lib/pymodules/python2.7/matplotlib/legend_handler.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/spines.pyc matches /usr/lib/pymodules/python2.7/matplotlib/spines.py
+import matplotlib.spines # precompiled from /usr/lib/pymodules/python2.7/matplotlib/spines.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/quiver.pyc matches /usr/lib/pymodules/python2.7/matplotlib/quiver.py
+import matplotlib.quiver # precompiled from /usr/lib/pymodules/python2.7/matplotlib/quiver.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/table.pyc matches /usr/lib/pymodules/python2.7/matplotlib/table.py
+import matplotlib.table # precompiled from /usr/lib/pymodules/python2.7/matplotlib/table.pyc
+import matplotlib.tri # directory /usr/lib/pymodules/python2.7/matplotlib/tri
+# /usr/lib/pymodules/python2.7/matplotlib/tri/__init__.pyc matches /usr/lib/pymodules/python2.7/matplotlib/tri/__init__.py
+import matplotlib.tri # precompiled from /usr/lib/pymodules/python2.7/matplotlib/tri/__init__.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/tri/triangulation.pyc matches /usr/lib/pymodules/python2.7/matplotlib/tri/triangulation.py
+import matplotlib.tri.triangulation # precompiled from /usr/lib/pymodules/python2.7/matplotlib/tri/triangulation.pyc
+import matplotlib.delaunay # directory /usr/lib/pymodules/python2.7/matplotlib/delaunay
+# /usr/lib/pymodules/python2.7/matplotlib/delaunay/__init__.pyc matches /usr/lib/pymodules/python2.7/matplotlib/delaunay/__init__.py
+import matplotlib.delaunay # precompiled from /usr/lib/pymodules/python2.7/matplotlib/delaunay/__init__.pyc
+dlopen("/usr/lib/pymodules/python2.7/matplotlib/_delaunay.so", 2);
+import matplotlib._delaunay # dynamically loaded from /usr/lib/pymodules/python2.7/matplotlib/_delaunay.so
+# /usr/lib/pymodules/python2.7/matplotlib/delaunay/triangulate.pyc matches /usr/lib/pymodules/python2.7/matplotlib/delaunay/triangulate.py
+import matplotlib.delaunay.triangulate # precompiled from /usr/lib/pymodules/python2.7/matplotlib/delaunay/triangulate.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/delaunay/interpolate.pyc matches /usr/lib/pymodules/python2.7/matplotlib/delaunay/interpolate.py
+import matplotlib.delaunay.interpolate # precompiled from /usr/lib/pymodules/python2.7/matplotlib/delaunay/interpolate.pyc
+dlopen("/usr/lib/pymodules/python2.7/matplotlib/_tri.so", 2);
+import matplotlib._tri # dynamically loaded from /usr/lib/pymodules/python2.7/matplotlib/_tri.so
+# /usr/lib/pymodules/python2.7/matplotlib/tri/tricontour.pyc matches /usr/lib/pymodules/python2.7/matplotlib/tri/tricontour.py
+import matplotlib.tri.tricontour # precompiled from /usr/lib/pymodules/python2.7/matplotlib/tri/tricontour.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/tri/tripcolor.pyc matches /usr/lib/pymodules/python2.7/matplotlib/tri/tripcolor.py
+import matplotlib.tri.tripcolor # precompiled from /usr/lib/pymodules/python2.7/matplotlib/tri/tripcolor.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/tri/triplot.pyc matches /usr/lib/pymodules/python2.7/matplotlib/tri/triplot.py
+import matplotlib.tri.triplot # precompiled from /usr/lib/pymodules/python2.7/matplotlib/tri/triplot.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/gridspec.pyc matches /usr/lib/pymodules/python2.7/matplotlib/gridspec.py
+import matplotlib.gridspec # precompiled from /usr/lib/pymodules/python2.7/matplotlib/gridspec.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/colorbar.pyc matches /usr/lib/pymodules/python2.7/matplotlib/colorbar.py
+import matplotlib.colorbar # precompiled from /usr/lib/pymodules/python2.7/matplotlib/colorbar.pyc
+import matplotlib.projections # directory /usr/lib/pymodules/python2.7/matplotlib/projections
+# /usr/lib/pymodules/python2.7/matplotlib/projections/__init__.pyc matches /usr/lib/pymodules/python2.7/matplotlib/projections/__init__.py
+import matplotlib.projections # precompiled from /usr/lib/pymodules/python2.7/matplotlib/projections/__init__.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/projections/geo.pyc matches /usr/lib/pymodules/python2.7/matplotlib/projections/geo.py
+import matplotlib.projections.geo # precompiled from /usr/lib/pymodules/python2.7/matplotlib/projections/geo.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/projections/polar.pyc matches /usr/lib/pymodules/python2.7/matplotlib/projections/polar.py
+import matplotlib.projections.polar # precompiled from /usr/lib/pymodules/python2.7/matplotlib/projections/polar.pyc
+import matplotlib.backends # directory /usr/lib/pymodules/python2.7/matplotlib/backends
+# /usr/lib/pymodules/python2.7/matplotlib/backends/__init__.pyc matches /usr/lib/pymodules/python2.7/matplotlib/backends/__init__.py
+import matplotlib.backends # precompiled from /usr/lib/pymodules/python2.7/matplotlib/backends/__init__.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/backends/backend_tkagg.pyc matches /usr/lib/pymodules/python2.7/matplotlib/backends/backend_tkagg.py
+import matplotlib.backends.backend_tkagg # precompiled from /usr/lib/pymodules/python2.7/matplotlib/backends/backend_tkagg.pyc
+# /usr/lib/python2.7/lib-tk/Tkinter.pyc matches /usr/lib/python2.7/lib-tk/Tkinter.py
+import Tkinter # precompiled from /usr/lib/python2.7/lib-tk/Tkinter.pyc
+dlopen("/usr/lib/python2.7/lib-dynload/_tkinter.so", 2);
+import _tkinter # dynamically loaded from /usr/lib/python2.7/lib-dynload/_tkinter.so
+# /usr/lib/python2.7/lib-tk/Tkconstants.pyc matches /usr/lib/python2.7/lib-tk/Tkconstants.py
+import Tkconstants # precompiled from /usr/lib/python2.7/lib-tk/Tkconstants.pyc
+# /usr/lib/python2.7/lib-tk/FileDialog.pyc matches /usr/lib/python2.7/lib-tk/FileDialog.py
+import FileDialog # precompiled from /usr/lib/python2.7/lib-tk/FileDialog.pyc
+# /usr/lib/python2.7/lib-tk/Dialog.pyc matches /usr/lib/python2.7/lib-tk/Dialog.py
+import Dialog # precompiled from /usr/lib/python2.7/lib-tk/Dialog.pyc
+# /usr/lib/pymodules/python2.7/matplotlib/backends/tkagg.pyc matches /usr/lib/pymodules/python2.7/matplotlib/backends/tkagg.py
+import matplotlib.backends.tkagg # precompiled from /usr/lib/pymodules/python2.7/matplotlib/backends/tkagg.pyc
+dlopen("/usr/lib/pymodules/python2.7/matplotlib/backends/_tkagg.so", 2);
+import matplotlib.backends._tkagg # dynamically loaded from /usr/lib/pymodules/python2.7/matplotlib/backends/_tkagg.so
+# /usr/lib/pymodules/python2.7/matplotlib/backends/backend_agg.pyc matches /usr/lib/pymodules/python2.7/matplotlib/backends/backend_agg.py
+import matplotlib.backends.backend_agg # precompiled from /usr/lib/pymodules/python2.7/matplotlib/backends/backend_agg.pyc
+dlopen("/usr/lib/pymodules/python2.7/matplotlib/backends/_backend_agg.so", 2);
+import matplotlib.backends._backend_agg # dynamically loaded from /usr/lib/pymodules/python2.7/matplotlib/backends/_backend_agg.so
+# /usr/lib/pymodules/python2.7/matplotlib/backends/windowing.pyc matches /usr/lib/pymodules/python2.7/matplotlib/backends/windowing.py
+import matplotlib.backends.windowing # precompiled from /usr/lib/pymodules/python2.7/matplotlib/backends/windowing.pyc
+import scipy.stats # directory /usr/lib/python2.7/dist-packages/scipy/stats
+# /usr/lib/python2.7/dist-packages/scipy/stats/__init__.pyc matches /usr/lib/python2.7/dist-packages/scipy/stats/__init__.py
+import scipy.stats # precompiled from /usr/lib/python2.7/dist-packages/scipy/stats/__init__.pyc
+# /usr/lib/python2.7/dist-packages/scipy/stats/stats.pyc matches /usr/lib/python2.7/dist-packages/scipy/stats/stats.py
+import scipy.stats.stats # precompiled from /usr/lib/python2.7/dist-packages/scipy/stats/stats.pyc
+import scipy.special # directory /usr/lib/python2.7/dist-packages/scipy/special
+# /usr/lib/python2.7/dist-packages/scipy/special/__init__.pyc matches /usr/lib/python2.7/dist-packages/scipy/special/__init__.py
+import scipy.special # precompiled from /usr/lib/python2.7/dist-packages/scipy/special/__init__.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/special/_cephes.so", 2);
+import scipy.special._cephes # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/special/_cephes.so
+# /usr/lib/python2.7/dist-packages/scipy/special/basic.pyc matches /usr/lib/python2.7/dist-packages/scipy/special/basic.py
+import scipy.special.basic # precompiled from /usr/lib/python2.7/dist-packages/scipy/special/basic.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/special/specfun.so", 2);
+import scipy.special.specfun # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/special/specfun.so
+# /usr/lib/python2.7/dist-packages/scipy/special/orthogonal.pyc matches /usr/lib/python2.7/dist-packages/scipy/special/orthogonal.py
+import scipy.special.orthogonal # precompiled from /usr/lib/python2.7/dist-packages/scipy/special/orthogonal.pyc
+# /usr/lib/python2.7/dist-packages/numpy/dual.pyc matches /usr/lib/python2.7/dist-packages/numpy/dual.py
+import numpy.dual # precompiled from /usr/lib/python2.7/dist-packages/numpy/dual.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/special/orthogonal_eval.so", 2);
+import scipy.special.orthogonal_eval # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/special/orthogonal_eval.so
+# /usr/lib/python2.7/dist-packages/scipy/special/spfun_stats.pyc matches /usr/lib/python2.7/dist-packages/scipy/special/spfun_stats.py
+import scipy.special.spfun_stats # precompiled from /usr/lib/python2.7/dist-packages/scipy/special/spfun_stats.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/special/lambertw.so", 2);
+import scipy.special.lambertw # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/special/lambertw.so
+import scipy.linalg # directory /usr/lib/python2.7/dist-packages/scipy/linalg
+# /usr/lib/python2.7/dist-packages/scipy/linalg/__init__.pyc matches /usr/lib/python2.7/dist-packages/scipy/linalg/__init__.py
+import scipy.linalg # precompiled from /usr/lib/python2.7/dist-packages/scipy/linalg/__init__.pyc
+# /usr/lib/python2.7/dist-packages/scipy/linalg/linalg_version.pyc matches /usr/lib/python2.7/dist-packages/scipy/linalg/linalg_version.py
+import scipy.linalg.linalg_version # precompiled from /usr/lib/python2.7/dist-packages/scipy/linalg/linalg_version.pyc
+# /usr/lib/python2.7/dist-packages/scipy/linalg/misc.pyc matches /usr/lib/python2.7/dist-packages/scipy/linalg/misc.py
+import scipy.linalg.misc # precompiled from /usr/lib/python2.7/dist-packages/scipy/linalg/misc.pyc
+# /usr/lib/python2.7/dist-packages/scipy/linalg/basic.pyc matches /usr/lib/python2.7/dist-packages/scipy/linalg/basic.py
+import scipy.linalg.basic # precompiled from /usr/lib/python2.7/dist-packages/scipy/linalg/basic.pyc
+# /usr/lib/python2.7/dist-packages/scipy/linalg/flinalg.pyc matches /usr/lib/python2.7/dist-packages/scipy/linalg/flinalg.py
+import scipy.linalg.flinalg # precompiled from /usr/lib/python2.7/dist-packages/scipy/linalg/flinalg.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/linalg/_flinalg.so", 2);
+import scipy.linalg._flinalg # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/linalg/_flinalg.so
+# /usr/lib/python2.7/dist-packages/scipy/linalg/lapack.pyc matches /usr/lib/python2.7/dist-packages/scipy/linalg/lapack.py
+import scipy.linalg.lapack # precompiled from /usr/lib/python2.7/dist-packages/scipy/linalg/lapack.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/linalg/flapack.so", 2);
+import scipy.linalg.flapack # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/linalg/flapack.so
+dlopen("/usr/lib/python2.7/dist-packages/scipy/linalg/clapack.so", 2);
+import scipy.linalg.clapack # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/linalg/clapack.so
+dlopen("/usr/lib/python2.7/dist-packages/scipy/linalg/calc_lwork.so", 2);
+import scipy.linalg.calc_lwork # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/linalg/calc_lwork.so
+# /usr/lib/python2.7/dist-packages/scipy/linalg/decomp_svd.pyc matches /usr/lib/python2.7/dist-packages/scipy/linalg/decomp_svd.py
+import scipy.linalg.decomp_svd # precompiled from /usr/lib/python2.7/dist-packages/scipy/linalg/decomp_svd.pyc
+# /usr/lib/python2.7/dist-packages/scipy/linalg/decomp.pyc matches /usr/lib/python2.7/dist-packages/scipy/linalg/decomp.py
+import scipy.linalg.decomp # precompiled from /usr/lib/python2.7/dist-packages/scipy/linalg/decomp.pyc
+# /usr/lib/python2.7/dist-packages/scipy/linalg/blas.pyc matches /usr/lib/python2.7/dist-packages/scipy/linalg/blas.py
+import scipy.linalg.blas # precompiled from /usr/lib/python2.7/dist-packages/scipy/linalg/blas.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/linalg/fblas.so", 2);
+import scipy.linalg.fblas # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/linalg/fblas.so
+dlopen("/usr/lib/python2.7/dist-packages/scipy/linalg/cblas.so", 2);
+import scipy.linalg.cblas # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/linalg/cblas.so
+# /usr/lib/python2.7/dist-packages/scipy/linalg/decomp_lu.pyc matches /usr/lib/python2.7/dist-packages/scipy/linalg/decomp_lu.py
+import scipy.linalg.decomp_lu # precompiled from /usr/lib/python2.7/dist-packages/scipy/linalg/decomp_lu.pyc
+# /usr/lib/python2.7/dist-packages/scipy/linalg/decomp_cholesky.pyc matches /usr/lib/python2.7/dist-packages/scipy/linalg/decomp_cholesky.py
+import scipy.linalg.decomp_cholesky # precompiled from /usr/lib/python2.7/dist-packages/scipy/linalg/decomp_cholesky.pyc
+# /usr/lib/python2.7/dist-packages/scipy/linalg/decomp_qr.pyc matches /usr/lib/python2.7/dist-packages/scipy/linalg/decomp_qr.py
+import scipy.linalg.decomp_qr # precompiled from /usr/lib/python2.7/dist-packages/scipy/linalg/decomp_qr.pyc
+# /usr/lib/python2.7/dist-packages/scipy/linalg/special_matrices.pyc matches /usr/lib/python2.7/dist-packages/scipy/linalg/special_matrices.py
+import scipy.linalg.special_matrices # precompiled from /usr/lib/python2.7/dist-packages/scipy/linalg/special_matrices.pyc
+# /usr/lib/python2.7/dist-packages/scipy/linalg/decomp_schur.pyc matches /usr/lib/python2.7/dist-packages/scipy/linalg/decomp_schur.py
+import scipy.linalg.decomp_schur # precompiled from /usr/lib/python2.7/dist-packages/scipy/linalg/decomp_schur.pyc
+# /usr/lib/python2.7/dist-packages/scipy/linalg/matfuncs.pyc matches /usr/lib/python2.7/dist-packages/scipy/linalg/matfuncs.py
+import scipy.linalg.matfuncs # precompiled from /usr/lib/python2.7/dist-packages/scipy/linalg/matfuncs.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/stats/futil.so", 2);
+import scipy.stats.futil # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/stats/futil.so
+# /usr/lib/python2.7/dist-packages/scipy/stats/distributions.pyc matches /usr/lib/python2.7/dist-packages/scipy/stats/distributions.py
+import scipy.stats.distributions # precompiled from /usr/lib/python2.7/dist-packages/scipy/stats/distributions.pyc
+import scipy.optimize # directory /usr/lib/python2.7/dist-packages/scipy/optimize
+# /usr/lib/python2.7/dist-packages/scipy/optimize/__init__.pyc matches /usr/lib/python2.7/dist-packages/scipy/optimize/__init__.py
+import scipy.optimize # precompiled from /usr/lib/python2.7/dist-packages/scipy/optimize/__init__.pyc
+# /usr/lib/python2.7/dist-packages/scipy/optimize/optimize.pyc matches /usr/lib/python2.7/dist-packages/scipy/optimize/optimize.py
+import scipy.optimize.optimize # precompiled from /usr/lib/python2.7/dist-packages/scipy/optimize/optimize.pyc
+# /usr/lib/python2.7/dist-packages/scipy/optimize/linesearch.pyc matches /usr/lib/python2.7/dist-packages/scipy/optimize/linesearch.py
+import scipy.optimize.linesearch # precompiled from /usr/lib/python2.7/dist-packages/scipy/optimize/linesearch.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/optimize/minpack2.so", 2);
+import scipy.optimize.minpack2 # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/optimize/minpack2.so
+# /usr/lib/python2.7/dist-packages/scipy/optimize/minpack.pyc matches /usr/lib/python2.7/dist-packages/scipy/optimize/minpack.py
+import scipy.optimize.minpack # precompiled from /usr/lib/python2.7/dist-packages/scipy/optimize/minpack.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/optimize/_minpack.so", 2);
+import scipy.optimize._minpack # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/optimize/_minpack.so
+# /usr/lib/python2.7/dist-packages/scipy/optimize/zeros.pyc matches /usr/lib/python2.7/dist-packages/scipy/optimize/zeros.py
+import scipy.optimize.zeros # precompiled from /usr/lib/python2.7/dist-packages/scipy/optimize/zeros.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/optimize/_zeros.so", 2);
+import scipy.optimize._zeros # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/optimize/_zeros.so
+# /usr/lib/python2.7/dist-packages/scipy/optimize/anneal.pyc matches /usr/lib/python2.7/dist-packages/scipy/optimize/anneal.py
+import scipy.optimize.anneal # precompiled from /usr/lib/python2.7/dist-packages/scipy/optimize/anneal.pyc
+# /usr/lib/python2.7/dist-packages/scipy/optimize/lbfgsb.pyc matches /usr/lib/python2.7/dist-packages/scipy/optimize/lbfgsb.py
+import scipy.optimize.lbfgsb # precompiled from /usr/lib/python2.7/dist-packages/scipy/optimize/lbfgsb.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/optimize/_lbfgsb.so", 2);
+import scipy.optimize._lbfgsb # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/optimize/_lbfgsb.so
+# /usr/lib/python2.7/dist-packages/scipy/optimize/tnc.pyc matches /usr/lib/python2.7/dist-packages/scipy/optimize/tnc.py
+import scipy.optimize.tnc # precompiled from /usr/lib/python2.7/dist-packages/scipy/optimize/tnc.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/optimize/moduleTNC.so", 2);
+import scipy.optimize.moduleTNC # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/optimize/moduleTNC.so
+# /usr/lib/python2.7/dist-packages/scipy/optimize/cobyla.pyc matches /usr/lib/python2.7/dist-packages/scipy/optimize/cobyla.py
+import scipy.optimize.cobyla # precompiled from /usr/lib/python2.7/dist-packages/scipy/optimize/cobyla.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/optimize/_cobyla.so", 2);
+import scipy.optimize._cobyla # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/optimize/_cobyla.so
+# /usr/lib/python2.7/dist-packages/scipy/optimize/nonlin.pyc matches /usr/lib/python2.7/dist-packages/scipy/optimize/nonlin.py
+import scipy.optimize.nonlin # precompiled from /usr/lib/python2.7/dist-packages/scipy/optimize/nonlin.pyc
+import scipy.sparse # directory /usr/lib/python2.7/dist-packages/scipy/sparse
+# /usr/lib/python2.7/dist-packages/scipy/sparse/__init__.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/__init__.py
+import scipy.sparse # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/__init__.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/base.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/base.py
+import scipy.sparse.base # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/base.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/sputils.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/sputils.py
+import scipy.sparse.sputils # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/sputils.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/csr.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/csr.py
+import scipy.sparse.csr # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/csr.pyc
+import scipy.sparse.sparsetools # directory /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools
+# /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/__init__.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/__init__.py
+import scipy.sparse.sparsetools # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/__init__.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/csr.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/csr.py
+import scipy.sparse.sparsetools.csr # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/csr.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/_csr.so", 2);
+import _csr # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/_csr.so
+# /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/csc.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/csc.py
+import scipy.sparse.sparsetools.csc # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/csc.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/_csc.so", 2);
+import _csc # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/_csc.so
+# /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/coo.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/coo.py
+import scipy.sparse.sparsetools.coo # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/coo.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/_coo.so", 2);
+import _coo # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/_coo.so
+# /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/dia.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/dia.py
+import scipy.sparse.sparsetools.dia # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/dia.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/_dia.so", 2);
+import _dia # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/_dia.so
+# /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/bsr.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/bsr.py
+import scipy.sparse.sparsetools.bsr # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/bsr.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/_bsr.so", 2);
+import _bsr # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/_bsr.so
+# /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/csgraph.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/csgraph.py
+import scipy.sparse.sparsetools.csgraph # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/csgraph.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/_csgraph.so", 2);
+import _csgraph # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/sparse/sparsetools/_csgraph.so
+# /usr/lib/python2.7/dist-packages/scipy/sparse/compressed.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/compressed.py
+import scipy.sparse.compressed # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/compressed.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/data.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/data.py
+import scipy.sparse.data # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/data.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/csc.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/csc.py
+import scipy.sparse.csc # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/csc.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/lil.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/lil.py
+import scipy.sparse.lil # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/lil.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/dok.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/dok.py
+import scipy.sparse.dok # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/dok.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/coo.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/coo.py
+import scipy.sparse.coo # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/coo.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/dia.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/dia.py
+import scipy.sparse.dia # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/dia.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/bsr.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/bsr.py
+import scipy.sparse.bsr # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/bsr.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/csgraph.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/csgraph.py
+import scipy.sparse.csgraph # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/csgraph.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/construct.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/construct.py
+import scipy.sparse.construct # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/construct.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/extract.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/extract.py
+import scipy.sparse.extract # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/extract.pyc
+import scipy.sparse.linalg # directory /usr/lib/python2.7/dist-packages/scipy/sparse/linalg
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/__init__.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/__init__.py
+import scipy.sparse.linalg # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/__init__.pyc
+import scipy.sparse.linalg.isolve # directory /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/__init__.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/__init__.py
+import scipy.sparse.linalg.isolve # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/__init__.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/iterative.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/iterative.py
+import scipy.sparse.linalg.isolve.iterative # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/iterative.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/_iterative.so", 2);
+import scipy.sparse.linalg.isolve._iterative # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/_iterative.so
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/interface.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/interface.py
+import scipy.sparse.linalg.interface # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/interface.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/utils.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/utils.py
+import scipy.sparse.linalg.isolve.utils # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/utils.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/minres.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/minres.py
+import scipy.sparse.linalg.isolve.minres # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/minres.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/lgmres.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/lgmres.py
+import scipy.sparse.linalg.isolve.lgmres # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/lgmres.pyc
+import scipy.lib # directory /usr/lib/python2.7/dist-packages/scipy/lib
+# /usr/lib/python2.7/dist-packages/scipy/lib/__init__.pyc matches /usr/lib/python2.7/dist-packages/scipy/lib/__init__.py
+import scipy.lib # precompiled from /usr/lib/python2.7/dist-packages/scipy/lib/__init__.pyc
+import scipy.lib.blas # directory /usr/lib/python2.7/dist-packages/scipy/lib/blas
+# /usr/lib/python2.7/dist-packages/scipy/lib/blas/__init__.pyc matches /usr/lib/python2.7/dist-packages/scipy/lib/blas/__init__.py
+import scipy.lib.blas # precompiled from /usr/lib/python2.7/dist-packages/scipy/lib/blas/__init__.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/lib/blas/fblas.so", 2);
+import scipy.lib.blas.fblas # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/lib/blas/fblas.so
+dlopen("/usr/lib/python2.7/dist-packages/scipy/lib/blas/cblas.so", 2);
+import scipy.lib.blas.cblas # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/lib/blas/cblas.so
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/lsqr.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/lsqr.py
+import scipy.sparse.linalg.isolve.lsqr # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/isolve/lsqr.pyc
+import scipy.sparse.linalg.dsolve # directory /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/__init__.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/__init__.py
+import scipy.sparse.linalg.dsolve # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/__init__.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/linsolve.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/linsolve.py
+import scipy.sparse.linalg.dsolve.linsolve # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/linsolve.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/_superlu.so", 2);
+import scipy.sparse.linalg.dsolve._superlu # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/_superlu.so
+import scipy.sparse.linalg.dsolve.umfpack # directory /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/umfpack
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/umfpack/__init__.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/umfpack/__init__.py
+import scipy.sparse.linalg.dsolve.umfpack # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/umfpack/__init__.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/umfpack/umfpack.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/umfpack/umfpack.py
+import scipy.sparse.linalg.dsolve.umfpack.umfpack # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/umfpack/umfpack.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/umfpack/_umfpack.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/umfpack/_umfpack.py
+import scipy.sparse.linalg.dsolve.umfpack._umfpack # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/umfpack/_umfpack.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/umfpack/__umfpack.so", 2);
+import __umfpack # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/dsolve/umfpack/__umfpack.so
+import scipy.sparse.linalg.eigen # directory /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/__init__.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/__init__.py
+import scipy.sparse.linalg.eigen # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/__init__.pyc
+import scipy.sparse.linalg.eigen.arpack # directory /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/arpack
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/arpack/__init__.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/arpack/__init__.py
+import scipy.sparse.linalg.eigen.arpack # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/arpack/__init__.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/arpack/arpack.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/arpack/arpack.py
+import scipy.sparse.linalg.eigen.arpack.arpack # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/arpack/arpack.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/arpack/_arpack.so", 2);
+import scipy.sparse.linalg.eigen.arpack._arpack # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/arpack/_arpack.so
+import scipy.sparse.linalg.eigen.lobpcg # directory /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/lobpcg
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/lobpcg/__init__.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/lobpcg/__init__.py
+import scipy.sparse.linalg.eigen.lobpcg # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/lobpcg/__init__.pyc
+# /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/lobpcg/lobpcg.pyc matches /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/lobpcg/lobpcg.py
+import scipy.sparse.linalg.eigen.lobpcg.lobpcg # precompiled from /usr/lib/python2.7/dist-packages/scipy/sparse/linalg/eigen/lobpcg/lobpcg.pyc
+# /usr/lib/python2.7/dist-packages/scipy/optimize/slsqp.pyc matches /usr/lib/python2.7/dist-packages/scipy/optimize/slsqp.py
+import scipy.optimize.slsqp # precompiled from /usr/lib/python2.7/dist-packages/scipy/optimize/slsqp.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/optimize/_slsqp.so", 2);
+import scipy.optimize._slsqp # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/optimize/_slsqp.so
+# /usr/lib/python2.7/dist-packages/scipy/optimize/nnls.pyc matches /usr/lib/python2.7/dist-packages/scipy/optimize/nnls.py
+import scipy.optimize.nnls # precompiled from /usr/lib/python2.7/dist-packages/scipy/optimize/nnls.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/optimize/_nnls.so", 2);
+import scipy.optimize._nnls # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/optimize/_nnls.so
+import scipy.integrate # directory /usr/lib/python2.7/dist-packages/scipy/integrate
+# /usr/lib/python2.7/dist-packages/scipy/integrate/__init__.pyc matches /usr/lib/python2.7/dist-packages/scipy/integrate/__init__.py
+import scipy.integrate # precompiled from /usr/lib/python2.7/dist-packages/scipy/integrate/__init__.pyc
+# /usr/lib/python2.7/dist-packages/scipy/integrate/quadrature.pyc matches /usr/lib/python2.7/dist-packages/scipy/integrate/quadrature.py
+import scipy.integrate.quadrature # precompiled from /usr/lib/python2.7/dist-packages/scipy/integrate/quadrature.pyc
+# /usr/lib/python2.7/dist-packages/scipy/integrate/odepack.pyc matches /usr/lib/python2.7/dist-packages/scipy/integrate/odepack.py
+import scipy.integrate.odepack # precompiled from /usr/lib/python2.7/dist-packages/scipy/integrate/odepack.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/integrate/_odepack.so", 2);
+import scipy.integrate._odepack # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/integrate/_odepack.so
+# /usr/lib/python2.7/dist-packages/scipy/integrate/quadpack.pyc matches /usr/lib/python2.7/dist-packages/scipy/integrate/quadpack.py
+import scipy.integrate.quadpack # precompiled from /usr/lib/python2.7/dist-packages/scipy/integrate/quadpack.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/integrate/_quadpack.so", 2);
+import scipy.integrate._quadpack # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/integrate/_quadpack.so
+# /usr/lib/python2.7/dist-packages/scipy/integrate/ode.pyc matches /usr/lib/python2.7/dist-packages/scipy/integrate/ode.py
+import scipy.integrate.ode # precompiled from /usr/lib/python2.7/dist-packages/scipy/integrate/ode.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/integrate/vode.so", 2);
+import scipy.integrate.vode # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/integrate/vode.so
+dlopen("/usr/lib/python2.7/dist-packages/scipy/integrate/_dop.so", 2);
+import scipy.integrate._dop # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/integrate/_dop.so
+dlopen("/usr/lib/python2.7/dist-packages/scipy/stats/vonmises_cython.so", 2);
+import scipy.stats.vonmises_cython # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/stats/vonmises_cython.so
+# /usr/lib/python2.7/dist-packages/scipy/misc/doccer.pyc matches /usr/lib/python2.7/dist-packages/scipy/misc/doccer.py
+import scipy.misc.doccer # precompiled from /usr/lib/python2.7/dist-packages/scipy/misc/doccer.pyc
+# /usr/lib/python2.7/dist-packages/scipy/stats/_support.pyc matches /usr/lib/python2.7/dist-packages/scipy/stats/_support.py
+import scipy.stats._support # precompiled from /usr/lib/python2.7/dist-packages/scipy/stats/_support.pyc
+# /usr/lib/python2.7/dist-packages/scipy/stats/rv.pyc matches /usr/lib/python2.7/dist-packages/scipy/stats/rv.py
+import scipy.stats.rv # precompiled from /usr/lib/python2.7/dist-packages/scipy/stats/rv.pyc
+# /usr/lib/python2.7/dist-packages/scipy/stats/morestats.pyc matches /usr/lib/python2.7/dist-packages/scipy/stats/morestats.py
+import scipy.stats.morestats # precompiled from /usr/lib/python2.7/dist-packages/scipy/stats/morestats.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/stats/statlib.so", 2);
+import scipy.stats.statlib # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/stats/statlib.so
+# /usr/lib/python2.7/dist-packages/scipy/stats/kde.pyc matches /usr/lib/python2.7/dist-packages/scipy/stats/kde.py
+import scipy.stats.kde # precompiled from /usr/lib/python2.7/dist-packages/scipy/stats/kde.pyc
+dlopen("/usr/lib/python2.7/dist-packages/scipy/stats/mvn.so", 2);
+import scipy.stats.mvn # dynamically loaded from /usr/lib/python2.7/dist-packages/scipy/stats/mvn.so
+# /usr/lib/python2.7/dist-packages/scipy/stats/mstats.pyc matches /usr/lib/python2.7/dist-packages/scipy/stats/mstats.py
+import scipy.stats.mstats # precompiled from /usr/lib/python2.7/dist-packages/scipy/stats/mstats.pyc
+# /usr/lib/python2.7/dist-packages/scipy/stats/mstats_basic.pyc matches /usr/lib/python2.7/dist-packages/scipy/stats/mstats_basic.py
+import scipy.stats.mstats_basic # precompiled from /usr/lib/python2.7/dist-packages/scipy/stats/mstats_basic.pyc
+# /usr/lib/python2.7/dist-packages/scipy/stats/mstats_extras.pyc matches /usr/lib/python2.7/dist-packages/scipy/stats/mstats_extras.py
+import scipy.stats.mstats_extras # precompiled from /usr/lib/python2.7/dist-packages/scipy/stats/mstats_extras.pyc
+import json # directory /usr/lib/python2.7/json
+# /usr/lib/python2.7/json/__init__.pyc matches /usr/lib/python2.7/json/__init__.py
+import json # precompiled from /usr/lib/python2.7/json/__init__.pyc
+# /usr/lib/python2.7/json/decoder.pyc matches /usr/lib/python2.7/json/decoder.py
+import json.decoder # precompiled from /usr/lib/python2.7/json/decoder.pyc
+# /usr/lib/python2.7/json/scanner.pyc matches /usr/lib/python2.7/json/scanner.py
+import json.scanner # precompiled from /usr/lib/python2.7/json/scanner.pyc
+dlopen("/usr/lib/python2.7/lib-dynload/_json.so", 2);
+import _json # dynamically loaded from /usr/lib/python2.7/lib-dynload/_json.so
+# /usr/lib/python2.7/encodings/hex_codec.pyc matches /usr/lib/python2.7/encodings/hex_codec.py
+import encodings.hex_codec # precompiled from /usr/lib/python2.7/encodings/hex_codec.pyc
+# /usr/lib/python2.7/json/encoder.pyc matches /usr/lib/python2.7/json/encoder.py
+import json.encoder # precompiled from /usr/lib/python2.7/json/encoder.pyc
+import apport # directory /usr/lib/python2.7/dist-packages/apport
+# /usr/lib/python2.7/dist-packages/apport/__init__.pyc matches /usr/lib/python2.7/dist-packages/apport/__init__.py
+import apport # precompiled from /usr/lib/python2.7/dist-packages/apport/__init__.pyc
+# /usr/lib/python2.7/dist-packages/apport/report.pyc matches /usr/lib/python2.7/dist-packages/apport/report.py
+import apport.report # precompiled from /usr/lib/python2.7/dist-packages/apport/report.pyc
+import xml.dom # directory /usr/lib/python2.7/xml/dom
+# /usr/lib/python2.7/xml/dom/__init__.pyc matches /usr/lib/python2.7/xml/dom/__init__.py
+import xml.dom # precompiled from /usr/lib/python2.7/xml/dom/__init__.pyc
+# /usr/lib/python2.7/xml/dom/domreg.pyc matches /usr/lib/python2.7/xml/dom/domreg.py
+import xml.dom.domreg # precompiled from /usr/lib/python2.7/xml/dom/domreg.pyc
+# /usr/lib/python2.7/xml/dom/minicompat.pyc matches /usr/lib/python2.7/xml/dom/minicompat.py
+import xml.dom.minicompat # precompiled from /usr/lib/python2.7/xml/dom/minicompat.pyc
+# /usr/lib/python2.7/xml/dom/minidom.pyc matches /usr/lib/python2.7/xml/dom/minidom.py
+import xml.dom.minidom # precompiled from /usr/lib/python2.7/xml/dom/minidom.pyc
+# /usr/lib/python2.7/xml/dom/xmlbuilder.pyc matches /usr/lib/python2.7/xml/dom/xmlbuilder.py
+import xml.dom.xmlbuilder # precompiled from /usr/lib/python2.7/xml/dom/xmlbuilder.pyc
+# /usr/lib/python2.7/xml/dom/NodeFilter.pyc matches /usr/lib/python2.7/xml/dom/NodeFilter.py
+import xml.dom.NodeFilter # precompiled from /usr/lib/python2.7/xml/dom/NodeFilter.pyc
+import xml.parsers # directory /usr/lib/python2.7/xml/parsers
+# /usr/lib/python2.7/xml/parsers/__init__.pyc matches /usr/lib/python2.7/xml/parsers/__init__.py
+import xml.parsers # precompiled from /usr/lib/python2.7/xml/parsers/__init__.pyc
+# /usr/lib/python2.7/xml/parsers/expat.pyc matches /usr/lib/python2.7/xml/parsers/expat.py
+import xml.parsers.expat # precompiled from /usr/lib/python2.7/xml/parsers/expat.pyc
+dlopen("/usr/lib/python2.7/lib-dynload/pyexpat.so", 2);
+import pyexpat # dynamically loaded from /usr/lib/python2.7/lib-dynload/pyexpat.so
+# /usr/lib/python2.7/dist-packages/problem_report.pyc matches /usr/lib/python2.7/dist-packages/problem_report.py
+import problem_report # precompiled from /usr/lib/python2.7/dist-packages/problem_report.pyc
+import zlib # builtin
+# /usr/lib/python2.7/gzip.pyc matches /usr/lib/python2.7/gzip.py
+import gzip # precompiled from /usr/lib/python2.7/gzip.pyc
+# /usr/lib/python2.7/io.pyc matches /usr/lib/python2.7/io.py
+import io # precompiled from /usr/lib/python2.7/io.pyc
+dlopen("/usr/lib/python2.7/lib-dynload/_io.so", 2);
+import _io # dynamically loaded from /usr/lib/python2.7/lib-dynload/_io.so
+# /usr/lib/python2.7/email/mime/multipart.pyc matches /usr/lib/python2.7/email/mime/multipart.py
+import email.mime.multipart # precompiled from /usr/lib/python2.7/email/mime/multipart.pyc
+# /usr/lib/python2.7/email/mime/base.pyc matches /usr/lib/python2.7/email/mime/base.py
+import email.mime.base # precompiled from /usr/lib/python2.7/email/mime/base.pyc
+# /usr/lib/python2.7/email/message.pyc matches /usr/lib/python2.7/email/message.py
+import email.message # precompiled from /usr/lib/python2.7/email/message.pyc
+# /usr/lib/python2.7/uu.pyc matches /usr/lib/python2.7/uu.py
+import uu # precompiled from /usr/lib/python2.7/uu.pyc
+# /usr/lib/python2.7/email/iterators.pyc matches /usr/lib/python2.7/email/iterators.py
+import email.iterators # precompiled from /usr/lib/python2.7/email/iterators.pyc
+# /usr/lib/python2.7/email/mime/text.pyc matches /usr/lib/python2.7/email/mime/text.py
+import email.mime.text # precompiled from /usr/lib/python2.7/email/mime/text.pyc
+# /usr/lib/python2.7/email/mime/nonmultipart.pyc matches /usr/lib/python2.7/email/mime/nonmultipart.py
+import email.mime.nonmultipart # precompiled from /usr/lib/python2.7/email/mime/nonmultipart.pyc
+# /usr/lib/python2.7/dist-packages/apport/fileutils.pyc matches /usr/lib/python2.7/dist-packages/apport/fileutils.py
+import apport.fileutils # precompiled from /usr/lib/python2.7/dist-packages/apport/fileutils.pyc
+# /usr/lib/python2.7/dist-packages/apport/packaging_impl.pyc matches /usr/lib/python2.7/dist-packages/apport/packaging_impl.py
+import apport.packaging_impl # precompiled from /usr/lib/python2.7/dist-packages/apport/packaging_impl.pyc
+import apt # directory /usr/lib/python2.7/dist-packages/apt
+# /usr/lib/python2.7/dist-packages/apt/__init__.pyc matches /usr/lib/python2.7/dist-packages/apt/__init__.py
+import apt # precompiled from /usr/lib/python2.7/dist-packages/apt/__init__.pyc
+dlopen("/usr/lib/python2.7/dist-packages/apt_pkg.so", 2);
+import apt_pkg # dynamically loaded from /usr/lib/python2.7/dist-packages/apt_pkg.so
+# /usr/lib/python2.7/dist-packages/apt/package.pyc matches /usr/lib/python2.7/dist-packages/apt/package.py
+import apt.package # precompiled from /usr/lib/python2.7/dist-packages/apt/package.pyc
+# /usr/lib/python2.7/httplib.pyc matches /usr/lib/python2.7/httplib.py
+import httplib # precompiled from /usr/lib/python2.7/httplib.pyc
+# /usr/lib/python2.7/urllib2.pyc matches /usr/lib/python2.7/urllib2.py
+import urllib2 # precompiled from /usr/lib/python2.7/urllib2.pyc
+import apt.progress # directory /usr/lib/python2.7/dist-packages/apt/progress
+# /usr/lib/python2.7/dist-packages/apt/progress/__init__.pyc matches /usr/lib/python2.7/dist-packages/apt/progress/__init__.py
+import apt.progress # precompiled from /usr/lib/python2.7/dist-packages/apt/progress/__init__.pyc
+# /usr/lib/python2.7/dist-packages/apt/progress/old.pyc matches /usr/lib/python2.7/dist-packages/apt/progress/old.py
+import apt.progress.old # precompiled from /usr/lib/python2.7/dist-packages/apt/progress/old.pyc
+# /usr/lib/python2.7/dist-packages/apt/deprecation.pyc matches /usr/lib/python2.7/dist-packages/apt/deprecation.py
+import apt.deprecation # precompiled from /usr/lib/python2.7/dist-packages/apt/deprecation.pyc
+# /usr/lib/python2.7/dist-packages/apt/progress/base.pyc matches /usr/lib/python2.7/dist-packages/apt/progress/base.py
+import apt.progress.base # precompiled from /usr/lib/python2.7/dist-packages/apt/progress/base.pyc
+# /usr/lib/python2.7/dist-packages/apt/progress/text.pyc matches /usr/lib/python2.7/dist-packages/apt/progress/text.py
+import apt.progress.text # precompiled from /usr/lib/python2.7/dist-packages/apt/progress/text.pyc
+# /usr/lib/python2.7/dist-packages/apt/cache.pyc matches /usr/lib/python2.7/dist-packages/apt/cache.py
+import apt.cache # precompiled from /usr/lib/python2.7/dist-packages/apt/cache.pyc
+# /usr/lib/python2.7/dist-packages/apt/cdrom.pyc matches /usr/lib/python2.7/dist-packages/apt/cdrom.py
+import apt.cdrom # precompiled from /usr/lib/python2.7/dist-packages/apt/cdrom.pyc
+# /usr/lib/python2.7/dist-packages/apport/packaging.pyc matches /usr/lib/python2.7/dist-packages/apport/packaging.py
+import apport.packaging # precompiled from /usr/lib/python2.7/dist-packages/apport/packaging.pyc
+Traceback (most recent call last):
+  File "./Linux_Integratomics_v0_4_2.py", line 1132, in <module>
+    cherrypy.tree.mount(HelloWorld(), config=conf)
+TypeError: mount() got an unexpected keyword argument 'config'
+# clear __builtin__._
+# clear sys.path
+# clear sys.argv
+# clear sys.ps1
+# clear sys.ps2
+# clear sys.exitfunc
+# clear sys.exc_type
+# clear sys.exc_value
+# clear sys.exc_traceback
+# clear sys.last_type
+# clear sys.last_value
+# clear sys.last_traceback
+# clear sys.path_hooks
+# clear sys.path_importer_cache
+# clear sys.meta_path
+# clear sys.flags
+# clear sys.float_info
+# restore sys.stdin
+# restore sys.stdout
+# restore sys.stderr
+# cleanup __main__
+# cleanup[1] scipy.sparse.linalg.eigen.arpack
+# cleanup[1] tri
+# cleanup[1] multiprocessing
+# cleanup[1] scipy.sparse.linalg.eigen.lobpcg.lobpcg
+# cleanup[1] scipy.integrate.ode
+# cleanup[1] optparse
+# cleanup[1] _ctypes
+# cleanup[1] _heapq
+# cleanup[1] matplotlib.tri.tricontour
+# cleanup[1] scipy.sparse.linalg.isolve.minres
+# cleanup[1] pyexpat
+# cleanup[1] strop
+# cleanup[1] _weakrefset
+# cleanup[1] sysconfig
+# cleanup[1] matplotlib.tri.triplot
+# cleanup[1] token
+# cleanup[1] scipy.sparse.linalg.isolve.lsqr
+# cleanup[1] multiprocessing.process
+# cleanup[1] BaseHTTPServer
+# cleanup[1] _locale
+# cleanup[1] multiprocessing.util
+# cleanup[1] _collections
+# cleanup[1] _codecs
+# cleanup[1] keyword
+# cleanup[1] _csv
+# cleanup[1] scipy.sparse.linalg.eigen.lobpcg
+# cleanup[1] posix
+# cleanup[1] _sqlite3
+# cleanup[1] Tkconstants
+# cleanup[1] _bisect
+# cleanup[1] scipy.sparse.linalg.isolve.lgmres
+# cleanup[1] swig_runtime_data4
+# cleanup[1] numpy.lib.info
+# cleanup[1] opcode
+# cleanup[1] apport.packaging
+# cleanup[1] unittest
+# cleanup[1] json
+# cleanup[1] Dialog
+# cleanup[1] json.decoder
+# cleanup[1] FixTk
+# cleanup[1] matplotlib.tri.tripcolor
+# cleanup[1] site
+# cleanup[1] _json
+# cleanup[1] sqlite3
+# cleanup[1] scipy.optimize.nnls
+# cleanup[1] _weakref
+# cleanup[1] numpy.oldnumeric.precision
+# cleanup[1] scipy.integrate.quadrature
+# cleanup[1] scipy.lib.blas.cblas
+# cleanup[1] exceptions
+# cleanup[1] PIL
+# cleanup[1] unittest.main
+# cleanup[1] scipy.weave.info
+# cleanup[1] zipimport
+# cleanup[1] numpy.oldnumeric.misc
+# cleanup[1] quopri
+# cleanup[1] sqlite3.dbapi2
+# cleanup[1] unittest.loader
+# cleanup[1] _functools
+# cleanup[1] numpy.core.memmap
+# cleanup[1] __future__
+# cleanup[1] numpy.oldnumeric.ufuncs
+# cleanup[1] scipy.optimize.anneal
+# cleanup[1] _warnings
+# cleanup[1] _struct
+# cleanup[1] unittest.signals
+# cleanup[1] sitecustomize
+# cleanup[1] numpy.oldnumeric.compat
+# cleanup[1] _multiprocessing
+# cleanup[1] SocketServer
+# cleanup[1] json.encoder
+# cleanup[1] unittest.suite
+# cleanup[1] json.scanner
+# cleanup[1] numpy.oldnumeric.functions
+# cleanup[1] unittest.runner
+# cleanup[1] unittest.case
+# cleanup[1] apport_python_hook
+# cleanup[1] difflib
+# cleanup[1] pprint
+# cleanup[1] unittest.result
+# cleanup[1] unittest.util
+# cleanup[2] numpy.core.info
+# cleanup[2] cherrypy._cphttptools
+# cleanup[2] matplotlib.artist
+# cleanup[2] gc
+# cleanup[2] distutils.sysconfig
+# cleanup[2] numpy.oldnumeric.typeconv
+# cleanup[2] scipy.optimize.info
+# cleanup[2] matplotlib.axis
+# cleanup[2] apport
+# cleanup[2] numpy.core.umath
+# cleanup[2] scipy.sparse.linalg.isolve.utils
+# cleanup[2] string
+# cleanup[2] scipy.special.orthogonal_eval
+# cleanup[2] numpy.lib.arraysetops
+# cleanup[2] xml.dom.xmlbuilder
+# cleanup[2] encodings.utf_8
+# cleanup[2] email.quoprimime
+# cleanup[2] scipy.sparse.construct
+# cleanup[2] matplotlib._path
+# cleanup[2] numpy.core.machar
+# cleanup[2] scipy.linalg.fblas
+# cleanup[2] numpy.ma.extras
+# cleanup[2] numpy.fft.fftpack_lite
+# cleanup[2] matplotlib.cbook
+# cleanup[2] matplotlib.afm
+# cleanup[2] dis
+# cleanup[2] scipy.lib
+# cleanup[2] zlib
+# cleanup[2] matplotlib.markers
+# cleanup[2] matplotlib.backend_bases
+# cleanup[2] scipy.special.basic
+# cleanup[2] scipy.sparse.linalg.dsolve._superlu
+# cleanup[2] abc
+# cleanup[2] matplotlib.spines
+# cleanup[2] numpy.lib.npyio
+# cleanup[2] scipy.stats.morestats
+# cleanup[2] numpy.lib._compiled_base
+# cleanup[2] apport.report
+# cleanup[2] new
+# cleanup[2] encodings.aliases
+# cleanup[2] scipy.optimize._minpack
+# cleanup[2] matplotlib.rcsetup
+# cleanup[2] PIL.Image
+# cleanup[2] cherrypy.config
+# cleanup[2] scipy.io.info
+# cleanup[2] ImagePalette
+# cleanup[2] scipy.linalg.decomp
+# cleanup[2] codecs
+# cleanup[2] matplotlib.backends.backend_tkagg
+# cleanup[2] scipy.lib.lapack.info
+# cleanup[2] scipy.linalg.decomp_cholesky
+# cleanup[2] problem_report
+# cleanup[2] matplotlib.container
+# cleanup[2] email.header
+# cleanup[2] StringIO
+# cleanup[2] weakref
+# cleanup[2] scipy.optimize._cobyla
+# cleanup[2] numpy.core._internal
+# cleanup[2] scipy.integrate._quadpack
+# cleanup[2] numpy.oldnumeric.array_printer
+# cleanup[2] base64
+# cleanup[2] scipy.sparse.linalg.dsolve.umfpack.info
+# cleanup[2] _sre
+# cleanup[2] PIL.ImagePalette
+# cleanup[2] apt
+# cleanup[2] cherrypy.filters.sessionfilter
+# cleanup[2] email.charset
+# cleanup[2] scipy.sparse.linalg.isolve
+# cleanup[2] select
+# cleanup[2] matplotlib.backends._backend_agg
+# cleanup[2] numpy.lib.financial
+# cleanup[2] scipy.linalg.decomp_qr
+# cleanup[2] matplotlib.collections
+# cleanup[2] binascii
+# cleanup[2] scipy.sparse.linalg.eigen.arpack.arpack
+# cleanup[2] email._parseaddr
+# cleanup[2] scipy.stats.kde
+# cleanup[2] numpy.polynomial.chebyshev
+# cleanup[2] cPickle
+# cleanup[2] numpy.polynomial.hermite_e
+# cleanup[2] matplotlib.tri.triangulation
+# cleanup[2] scipy.misc.doccer
+# cleanup[2] numpy.testing.utils
+# cleanup[2] numpy.core.fromnumeric
+# cleanup[2] unicodedata
+# cleanup[2] numpy.ctypeslib
+# cleanup[2] scipy.special.specfun
+# cleanup[2] scipy.sparse.linalg.eigen.lobpcg.info
+# cleanup[2] cherrypy.lib
+# cleanup[2] fnmatch
+# cleanup[2] sre_parse
+# cleanup[2] scipy.sparse.linalg.dsolve.info
+# cleanup[2] pickle
+# cleanup[2] _abcoll
+# cleanup[2] matplotlib.texmanager
+# cleanup[2] scipy.stats.info
+# cleanup[2] numpy.lib.polynomial
+# cleanup[2] numpy.compat
+# cleanup[2] numbers
+# cleanup[2] scipy.sparse.sparsetools
+# cleanup[2] numpy.core.records
+# cleanup[2] email.message
+# cleanup[2] matplotlib._mathtext_data
+# cleanup[2] numpy.core.numeric
+# cleanup[2] matplotlib.delaunay.interpolate
+# cleanup[2] scipy.maxentropy.info
+# cleanup[2] scipy.sparse.sparsetools.dia
+# cleanup[2] csv
+# cleanup[2] profile
+# cleanup[2] matplotlib.pyplot
+# cleanup[2] scipy.linalg.misc
+# cleanup[2] email.mime.multipart
+# cleanup[2] numpy.lib.utils
+# cleanup[2] dateutil.relativedelta
+# cleanup[2] numpy.linalg.lapack_lite
+# cleanup[2] scipy.sparse.compressed
+# cleanup[2] numpy.lib.arrayterator
+# cleanup[2] os.path
+# cleanup[2] scipy.linalg.calc_lwork
+# cleanup[2] scipy.misc
+# cleanup[2] email.base64mime
+# cleanup[2] cherrypy.lib.autoreload
+# cleanup[2] scipy.lib.info
+# cleanup[2] matplotlib.dviread
+# cleanup[2] scipy.optimize._zeros
+# cleanup[2] scipy.__config__
+# cleanup[2] scipy.linalg.linalg_version
+# cleanup[2] scipy.stats.mvn
+# cleanup[2] functools
+# cleanup[2] email.mime.text
+# cleanup[2] scipy.stats.futil
+# cleanup[2] scipy.linalg.info
+# cleanup[2] matplotlib.colorbar
+# cleanup[2] scipy.sparse.lil
+# cleanup[2] numpy.polynomial.legendre
+# cleanup[2] numpy.matrixlib.defmatrix
+# cleanup[2] tempfile
+# cleanup[2] scipy.sparse.csgraph
+# cleanup[2] matplotlib.projections.geo
+# cleanup[2] matplotlib.text
+# cleanup[2] scipy.sparse.dia
+# cleanup[2] scipy.linalg._flinalg
+# cleanup[2] numpy.core.scalarmath
+# cleanup[2] numpy.core
+# cleanup[2] numpy.linalg.info
+# cleanup[2] matplotlib.patches
+# cleanup[2] scipy
+# cleanup[2] scipy.sparse.sparsetools.csc
+# cleanup[2] _csgraph
+# cleanup[2] matplotlib.backends.windowing
+# cleanup[2] httplib
+# cleanup[2] matplotlib._cm
+# cleanup[2] apt.deprecation
+# cleanup[2] decimal
+# cleanup[2] scipy.linalg.lapack
+# cleanup[2] numpy.lib._datasource
+# cleanup[2] matplotlib.lines
+# cleanup[2] scipy.stats.mstats
+# cleanup[2] email.encoders
+# cleanup[2] dateutil.rrule
+# cleanup[2] scipy.odr.info
+# cleanup[2] cStringIO
+# cleanup[2] PIL.ImageMode
+# cleanup[2] numpy.polynomial
+# cleanup[2] numpy.add_newdocs
+# cleanup[2] apport.fileutils
+# cleanup[2] PIL._imaging
+# cleanup[2] encodings
+# cleanup[2] matplotlib.ticker
+# cleanup[2] matplotlib.widgets
+# cleanup[2] _tkinter
+# cleanup[2] sha
+# cleanup[2] scipy.misc.info
+# cleanup[2] matplotlib.ft2font
+# cleanup[2] scipy.special.lambertw
+# cleanup[2] re
+# cleanup[2] scipy.sparse.linalg.eigen
+# cleanup[2] scipy.optimize.nonlin
+# cleanup[2] matplotlib.backends
+# cleanup[2] math
+# cleanup[2] Tkinter
+# cleanup[2] scipy.stats.mstats_extras
+# cleanup[2] scipy.optimize._slsqp
+# cleanup[2] numpy.lib.ufunclike
+# cleanup[2] scipy.optimize.zeros
+# cleanup[2] md5
+# cleanup[2] thread
+# cleanup[2] traceback
+# cleanup[2] apt.progress.text
+# cleanup[2] cherrypy._cpengine
+# cleanup[2] scipy.stats
+# cleanup[2] scipy.linalg.cblas
+# cleanup[2] scipy.sparse.linalg.dsolve.linsolve
+# cleanup[2] numpy.random
+# cleanup[2] numpy.lib.twodim_base
+# cleanup[2] FileDialog
+# cleanup[2] scipy.special._cephes
+# cleanup[2] array
+# cleanup[2] posixpath
+# cleanup[2] scipy.ndimage.info
+# cleanup[2] numpy.core.arrayprint
+# cleanup[2] types
+# cleanup[2] apt.package
+# cleanup[2] numpy.lib.stride_tricks
+# cleanup[2] numpy.lib.scimath
+# cleanup[2] scipy.sparse.sparsetools.coo
+# cleanup[2] scipy.stats.vonmises_cython
+# cleanup[2] cherrypy.lib.httptools
+# cleanup[2] numpy.__config__
+# cleanup[2] scipy.sparse.sputils
+# cleanup[2] copy
+# cleanup[2] hashlib
+# cleanup[2] matplotlib._delaunay
+# cleanup[2] cherrypy.filters.wsgiappfilter
+# cleanup[2] xml.sax.saxutils
+# cleanup[2] scipy.sparse.info
+# cleanup[2] scipy.linalg.basic
+# cleanup[2] _csc
+# cleanup[2] _hashlib
+# cleanup[2] cherrypy.filters.basefilter
+# cleanup[2] numpy.lib.shape_base
+# cleanup[2] numpy._import_tools
+# cleanup[2] matplotlib._png
+# cleanup[2] matplotlib.delaunay.triangulate
+# cleanup[2] numpy.fft.info
+# cleanup[2] dateutil.parser
+# cleanup[2] matplotlib.blocking_input
+# cleanup[2] xml.dom.minicompat
+# cleanup[2] matplotlib.tight_bbox
+# cleanup[2] scipy.sparse.linalg.dsolve.umfpack._umfpack
+# cleanup[2] _ssl
+# cleanup[2] numpy.lib.index_tricks
+# cleanup[2] warnings
+# cleanup[2] encodings.ascii
+# cleanup[2] matplotlib.legend
+# cleanup[2] _bsr
+# cleanup[2] scipy.optimize.lbfgsb
+# cleanup[2] matplotlib._tri
+# cleanup[2] matplotlib._pylab_helpers
+# cleanup[2] scipy.sparse.linalg.interface
+# cleanup[2] matplotlib.backends.tkagg
+# cleanup[2] linecache
+# cleanup[2] matplotlib.backends.backend_agg
+# cleanup[2] numpy.linalg.linalg
+# cleanup[2] numpy.lib._iotools
+# cleanup[2] email.iterators
+# cleanup[2] scipy.cluster.info
+# cleanup[2] scipy.optimize.minpack2
+# cleanup[2] random
+# cleanup[2] datetime
+# cleanup[2] scipy.optimize._nnls
+# cleanup[2] scipy.sparse.base
+# cleanup[2] ctypes._endian
+# cleanup[2] scipy.integrate.quadpack
+# cleanup[2] matplotlib.backends._tkagg
+# cleanup[2] matplotlib.contour
+# cleanup[2] numpy.random.mtrand
+# cleanup[2] xml
+# cleanup[2] cherrypy.lib.profiler
+# cleanup[2] numpy.linalg
+# cleanup[2] matplotlib.legend_handler
+# cleanup[2] pyexpat.errors
+# cleanup[2] scipy.linalg.clapack
+# cleanup[2] scipy.sparse.linalg
+# cleanup[2] scipy.interpolate.info
+# cleanup[2] matplotlib.projections.polar
+# cleanup[2] scipy.linalg.special_matrices
+# cleanup[2] ssl
+# cleanup[2] apt.cdrom
+# cleanup[2] numpy.version
+# cleanup[2] scipy.optimize.moduleTNC
+# cleanup[2] numpy.lib.type_check
+# cleanup[2] scipy.linalg.matfuncs
+# cleanup[2] resource
+# cleanup[2] bisect
+# cleanup[2] scipy.integrate.info
+# cleanup[2] threading
+# cleanup[2] pyexpat.model
+# cleanup[2] scipy.sparse.linalg.dsolve.umfpack
+# cleanup[2] numpy.fft.helper
+# cleanup[2] scipy.integrate.vode
+# cleanup[2] scipy.lib.blas
+# cleanup[2] tokenize
+# cleanup[2] scipy.special.spfun_stats
+# cleanup[2] matplotlib.figure
+# cleanup[2] locale
+# cleanup[2] _csr
+# cleanup[2] matplotlib.offsetbox
+# cleanup[2] atexit
+# cleanup[2] cherrypy._cperror
+# cleanup[2] numpy.oldnumeric
+# cleanup[2] calendar
+# cleanup[2] dateutil
+# cleanup[2] matplotlib._image
+# cleanup[2] numpy.testing.decorators
+# cleanup[2] ImageColor
+# cleanup[2] urllib
+# cleanup[2] cherrypy.filters
+# cleanup[2] scipy.sparse.data
+# cleanup[2] scipy.stats._support
+# cleanup[2] email
+# cleanup[2] fcntl
+# cleanup[2] scipy.stats.stats
+# cleanup[2] apt.progress
+# cleanup[2] ctypes
+# cleanup[2] imp
+# cleanup[2] numpy.core._sort
+# cleanup[2] scipy.linalg.flapack
+# cleanup[2] scipy.stats.mstats_basic
+# cleanup[2] itertools
+# cleanup[2] numpy.fft.fftpack
+# cleanup[2] matplotlib.projections
+# cleanup[2] pstats
+# cleanup[2] _io
+# cleanup[2] scipy.sparse.linalg.isolve._iterative
+# cleanup[2] scipy.sparse.dok
+# cleanup[2] PIL.ImageColor
+# cleanup[2] scipy.sparse.csc
+# cleanup[2] apt.cache
+# cleanup[2] xml.parsers
+# cleanup[2] __umfpack
+# cleanup[2] scipy.integrate._odepack
+# cleanup[2] scipy.sparse.csr
+# cleanup[2] xml.dom.domreg
+# cleanup[2] sre_compile
+# cleanup[2] scipy.spatial.info
+# cleanup[2] ImageFilter
+# cleanup[2] sre_constants
+# cleanup[2] matplotlib.units
+# cleanup[2] numpy.core.function_base
+# cleanup[2] _random
+# cleanup[2] scipy.sparse.sparsetools.bsr
+# cleanup[2] numpy
+# cleanup[2] matplotlib.mlab
+# cleanup[2] xml.dom.NodeFilter
+# cleanup[2] scipy.integrate._dop
+# cleanup[2] scipy.lib.blas.info
+# cleanup[2] email.utils
+# cleanup[2] numpy.ma
+# cleanup[2] matplotlib.dates
+# cleanup[2] scipy.optimize.tnc
+# cleanup[2] cherrypy._cputil
+# cleanup[2] scipy.optimize.slsqp
+# cleanup[2] scipy.sparse.linalg.eigen.info
+# cleanup[2] numpy.lib
+# cleanup[2] copy_reg
+# cleanup[2] cherrypy
+# cleanup[2] subprocess
+# cleanup[2] dateutil.tz
+# cleanup[2] io
+# cleanup[2] apt.progress.old
+# cleanup[2] scipy.sparse.coo
+# cleanup[2] shutil
+# cleanup[2] xml.sax.handler
+# cleanup[2] encodings.hex_codec
+# cleanup[2] matplotlib.bezier
+# cleanup[2] scipy.sparse.sparsetools.csr
+# cleanup[2] scipy.sparse.bsr
+# cleanup[2] scipy.optimize.linesearch
+# cleanup[2] email.mime.nonmultipart
+# cleanup[2] scipy.sparse.linalg.eigen.arpack._arpack
+# cleanup[2] rfc822
+# cleanup[2] numpy.polynomial.polyutils
+# cleanup[2] numpy.compat._inspect
+# cleanup[2] scipy.fftpack.info
+# cleanup[2] scipy.optimize.cobyla
+# cleanup[2] matplotlib.fontconfig_pattern
+# cleanup[2] distutils.errors
+# cleanup[2] urlparse
+# cleanup[2] gzip
+# cleanup[2] heapq
+# cleanup[2] distutils
+# cleanup[2] _dia
+# cleanup[2] scipy.lib.blas.fblas
+# cleanup[2] matplotlib.colors
+# cleanup[2] email.mime
+# cleanup[2] scipy.stats.rv
+# cleanup[2] struct
+# cleanup[2] numpy.random.info
+# cleanup[2] scipy.linalg.flinalg
+# cleanup[2] matplotlib.gridspec
+# cleanup[2] numpy.testing
+# cleanup[2] collections
+# cleanup[2] scipy.linalg.decomp_lu
+# cleanup[2] scipy.linalg.blas
+# cleanup[2] cherrypy._cpcgifs
+# cleanup[2] scipy.sparse.linalg.dsolve.umfpack.umfpack
+# cleanup[2] scipy.integrate.odepack
+# cleanup[2] textwrap
+# cleanup[2] scipy.sparse.linalg.info
+# cleanup[2] _coo
+# cleanup[2] ConfigParser
+# cleanup[2] matplotlib._cntr
+# cleanup[2] scipy.misc.common
+# cleanup[2] numpy.dual
+# cleanup[2] signal
+# cleanup[2] xml.parsers.expat
+# cleanup[2] cherrypy._cpserver
+# cleanup[2] matplotlib.path
+# cleanup[2] scipy.optimize.minpack
+# cleanup[2] matplotlib.quiver
+# cleanup[2] apport.packaging_impl
+# cleanup[2] numpy.core.multiarray
+# cleanup[2] distutils.version
+# cleanup[2] numpy.ma.core
+# cleanup[2] stat
+# cleanup[2] numpy.core.getlimits
+# cleanup[2] cherrypy.lib.cptools
+# cleanup[2] scipy.version
+# cleanup[2] scipy.sparse.linalg.dsolve
+# cleanup[2] matplotlib.delaunay
+# cleanup[2] numpy.matrixlib
+# cleanup[2] _imaging
+# cleanup[2] matplotlib.axes
+# cleanup[2] email.errors
+# cleanup[2] glob
+# cleanup[2] cgi
+# cleanup[2] UserDict
+# cleanup[2] scipy.optimize._lbfgsb
+# cleanup[2] inspect
+# cleanup[2] scipy.special.orthogonal
+# cleanup[2] numpy.polynomial.laguerre
+# cleanup[2] ImageMode
+# cleanup[2] matplotlib.font_manager
+# cleanup[2] socket
+# cleanup[2] Image
+# cleanup[2] matplotlib.tri
+# cleanup[2] os
+# cleanup[2] marshal
+# cleanup[2] scipy.linalg
+# cleanup[2] numpy.core.shape_base
+# cleanup[2] scipy.stats.distributions
+# cleanup[2] apt_pkg
+# cleanup[2] xml.sax.xmlreader
+# cleanup[2] operator
+# cleanup[2] numpy.polynomial.polytemplate
+# cleanup[2] scipy.linalg.decomp_svd
+# cleanup[2] scipy.optimize
+# cleanup[2] scipy.integrate
+# cleanup[2] errno
+# cleanup[2] _socket
+# cleanup[2] matplotlib.docstring
+# cleanup[2] Cookie
+# cleanup[2] numpy.core.numerictypes
+# cleanup[2] scipy.sparse.linalg.isolve.iterative
+# cleanup[2] scipy.stats.statlib
+# cleanup[2] scipy.sparse
+# cleanup[2] scipy.special.info
+# cleanup[2] pwd
+# cleanup[2] scipy.sparse.linalg.eigen.arpack.info
+# cleanup[2] uu
+# cleanup[2] numpy.fft
+# cleanup[2] xml.dom.minidom
+# cleanup[2] email.mime.base
+# cleanup[2] numpy.lib.function_base
+# cleanup[2] scipy.optimize.optimize
+# cleanup[2] mimetools
+# cleanup[2] xml.sax
+# cleanup[2] numpy.compat.py3k
+# cleanup[2] scipy.linalg.decomp_schur
+# cleanup[2] matplotlib.scale
+# cleanup[2] numpy.polynomial.hermite
+# cleanup[2] numpy.polynomial.polynomial
+# cleanup[2] numpy.core._dotblas
+# cleanup[2] scipy.special
+# cleanup[2] matplotlib.transforms
+# cleanup[2] grp
+# cleanup[2] numpy.testing.numpytest
+# cleanup[2] scipy.misc.pilutil
+# cleanup[2] numpy.core.defchararray
+# cleanup[2] gettext
+# cleanup[2] scipy.signal.info
+# cleanup[2] matplotlib.image
+# cleanup[2] matplotlib.nxutils
+# cleanup[2] xml.sax._exceptions
+# cleanup[2] genericpath
+# cleanup[2] mimetypes
+# cleanup[2] scipy.sparse.sparsetools.csgraph
+# cleanup[2] urllib2
+# cleanup[2] numpy.lib.format
+# cleanup[2] numpy.testing.nosetester
+# cleanup[2] scipy.sparse.extract
+# cleanup[2] xml.dom
+# cleanup[2] matplotlib
+# cleanup[2] apt.progress.base
+# cleanup[2] matplotlib.mathtext
+# cleanup[2] matplotlib.cm
+# cleanup[2] matplotlib.textpath
+# cleanup[2] cherrypy._cptree
+# cleanup[2] time
+# cleanup[2] matplotlib.table
+# cleanup[2] matplotlib.pyparsing
+# cleanup sys
+# cleanup __builtin__
+# cleanup ints: 333 unfreed ints
+# cleanup floats: 1506 unfreed floats
