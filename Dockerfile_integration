@@ -6,6 +6,7 @@ RUN apk update && \
     bash \
     build-base \
     curl \
+    git \
     gfortran \
     libxml2-dev \
     pcre2-dev \
@@ -68,7 +69,7 @@ RUN Rscript -e "remotes::install_version('dqrng', version = '0.4.1', repos = 'ht
 RUN Rscript -e "remotes::install_version('Rcpp', version = '1.0.13', repos = 'https://cloud.r-project.org/')"
 
 #Download necessary files from repository
-RUN git clone https://https://github.com/TurkAleksander/Integratomics /Integratomics
+RUN git clone https://github.com/TurkAleksander/Integratomics /Integratomics
 #Set work dir
 WORKDIR /Integratomics
 #Set entrypoint to allow for running the script
