@@ -34,7 +34,7 @@ library(Rcpp)
 
 
 args <- commandArgs(trailingOnly = TRUE)
-keyFileDir <- "/Integratomics_MS"
+keyFileDir <- "/Integratomics"
 
 if (length(args) > 2) {
   print("Correct directory format: /path/to/input /path/to/output")

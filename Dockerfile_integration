@@ -68,9 +68,9 @@ RUN Rscript -e "remotes::install_version('dqrng', version = '0.4.1', repos = 'ht
 RUN Rscript -e "remotes::install_version('Rcpp', version = '1.0.13', repos = 'https://cloud.r-project.org/')"
 
 #Download necessary files from repository
-RUN git clone https://https://github.com/TurkAleksander/Integratomics_MS /Integratomics_MS
+RUN git clone https://https://github.com/TurkAleksander/Integratomics /Integratomics
 #Set work dir
-WORKDIR /Integratomics_MS
+WORKDIR /Integratomics
 #Set entrypoint to allow for running the script
 ENTRYPOINT ["Rscript", "/Integratomics_MS/R_integration_code_dockerVersion.r"]
 
