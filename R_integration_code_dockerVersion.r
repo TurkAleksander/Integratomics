@@ -427,6 +427,8 @@ print(unique_gene_counts_merged)
 ###############################
 nPerm <- 1000
 
+
+
 tibble_rankSum <- function(ranks, numPerm) {
   tibble::as_tibble(ranks, .name_repair = "unique_quiet") %>% 
     dplyr::mutate(
@@ -448,13 +450,21 @@ tibble_rankSum <- function(ranks, numPerm) {
     tidyr::pivot_wider(id_cols = c(intervalNumber, study, RS), names_from = perm, names_prefix="RSperm", values_from = RSperm) %>% 
     dplyr::summarise(dplyr::across(tidyselect::starts_with("RS"), unique))
 }
-
 start <- Sys.time()
+print("!----------------------------------------------------------------------------!")
+print("Beginning permutation step - this is the most computationally intensive step")
+print("For ~160k intervals, 5 groups and 1000 permutations the expected time is ~1.5 hours and peaks at ~160GB of RAM")
+print("WARNING: MONITOR YOUR RAM USAGE, THIS STEP CAN BE VERY MEMORY INTENSIVE")
+print(paste0("Current setting: ", nPerm, " permutations."))
+print(paste0("Started at: ", start))
+print("!----------------------------------------------------------------------------!")
+
 result <- nonZeroLocations %>%
   dplyr::group_by(gene_count) %>%
   dplyr::group_modify(~ tibble_rankSum(.x, numPerm = nPerm)) %>%
   dplyr::ungroup()
-print(Sys.time() - start)
+
+print(paste0("Permutations completed. Time needed: ", Sys.time() - start))
 
 #'[STATISTICS]
 #Add row that counts how many values in the permuted RP tibble are <= the real RP value (RPperm <= RPreal)
@@ -470,8 +480,8 @@ result2 <- result %>%
     cValue = sum(RS >= c_across(starts_with("RSPerm")))
   ) %>%
   dplyr::ungroup()
-print(paste0("Process completed Time: ", Sys.time() - start))
-print("Calculating expected RP value, p-values and FDR correction")
+print(paste0("Process completed. Time: ", Sys.time() - start))
+print("Calculating empirical p-values")
 
 #Adding pseudocount
 result2 <- result2 %>%
@@ -491,7 +501,7 @@ result2 <- dplyr::left_join(result2, locationData, by = "intervalNumber") %>%
 #Add row that calculates the p-value, in this case the percentage of false positives (PFP), where PFP = Erp/rank
 
 result2 <- result2 %>%
-  dplyr::mutate(empiricalPval = (cValuePseudoCount) / (nPerm))
+  dplyr::mutate(empiricalPval = (cValuePseudoCount) / (nPerm + 1))
 
 
 
