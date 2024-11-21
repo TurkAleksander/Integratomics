@@ -1,0 +1,78 @@
+FROM alpine:3.20.3 AS intermediate
+
+# Download dependencies
+RUN apk update && \
+    apk add --no-cache \
+    bash \
+    build-base \
+    curl \
+    gfortran \
+    libxml2-dev \
+    pcre2-dev \
+    readline-dev \
+    xz-dev \
+    zlib-dev \
+    tzdata \
+    libx11-dev \
+    libxext-dev \
+    libxrender-dev \
+    libxt-dev \
+    bzip2-dev \
+    pcre-dev \
+    libjpeg-turbo-dev \
+    libpng-dev \
+    tiff-dev  \
+    curl-dev \
+    openblas-dev \
+    zip \
+    file \
+    coreutils
+
+RUN apk --no-cache add --virtual build-deps \
+    perl \
+    openjdk8-jre-base \
+    libxmu-dev \
+    pango-dev \
+    cairo-dev \
+    tcl-dev \
+    tk-dev
+
+#Download R source
+RUN curl -O https://cran.r-project.org/src/base/R-4/R-4.3.3.tar.gz && \
+    tar -xzvf R-4.3.3.tar.gz
+#Build and install from source
+WORKDIR R-4.3.3
+RUN ./configure --prefix=/usr/local
+RUN make
+RUN make install
+# Clean up
+WORKDIR /
+RUN rm -rf R-4.3.3 R-4.3.3.tar.gz
+
+#Add some packages to the image
+RUN Rscript -e "install.packages('remotes', repos='https://cloud.r-project.org/')"
+#Install specific versions of the packages for stability
+RUN Rscript -e "remotes::install_version('dplyr', version = '1.1.4', repos = 'https://cloud.r-project.org/')"
+RUN Rscript -e "remotes::install_version('ggplot2', version = '3.5.1', repos = 'https://cloud.r-project.org/')"
+RUN Rscript -e "remotes::install_version('readr', version = '2.1.5', repos = 'https://cloud.r-project.org/')"
+RUN Rscript -e "remotes::install_version('stringr', version = '1.5.1', repos = 'https://cloud.r-project.org/')"
+RUN Rscript -e "remotes::install_version('tibble', version = '3.2.1', repos = 'https://cloud.r-project.org/')"
+RUN Rscript -e "remotes::install_version('data.table', version = '1.16.2', repos = 'https://cloud.r-project.org/')"
+RUN Rscript -e "remotes::install_version('MASS', version = '7.3-55', repos = 'https://cloud.r-project.org/')"
+RUN Rscript -e "remotes::install_version('tidyr', version = '1.3.1', repos = 'https://cloud.r-project.org/')"
+RUN Rscript -e "remotes::install_version('purrr', version = '1.0.2', repos = 'https://cloud.r-project.org/')"
+RUN Rscript -e "remotes::install_version('furrr', version = '0.3.1', repos = 'https://cloud.r-project.org/')"
+RUN Rscript -e "remotes::install_version('future', version = '1.34.0', repos = 'https://cloud.r-project.org/')"
+RUN Rscript -e "remotes::install_version('profvis', version = '0.4.0', repos = 'https://cloud.r-project.org/')"
+RUN Rscript -e "remotes::install_version('dqrng', version = '0.4.1', repos = 'https://cloud.r-project.org/')"
+RUN Rscript -e "remotes::install_version('Rcpp', version = '1.0.13', repos = 'https://cloud.r-project.org/')"
+
+#Download necessary files from repository
+RUN git clone https://https://github.com/TurkAleksander/Integratomics_MS /Integratomics_MS
+#Set work dir
+WORKDIR /Integratomics_MS
+#Set entrypoint to allow for running the script
+ENTRYPOINT ["Rscript", "/Integratomics_MS/R_integration_code_dockerVersion.r"]
+
+CMD ["/input", "/output"]
+

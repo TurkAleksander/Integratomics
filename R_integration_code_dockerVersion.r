@@ -1,19 +1,19 @@
 #INSTALL PACKAGES
 print("Installing packages and loading libraries")
 
-install.packages("dplyr")
-install.packages("ggplot2")
-install.packages("readr")
-install.packages("stringr")
-install.packages("tibble")
-install.packages("data.table")
-install.packages('MASS')
-install.packages("tidyr")
-install.packages("purrr")
-install.packages("furrr")
-install.packages("future")
+#install.packages("dplyr")
+#install.packages("ggplot2")
+#install.packages("readr")
+#install.packages("stringr")
+#install.packages("tibble")
+#install.packages("data.table")
+#install.packages('MASS')
+#install.packages("tidyr")
+#install.packages("purrr")
+#install.packages("furrr")
+#install.packages("future")
 #install.packages("profvis")
-install.packages("dqrng")
+#install.packages("dqrng")
 #install.packages("Rcpp")
 #install.packages("Rmpfr")
 
@@ -28,14 +28,34 @@ library(tidyr)
 library(purrr)
 library(furrr)
 library(future)
-#library(profvis)
+library(profvis)
 library(dqrng)
-#library(Rcpp)
-#library(Rmpfr)
+library(Rcpp)
+
+
+args <- commandArgs(trailingOnly = TRUE)
+keyFileDir <- "/Integratomics_MS"
+
+if (length(args) > 2) {
+  print("Correct directory format: /path/to/input /path/to/output")
+  stop("Error: too many arguments. Please check your arguments and specify input and output directories. If only one argument is provided, it will be treated as both input and output.")
+} else if (length(args) == 2) {
+  input_dir <- args[1]
+  output_dir <- args[2]
+} else if (length(args) == 1) {
+  input_dir <- args[1]
+  output_dir <- args[1]
+} else if (length(args) == 0) {
+  print("Correct directory format: /path/to/input /path/to/output")
+  stop("Error: no arguments provided. Please specify input and output directories. If only one argument is provided, it will be treated as both input and output.")
+}
+
+print(paste("Input directory set to:", input_dir))
+print(paste("Output directory set to:", output_dir))
 
 
 #'[Settings]
-workDir <- "/your/directory/here"
+workDir <- input_dir
 setwd(workDir)
 
 
@@ -52,7 +72,7 @@ for (currentFile in txtFiles) {
   data_t <- data_t %>% mutate(source_file = currentFile)
   studyInfoDF <- bind_rows(studyInfoDF, data_t)
 }
-colnames(studyInfoDF) <- c("studyFile", "studyType", "studyName", "studyDataType")
+colnames(studyInfoDF) <- c("studyType", "studyName", "studyDataType", "studyFile")
 #Clean up input - remove whitespaces and convert to lower
 studyInfoDF <- studyInfoDF %>%
   mutate(
@@ -61,13 +81,14 @@ studyInfoDF <- studyInfoDF %>%
   )
   
 #Read the base file for chromosome lengths (data from UCSC)
-hg38BaseFile <- read.table("hg38_UCSC_chrom_lengths.txt", sep="\t")
+hg38BaseFile <- read.table(paste0(keyFileDir,"/hg38_UCSC_chrom_lengths.txt"), sep="\t")
 
 print("Preparing genome location backbone")
 #Read in or prepare location backbone
 #WARNING: initial preparation could take several hours because it's not paralellized and highly inefficient
-if (!file.exists("hg38_UCSC_chrom_lengths.txt"))
+if (!file.exists((paste0(keyFileDir,"/locationBackbone.txt"))))
 {
+  print("Preparing location backbone from hg38 base file, this could take several hours.")
   locationBackbone <- tibble::tibble()
   colnames(locationBackbone) <- c("intervalNumber","intervalChrom", "intervalStart", "intervalEnd")
   
@@ -114,7 +135,7 @@ if (!file.exists("hg38_UCSC_chrom_lengths.txt"))
   
   write.table(locationBackbone, file = "locationBackbone_R-version.txt", sep = "\t", row.names = FALSE, quote = FALSE)
 } else {
-  locationBackbone <- read.table("locationBackbone.txt", sep="\t", header = TRUE)
+  locationBackbone <- read.table(paste0(keyFileDir,"/locationBackbone.txt"), sep="\t", header = TRUE)
 }
 
 
@@ -286,7 +307,7 @@ print("Estimating gene densities within intervals")
 #For example, if you permuted signals from intergenic regions with gene regions, it would significantly reduce the threshold for a signal being statistically significant
 #Thus, permuting intervals together based on their gene density is done to avoid flooding the results with false positives
 
-biomartGeneLocations <- read.table("mart_export.txt", sep="\t", header = TRUE) %>%
+biomartGeneLocations <- read.table(paste0(keyFileDir,"/mart_export.txt"), sep="\t", header = TRUE) %>%
   dplyr::distinct() %>%
   dplyr::select(Chromosome.scaffold.name, Gene.start..bp., Gene.end..bp., Gene.name, Gene.stable.ID) %>%
   dplyr::rename(Chrom = Chromosome.scaffold.name, Start = Gene.start..bp., End = Gene.end..bp., Gene_name = Gene.name, Ensembl_ID = Gene.stable.ID) %>%
@@ -351,7 +372,7 @@ print("Removing intervals with no signals")
 #Remove unnecessary columns, keep only intervals with signal (if arithm_rank_product is the same as the lowest rank (length of data), then it's signal-less)
 #Data cleanup - Convert all rank_ columns to numerics
 nonZeroLocations <- locationBackbone %>%
-  dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, interval_rank_product, arithm_rank_product, gene_count, dplyr::starts_with("rank_")) %>%
+  dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, interval_rank_product, arithm_rank_product, gene_count, gene_names, dplyr::starts_with("rank_")) %>%
   dplyr::filter(arithm_rank_product != length(locationBackbone$intervalNumber)) %>%
   dplyr::mutate(across(starts_with("rank_"), as.numeric))
 
@@ -460,7 +481,7 @@ resultRaw <- result2
 
 #Append location data
 locationData <- nonZeroLocations %>%
-  dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, arithm_rank_product)
+  dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, gene_count, gene_names, arithm_rank_product)
 result2 <- result2 %>%
   dplyr::select(!tidyselect::starts_with("RSPerm"))
 result2 <- dplyr::left_join(result2, locationData, by = "intervalNumber") %>%
@@ -474,33 +495,36 @@ result2 <- result2 %>%
 
 
 
-print("Statistics calculated, outputting results file")
+print("Statistics calculated, outputting result files")
 
+#Output raw results
 results_for_print_raw <- result2 %>%
   dplyr::rename(rank_product = RS) %>%
   dplyr::rename(interval_rank = arithm_rank_desc) %>%
-  dplyr::select(intervalNumber, intervalStart, intervalEnd, sourceFiles, fileCount, gene_count, interval_rank, rank_product, cValue, cValuePseudoCount, empiricalPval)
+  dplyr::select(intervalNumber, intervalStart, intervalEnd, sourceFiles, fileCount, gene_count, gene_names, interval_rank, rank_product, cValue, cValuePseudoCount, empiricalPval)
+write.table(results_for_print_raw, file=paste0(output_dir,"/Integration_results_raw_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
 
-write.table(results_for_print_raw, file=paste0("Integration_results_raw_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
-
+#Output significant results
 results_for_print_sig <- results_for_print_raw %>%
   dplyr::filter(empiricalPval <= 0.05)
+write.table(results_for_print_sig, file=paste0(output_dir,"/Integration_results_significant_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
 
-write.table(results_for_print_sig, file=paste0("Integration_results_significant_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
-#write.table(result2, file=paste0("Integration_results_testOutput_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
+#Output unique gene names mapped to significant intervals
+sigGenes <- results_for_print_sig[, {
+  # Split gene_names by ";" and unlist
+  genes <- unlist(base::strsplit(gene_names, ";"))
+  # Return the unique gene names
+  unique(genes)
+}]
+sigGenes <- data.frame(gene_name = sigGenes) %>%
+  dplyr::filter(!is.na(gene_name))
+write.table(sigGenes, file=paste0(output_dir,"/Genes_from_significant_intervals_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
 
-#'[EXPERIMENTAL - Fitting a generalized Pareto distribution
-#
-setwd("/your/directory/here")
-result2 <- read.table("Integration_results_testOutput_2024-11-08.tsv", header = TRUE)
-result2 <- result2 %>%
-  dplyr::mutate(cValuePseudoCount = cValue + 1) %>%
-  dplyr::mutate(empiricalPval = cValuePseudoCount/nPerm)
-
-png(filename = "empiricalPvalueHistogram.png", width = 1280, height = 840)
+png(filename = paste0(output_dir,"/empiricalPvalueHistogram.png"), width = 1280, height = 840)
 ggplot(data = result2, aes(x=empiricalPval)) + 
   geom_histogram(binwidth=1/nPerm)
 dev.off()
+
 
 #Set seed
 set.seed(1234)
