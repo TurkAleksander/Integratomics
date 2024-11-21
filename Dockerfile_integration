@@ -68,8 +68,21 @@ RUN Rscript -e "remotes::install_version('profvis', version = '0.4.0', repos = '
 RUN Rscript -e "remotes::install_version('dqrng', version = '0.4.1', repos = 'https://cloud.r-project.org/')"
 RUN Rscript -e "remotes::install_version('Rcpp', version = '1.0.13', repos = 'https://cloud.r-project.org/')"
 
+# Stage to clone the GitHub repository
+FROM alpine:3.20.3 AS clone
+# Install git
+RUN apk update && apk add --no-cache git
+# Add a build argument to force re-download
+ARG CACHEBUST=1
+
 #Download necessary files from repository
 RUN git clone https://github.com/TurkAleksander/Integratomics /Integratomics
+
+# Final stage to combine everything
+FROM base
+# Copy the cloned repository from the clone stage
+COPY --from=clone /Integratomics /Integratomics
+
 #Set work dir
 WORKDIR /Integratomics
 #Set entrypoint to allow for running the script
