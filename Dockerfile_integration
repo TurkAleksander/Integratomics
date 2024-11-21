@@ -72,7 +72,7 @@ RUN git clone https://https://github.com/TurkAleksander/Integratomics /Integrato
 #Set work dir
 WORKDIR /Integratomics
 #Set entrypoint to allow for running the script
-ENTRYPOINT ["Rscript", "/Integratomics_MS/R_integration_code_dockerVersion.r"]
+ENTRYPOINT ["Rscript", "/Integratomics/R_integration_code_dockerVersion.r"]
 
 CMD ["/input", "/output"]
 
