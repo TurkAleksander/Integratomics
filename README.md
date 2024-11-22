@@ -7,7 +7,7 @@ File descriptions:
 - **R_integration_code_dockerVersion.r**: Dockerized version of the integration code. Draws directories from arguments passed when running the Docker. Will not run without an input directory. If you do not specify an output, it will output results to your input directory.
 - **Dockerfile_integration**: Dockerfile with instructions on making the image. Downloads Alpine Linux, installs dependencies, and necessary packages and clones this repository anew with every build. Uses specific versions of packages for stability, this can be changed here. If you do so, run the build command with --no-cache to reinstall everything.
 - **Docker_build_template.sh**: How to build the Docker image - this is where you can also specify the Docker image's name.
-- **Docker_run_template.sh**: How to run the Docker with placeholder directories - here you specify where the input files are on your system, as well as where you want the output to be.
+- **Docker_run_template.sh**: How to run the Docker container with placeholder directories - here you specify where the input files are on your system, as well as where you want the output to be.
 - **hg38_UCSC_chrom_lengths.txt**: Chromosome lengths from the UCSC browser - needed in case a genomic backbone needs to be constructed from scratch (not recommended - it takes a while as it's not optimized at all).
 - **locationBackbone.txt**: A table of 10,000 base pair intervals along each chromosome. Each interval has a 5,000bp overlap with its neighbouring intervals.
 - **locationBackbone_R-version.txt**: Same as locationBackbone.txt, but constructed using the in-built code ("from scratch"). The only difference is that it uses a Unix line ending ("\n") instead of ("\r\n").
