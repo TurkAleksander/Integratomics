@@ -181,6 +181,12 @@ if (!is.data.table(locationBackbone)) {
   setDT(locationBackbone)
 }
 
+cumulativeSourceFiles <- data.table(intervalChrom = character(),
+                                    intervalStart = integer(),
+                                    intervalEnd = integer(),
+                                    sourceFiles = character(),
+                                    fileCount = integer())
+
 for (StudyType in unique(studyInfoDF$studyType)) {
   fileNames <- studyInfoDF %>%
     dplyr::filter(studyType == StudyType) %>%
@@ -197,7 +203,7 @@ for (StudyType in unique(studyInfoDF$studyType)) {
 
     # Add the file name as a new column
     currentFileData[, sourceFile := file]
-    
+
     # Ensure that currentFileData is a data.table
     if (!is.data.table(currentFileData)) {
       setDT(currentFileData)
@@ -216,12 +222,13 @@ for (StudyType in unique(studyInfoDF$studyType)) {
     setkey(locationBackbone, intervalChrom, intervalStart, intervalEnd)
 
     # Find overlaps between currentFileData and locationBackbone
-    overlaps <- foverlaps(currentFileData, locationBackbone, type = "any", nomatch = 0)
+    overlaps <<- foverlaps(currentFileData, locationBackbone, type = "any", nomatch = 0)
 
+    
     # For each interval on locationBackbone, keep only the row from currentFileData
     # with the lowest intervalSignal (p-value)
-    filteredOverlaps <- overlaps[, .SD[which.max(intervalSignal)], 
-                                 by = .(intervalChrom, intervalStart, intervalEnd)]
+    filteredOverlaps <<- overlaps[, .SD[which.max(intervalSignal)], 
+                                 by = .(intervalChrom, intervalStart, intervalEnd, sourceFile)]
     
     return(filteredOverlaps)
   }))
@@ -243,6 +250,9 @@ for (StudyType in unique(studyInfoDF$studyType)) {
   sourceFiles <- fileDataHolder[, .(sourceFiles = paste(unique(sourceFile), collapse = ";"),
                                     fileCount = uniqueN(sourceFile)), 
                                 by = .(intervalChrom, intervalStart, intervalEnd)]
+  # Update cumulativeSourceFiles with new sourceFiles information
+  cumulativeSourceFiles <- rbind(cumulativeSourceFiles, sourceFiles, fill = TRUE)
+  
   
   locationBackbone[sourceFiles, on = .(intervalChrom, intervalStart, intervalEnd), 
                    `:=`(sourceFiles = sourceFiles, fileCount = fileCount)]
@@ -260,7 +270,37 @@ for (StudyType in unique(studyInfoDF$studyType)) {
                    sourceFiles := sourceFiles]
 }
 
+cumulativeSourceFiles <- cumulativeSourceFiles[, .(sourceFiles = paste(unique(sourceFiles), collapse = ";"),
+                                                   fileCount = sum(fileCount)), 
+                                               by = .(intervalChrom, intervalStart, intervalEnd)]
+#Add source file data to the backbone
+locationBackbone[cumulativeSourceFiles, on = .(intervalChrom, intervalStart, intervalEnd), 
+                 `:=`(sourceFiles = sourceFiles, fileCount = fileCount)]
 
+#Convert to tibbles, update locationBackbone, return to data.table
+locationBackbone_tbl <- as_tibble(locationBackbone)
+cumulativeSourceFiles_tbl <- as_tibble(cumulativeSourceFiles)
+
+
+locationBackbone_tbl <- locationBackbone_tbl %>%
+  dplyr::left_join(cumulativeSourceFiles_tbl, by = c("intervalChrom", "intervalStart", "intervalEnd")) %>%
+  dplyr::mutate(sourceFiles = coalesce(sourceFiles.y, sourceFiles.x),
+         fileCount = coalesce(fileCount.y, fileCount.x)) %>%
+  dplyr::select(-sourceFiles.x, -sourceFiles.y, -fileCount.x, -fileCount.y)
+
+locationBackbone <- as.data.table(locationBackbone_tbl) %>%
+  dplyr::mutate_at(c('fileCount'), ~replace_na(.,0)) %>%
+  dplyr::mutate(sourceFiles = ifelse(is.na(sourceFiles), "", sourceFiles))
+
+#Add information on how many signals are actually mapped from each individual file - helps to double-check your data
+print("Checking number of signals mapped to intervals from each individual file")
+uniqueSourceFiles <- unique(unlist(strsplit(locationBackbone_tbl$sourceFiles, ";"))) %>%
+  as.data.frame(nm = (c("sourceFiles"))) %>%
+  dplyr::filter(!is.na(sourceFiles))
+
+uniqueSourceFiles$numIntervals <- sapply(uniqueSourceFiles$sourceFiles, function(sourceFile) {
+  sum(str_count(locationBackbone$sourceFiles, fixed(sourceFile)))
+})
 
 #'[ADD ARITHMETIC MEAN OF RANKS - rank product]
 #You can use either geometric or arithmetic mean (Breitling et al. 2016), we used the arithmetic mean
@@ -318,7 +358,8 @@ colnames(overlaps)[colnames(overlaps) == "Chrom"] = "intervalChrom"
 # Count the number of genes and concatenate gene names for each interval
 geneCounts <- overlaps[, .(
   gene_count = .N,
-  genes = paste(unique(Gene_name), collapse = ";")
+  genes = paste(unique(Gene_name), collapse = ";"),
+  geneEnsemblIDs = paste(unique(Ensembl_ID), collapse = ";")
 ), by = .(intervalChrom, intervalStart, intervalEnd)]
 
 # Add gene count and concatenated gene names to locationBackbone
@@ -327,7 +368,8 @@ locationBackbone <- locationBackbone[
   on = .(intervalChrom, intervalStart, intervalEnd),
   `:=`(
     gene_count = i.gene_count,
-    gene_names = i.genes
+    gene_names = i.genes,
+    gene_Ensembl_IDs = i.geneEnsemblIDs
   )
 ]
 
@@ -351,7 +393,7 @@ print("Removing intervals with no signals")
 #Remove unnecessary columns, keep only intervals with signal (if arithm_rank_product is the same as the lowest rank (length of data), then it's signal-less)
 #Data cleanup - Convert all rank_ columns to numerics
 nonZeroLocations <- locationBackbone %>%
-  dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, interval_rank_product, arithm_rank_product, gene_count, dplyr::starts_with("rank_")) %>%
+  dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, interval_rank_product, arithm_rank_product, gene_count, gene_Ensembl_IDs, dplyr::starts_with("rank_")) %>%
   dplyr::filter(arithm_rank_product != length(locationBackbone$intervalNumber)) %>%
   dplyr::mutate(across(starts_with("rank_"), as.numeric))
 
@@ -460,7 +502,7 @@ resultRaw <- result2
 
 #Append location data
 locationData <- nonZeroLocations %>%
-  dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, arithm_rank_product)
+  dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, gene_count, gene_names, gene_Ensembl_IDs, arithm_rank_product)
 result2 <- result2 %>%
   dplyr::select(!tidyselect::starts_with("RSPerm"))
 result2 <- dplyr::left_join(result2, locationData, by = "intervalNumber") %>%
@@ -470,78 +512,46 @@ result2 <- dplyr::left_join(result2, locationData, by = "intervalNumber") %>%
 #Add row that calculates the p-value, in this case the percentage of false positives (PFP), where PFP = Erp/rank
 
 result2 <- result2 %>%
-  dplyr::mutate(empiricalPval = (cValuePseudoCount) / (nPerm))
+  dplyr::mutate(empiricalPval = (cValuePseudoCount) / (nPerm+1)) %>%
+  dplyr::mutate(empiricalPval = round(empiricalPval, digits = 3))
 
 
 
-print("Statistics calculated, outputting results file")
+print("Statistics calculated, outputting result files")
 
+#Output raw results
 results_for_print_raw <- result2 %>%
   dplyr::rename(rank_product = RS) %>%
   dplyr::rename(interval_rank = arithm_rank_desc) %>%
-  dplyr::select(intervalNumber, intervalStart, intervalEnd, sourceFiles, fileCount, gene_count, interval_rank, rank_product, cValue, cValuePseudoCount, empiricalPval)
-
+  dplyr::select(intervalNumber, intervalStart, intervalEnd, sourceFiles, fileCount, gene_count, gene_names, gene_Ensembl_IDs, interval_rank, rank_product, cValue, cValuePseudoCount, empiricalPval)
 write.table(results_for_print_raw, file=paste0("Integration_results_raw_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
 
+#Output significant results
 results_for_print_sig <- results_for_print_raw %>%
   dplyr::filter(empiricalPval <= 0.05)
-
 write.table(results_for_print_sig, file=paste0("Integration_results_significant_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
-#write.table(result2, file=paste0("Integration_results_testOutput_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
 
-#'[EXPERIMENTAL - Fitting a generalized Pareto distribution
-#
-setwd("/your/directory/here")
-result2 <- read.table("Integration_results_testOutput_2024-11-08.tsv", header = TRUE)
-result2 <- result2 %>%
-  dplyr::mutate(cValuePseudoCount = cValue + 1) %>%
-  dplyr::mutate(empiricalPval = cValuePseudoCount/nPerm)
+#Output unique gene names mapped to significant intervals
+sigGenes <- results_for_print_sig %>%
+  dplyr::select(gene_names) %>%
+  tidyr::separate_longer_delim(gene_names, delim = ";") %>%
+  dplyr::distinct() %>%
+  dplyr::filter(gene_names != "", !is.na(gene_names))
+write.table(sigGenes, file=paste0("Genes_from_significant_intervals_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
+
+sigEnsembl <- results_for_print_sig %>%
+  dplyr::select(gene_Ensembl_IDs) %>%
+  tidyr::separate_longer_delim(gene_Ensembl_IDs, delim = ";") %>%
+  dplyr::distinct() %>%
+  dplyr::filter(gene_Ensembl_IDs != "", !is.na(gene_Ensembl_IDs))
+write.table(sigEnsembl, file=paste0("EnsemblIDs_from_significant_intervals_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
 
 png(filename = "empiricalPvalueHistogram.png", width = 1280, height = 840)
 ggplot(data = result2, aes(x=empiricalPval)) + 
   geom_histogram(binwidth=1/nPerm)
 dev.off()
 
-#Set seed
-set.seed(1234)
-install.packages("ROOPSD")
-library(ROOPSD)
-install.packages("ismev")
-library(ismev)
-
-tail_pvalues <- result2$empiricalPval[result2$empiricalPval < 0.05]
-# Threshold for tail modeling
-threshold <- quantile(tail_pvalues, 0.05)
-# Filter p-values <= threshold
-
-# Calculate exceedances
-exceedances <- tail_pvalues - threshold
-exceedances <- exceedances[exceedances >= 0]
-# Fit the GPD using the 'ismev' package
-gpd_fit <- gpd.fit(exceedances, threshold = 0, show = TRUE)
-
-# Extract parameters
-scale <- gpd_fit$mle[1]
-shape <- gpd_fit$mle[2]
-
-cat("Fitted GPD parameters:\n")
-cat("Scale:", scale, "\nShape:", shape, "\n")
-cat("Fitted GPD parameters:\n")
-cat("Scale:", scale, "\nShape:", shape, "\n")
-
-# Estimate adjusted p-values for observed p-values < threshold
-observed_pvalues <- c(tail_pvalues)  # Replace with your observed p-values
-adjusted_pvalues <- sapply(observed_pvalues, function(p) {
-  if (p < threshold) {
-    exceedance <- p - threshold
-    1 - ROOPSD::pgpd(exceedance, loc = 0, scale = scale, shape = shape)
-  } else {
-    mean(tail_pvalues <= p)
-  }
-})
-
-# Print adjusted p-values
-GPDresults <- data.frame(observed_pvalues, adjusted_pvalues)
+write.table(uniqueSourceFiles, file=paste0("Signals_by_file_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
 
 print("Analysis complete!")
 
