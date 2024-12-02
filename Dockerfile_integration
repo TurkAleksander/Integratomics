@@ -67,6 +67,8 @@ RUN Rscript -e "remotes::install_version('future', version = '1.34.0', repos = '
 RUN Rscript -e "remotes::install_version('profvis', version = '0.4.0', repos = 'https://cloud.r-project.org/')"
 RUN Rscript -e "remotes::install_version('dqrng', version = '0.4.1', repos = 'https://cloud.r-project.org/')"
 RUN Rscript -e "remotes::install_version('Rcpp', version = '1.0.13', repos = 'https://cloud.r-project.org/')"
+RUN Rscript -e "remotes::install_version('CMplot', version = '4.5.1', repos = 'https://cloud.r-project.org/')"
+RUN Rscript -e "remotes::install_version('qqman', version = '0.1.9', repos = 'https://cloud.r-project.org/')"
 
 # Stage to clone the GitHub repository
 FROM alpine:3.20.3 AS clone

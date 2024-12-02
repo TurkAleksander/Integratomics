@@ -1,22 +1,6 @@
 #INSTALL PACKAGES
 print("Installing packages and loading libraries")
 
-#install.packages("dplyr")
-#install.packages("ggplot2")
-#install.packages("readr")
-#install.packages("stringr")
-#install.packages("tibble")
-#install.packages("data.table")
-#install.packages('MASS')
-#install.packages("tidyr")
-#install.packages("purrr")
-#install.packages("furrr")
-#install.packages("future")
-#install.packages("profvis")
-#install.packages("dqrng")
-#install.packages("Rcpp")
-#install.packages("Rmpfr")
-
 library(dplyr)
 library(ggplot2)
 library(readr)
@@ -28,10 +12,8 @@ library(tidyr)
 library(purrr)
 library(furrr)
 library(future)
-#library(profvis)
-#library(dqrng)
-#library(Rcpp)
-
+library(CMplot)
+library(qqman)
 
 args <- commandArgs(trailingOnly = TRUE)
 keyFileDir <- "/Integratomics"
@@ -577,12 +559,166 @@ sigEnsembl <- results_for_print_sig %>%
   dplyr::filter(gene_Ensembl_IDs != "", !is.na(gene_Ensembl_IDs))
 write.table(sigEnsembl, file=paste0("EnsemblIDs_from_significant_intervals_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
 
-png(filename = "empiricalPvalueHistogram.png", width = 1280, height = 840)
+write.table(uniqueSourceFiles, file=paste0("Signals_by_file_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
+
+#'[PLOT OUTPUTS]
+print("Creating P-value histogram and various Manhattan plots")
+
+png(filename = "empiricalPvalueHistogram.png",
+    width = 1280,
+    height = 840)
 ggplot(data = result2, aes(x=empiricalPval)) + 
   geom_histogram(binwidth=1/nPerm)
 dev.off()
 
-write.table(uniqueSourceFiles, file=paste0("Signals_by_file_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
+#_____________________
+#Making Manhattan plots
+#_____________________
+#Add -log10(pval)
+results_for_print_raw$NegLog10Signal <- -log10(results_for_print_raw$empiricalPval)
+
+#Sort chromosomes numerically and assign positions for x-axis, define threshold for coloring columns red above the Y-axis line
+results_for_print_raw$intervalChrom <- factor(results_for_print_raw$intervalChrom, levels = unique(results_for_print_raw$intervalChrom))
+results_for_print_raw$Position <- as.numeric(results_for_print_raw$intervalChrom) + (results_for_print_raw$intervalStart / max(results_for_print_raw$intervalStart))
+threshold <- -log10(0.05)
+
+chromosome_midpoints <- results_for_print_raw %>%
+  group_by(intervalChrom) %>%
+  summarize(mid_point = mean(Position))
+
+png(filename = paste0("Integ_Manhattan_plot_v1_", Sys.Date(), ".png"),
+    width = 1600,
+    height = 840)
+ggplot(results_for_print_raw, aes(x = Position, y = NegLog10Signal)) +
+  geom_point(aes(color = NegLog10Signal > threshold), alpha = 0.7) +
+  scale_color_manual(values = c("black", "red"), guide = "none") +
+  geom_hline(yintercept = threshold, linetype = "dashed", color = "blue") +
+  labs(
+    title = "Manhattan Plot of Genomic Regions",
+    x = "Chromosomes",
+    y = expression(-log[10](empirical_pValue))
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    panel.grid.minor = element_blank()
+  ) +
+  scale_x_continuous(
+    breaks = chromosome_midpoints$mid_point,
+    labels = chromosome_midpoints$intervalChrom
+  )
+dev.off()
+
+Manhattan_results <- results_for_print_raw %>%
+  dplyr::mutate(intervalChrom = recode(intervalChrom,
+                             "chrX" = "chr23",
+                             "chrY" = "chr24",
+                             "chrM" = "chr25")) %>%
+  dplyr::mutate(across('intervalChrom', str_replace, 'chr', '')) %>%
+  dplyr::mutate(intervalChrom = as.numeric(intervalChrom))
+
+chromosome_midpoints2 <- Manhattan_results %>%
+  group_by(intervalChrom) %>%
+  summarize(mid_point = mean(Position))
+
+png(filename = paste0("Integ_Manhattan_plot_v2_", Sys.Date(), ".png"),
+    width = 1600,
+    height = 840) 
+ggplot(Manhattan_results, aes(x = Position, y = NegLog10Signal)) +
+  geom_point( aes(color=as.factor(intervalChrom)), alpha=0.8, size=1.3) +
+  scale_color_manual(values = rep(c("grey", "skyblue"), 22 )) +
+  geom_hline(yintercept = threshold, linetype = "dashed", color = "red") +
+  scale_x_continuous(
+    label = chromosome_midpoints2$intervalChrom,
+    breaks= chromosome_midpoints2$mid_point
+    ) +
+  scale_y_continuous(expand = c(0, 0) ) +
+  
+  theme_bw() +
+  theme( 
+    legend.position="none",
+    panel.border = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank()
+  )
+dev.off()
+
+png(filename = paste0("Integ_Manhattan_plot_v3_", Sys.Date(), ".png"),
+    width = 1600,
+    height = 840) 
+qqman::manhattan(Manhattan_results, chr="intervalChrom", bp="intervalStart", snp="intervalNumber", p="empiricalPval", genomewideline = -log10(0.05) )
+dev.off()
+
+
+sigIntervals <- Manhattan_results %>%
+  dplyr::filter(empiricalPval <= 0.05) %>%
+  dplyr::select(intervalNumber) %>%
+  unlist() %>%
+  as.vector()
+png(filename = paste0("Integ_Manhattan_plot_v4_", Sys.Date(), ".png"),
+    width = 1600,
+    height = 840) 
+qqman::manhattan(Manhattan_results, chr="intervalChrom", bp="intervalStart", snp="intervalNumber", p="empiricalPval", genomewideline = -log10(0.05), highlight = sigIntervals)
+dev.off()
+
+
+Manhattan_results_circ <- Manhattan_results %>%
+  dplyr::select(intervalNumber, intervalChrom, intervalStart, empiricalPval)
+  
+CMplot(Manhattan_results_circ,
+       plot.type="m",
+       col=c("grey30","grey60"),
+       LOG10=TRUE,
+       threshold=c(0.05),
+       threshold.lty=c(1,2),
+       threshold.lwd=c(1,1),
+       threshold.col=c("black","grey"),
+       amplify=TRUE,
+       chr.den.col=NULL,
+       signal.col=c("red"),
+       signal.cex=1,
+       signal.pch=c(19,19),
+       file.name = paste0("Integ_Manhattan_plot_v5_", Sys.Date()),
+       file="jpg",
+       file.output=TRUE,
+       verbose=TRUE,
+       dpi=300,
+       width=14,height=6)
+
+CMplot(Manhattan_results_circ, plot.type="c", r=1.6,
+       outward=TRUE, cir.chr.h=.1 ,chr.den.col="orange",
+       file.name = paste0("Integ_Manhattan_plot_v6_", Sys.Date()),
+       file="jpg",
+       dpi=300, chr.labels=seq(1,25))
+
+CMplot(
+  Manhattan_results_circ,
+  plot.type = "c",
+  r = 1.6,
+  outward = FALSE,
+  col=c("grey30","grey60"),
+  cir.chr.h = 1,
+  signal.cex = 0.1,
+  file.name = paste0("Integ_Manhattan_plot_v7_", Sys.Date()),
+  file = "jpg",
+  dpi = 300,
+  chr.labels = seq(1, 25)
+)
+
+CMplot(
+  Manhattan_results_circ,
+  plot.type = "c",
+  r = 1.6,
+  outward = TRUE,
+  col=c("grey30","grey60"),
+  cir.chr.h = 1,
+  signal.cex = 0.1,
+  file.name = paste0("Integ_Manhattan_plot_v8_", Sys.Date()),
+  file = "jpg",
+  dpi = 300,
+  chr.labels = seq(1, 25)
+)
+
 
 print("Analysis complete!")
 
