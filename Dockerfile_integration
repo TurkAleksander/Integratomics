@@ -88,7 +88,7 @@ COPY --from=clone /Integratomics /Integratomics
 #Set work dir
 WORKDIR /Integratomics
 #Set entrypoint to allow for running the script
-ENTRYPOINT ["Rscript", "/Integratomics/R_integration_code_dockerVersion.r"]
+ENTRYPOINT ["sh", "-c", "Rscript /Integratomics/R_integration_code_dockerVersion.r && Rscript /Integratomics/Integration_bootstrapping_dockerVersion.R && Rscript /Integratomics/Integration_bootstrap_analysis_dockerVersion.R"]
 
 CMD ["/input", "/output"]
 
