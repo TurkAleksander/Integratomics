@@ -14,6 +14,7 @@ library(furrr)
 library(future)
 library(CMplot)
 library(qqman)
+library(ggtext)
 
 args <- commandArgs(trailingOnly = TRUE)
 keyFileDir <- "/Integratomics"
