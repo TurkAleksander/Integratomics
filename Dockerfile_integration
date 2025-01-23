@@ -27,7 +27,8 @@ RUN apk update && \
     openblas-dev \
     zip \
     file \
-    coreutils
+    coreutils \
+    libcurl4-openssl-dev
 
 RUN apk --no-cache add --virtual build-deps \
     perl \
