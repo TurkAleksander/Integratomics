@@ -1,20 +1,20 @@
 #INSTALL PACKAGES
 print("Installing packages and loading libraries")
 
-install.packages("dplyr")
-install.packages("ggplot2")
-install.packages("readr")
-install.packages("stringr")
-install.packages("tibble")
-install.packages("data.table")
-install.packages('MASS')
-install.packages("tidyr")
-install.packages("purrr")
-install.packages("furrr")
-install.packages("future")
-install.packages("ggtext")
-install.packages("qqman")
-install.packages("CMplot")
+#install.packages("dplyr")
+#install.packages("ggplot2")
+#install.packages("readr")
+#install.packages("stringr")
+#install.packages("tibble")
+#install.packages("data.table")
+#install.packages('MASS')
+#install.packages("tidyr")
+#install.packages("purrr")
+#install.packages("furrr")
+#install.packages("future")
+#install.packages("ggtext")
+#install.packages("qqman")
+#install.packages("CMplot")
 
 library(CMplot)
 library(qqman)
@@ -132,7 +132,7 @@ if (!file.exists((paste0(keyFileDir,"/locationBackbone.txt"))))
   locationBackbone[, i] <- apply(locationBackbone[, i], 2, function(x) as.numeric(as.character(x)))
   sapply(locationBackbone, class)
   
-  write.table(locationBackbone, file = paste0(keyFileDir,"/locationBackbone.txt"), sep = "\t", row.names = FALSE, quote = FALSE)
+  write.table(locationBackbone, file = "locationBackbone_R-version.txt", sep = "\t", row.names = FALSE, quote = FALSE)
 } else {
   locationBackbone <- read.table(paste0(keyFileDir,"/locationBackbone.txt"), sep="\t", header = TRUE)
 }
@@ -510,12 +510,7 @@ for (i in 1:apply_boot) {
   result2 <- dplyr::left_join(result2, locationData, by = "intervalNumber") %>%
     dplyr::mutate(arithm_rank_desc = rank(-RS, ties.method = "max"))
   
-  #ensemblData <- locationBackbone %>%
-  #  dplyr::select(intervalNumber, gene_Ensembl_IDs)
-  #result2 <- dplyr::left_join(result2, ensemblData, by = "intervalNumber")
-  #Add row that calculates the expected RP value (Erp = cValue/number of permutations)
-  #Add row that calculates the p-value, in this case the percentage of false positives (PFP), where PFP = Erp/rank
-  
+  #Calculate empirical p-value along with pseudocount, round to 3 decimals
   result2 <- result2 %>%
     dplyr::mutate(empiricalPval = (cValuePseudoCount) / (nPerm+1)) %>%
     dplyr::mutate(empiricalPval = round(empiricalPval, digits = 3))
@@ -529,32 +524,6 @@ for (i in 1:apply_boot) {
     dplyr::rename(rank_product = RS) %>%
     dplyr::rename(interval_rank = arithm_rank_desc) %>%
     dplyr::select(intervalChrom, intervalNumber, intervalStart, intervalEnd, sourceFiles, fileCount, gene_count, gene_names, gene_Ensembl_IDs, interval_rank, rank_product, cValue, cValuePseudoCount, empiricalPval)
-  write.table(results_for_print_raw, file=paste0(output_dir, "Integration_results_raw_bootstrapRun_",i,"_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
-  
-  #Output significant results
-  #results_for_print_sig <- results_for_print_raw %>%
-  #  dplyr::filter(empiricalPval <= 0.05)
-  #write.table(results_for_print_sig, file=paste0("Integration_results_significant_bootstrapRun_",i,"_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
-  
+  write.table(results_for_print_raw, file=paste0(output_dir,"/","Integration_results_raw_bootstrapRun_",i,"_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
   
 }
-
-
-
-#Output unique gene names mapped to significant intervals
-# sigGenes <- results_for_print_sig %>%
-#   dplyr::select(gene_names) %>%
-#   tidyr::separate_longer_delim(gene_names, delim = ";") %>%
-#   dplyr::distinct() %>%
-#   dplyr::filter(gene_names != "", !is.na(gene_names))
-# write.table(sigGenes, file=paste0("Genes_from_significant_intervals_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
-
-# sigEnsembl <- results_for_print_sig %>%
-#   dplyr::select(gene_Ensembl_IDs) %>%
-#   tidyr::separate_longer_delim(gene_Ensembl_IDs, delim = ";") %>%
-#   dplyr::distinct() %>%
-#   dplyr::filter(gene_Ensembl_IDs != "", !is.na(gene_Ensembl_IDs))
-# write.table(sigEnsembl, file=paste0("EnsemblIDs_from_significant_intervals_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
-
-#Signal per file output
-#write.table(uniqueSourceFiles, file=paste0("Signals_by_file_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)

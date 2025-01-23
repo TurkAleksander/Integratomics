@@ -34,7 +34,7 @@ library(ggtext)
 
 
 #'[Settings]
-workDir <- "/cmg1scratch/PROJECTS/MS_integratomics/Data_integration/All_integ_data"
+workDir <- "/your/directory/here"
 setwd(workDir)
 
 
@@ -60,12 +60,12 @@ studyInfoDF <- studyInfoDF %>%
   )
 
 #Read the base file for chromosome lengths (data from UCSC)
-hg38BaseFile <- read.table("/cmg1scratch/PROJECTS/MS_integratomics/Data_integration/hg38_UCSC_chrom_lengths.txt", sep="\t")
+hg38BaseFile <- read.table("hg38_UCSC_chrom_lengths.txt", sep="\t")
 
 print("Preparing genome location backbone")
 #Read in or prepare location backbone
 #WARNING: initial preparation could take several hours because it's not paralellized and highly inefficient
-if (!file.exists("/cmg1scratch/PROJECTS/MS_integratomics/Data_integration/hg38_UCSC_chrom_lengths.txt"))
+if (!file.exists("hg38_UCSC_chrom_lengths.txt"))
 {
   locationBackbone <- tibble::tibble()
   colnames(locationBackbone) <- c("intervalNumber","intervalChrom", "intervalStart", "intervalEnd")
@@ -113,7 +113,7 @@ if (!file.exists("/cmg1scratch/PROJECTS/MS_integratomics/Data_integration/hg38_U
   
   write.table(locationBackbone, file = "locationBackbone_R-version.txt", sep = "\t", row.names = FALSE, quote = FALSE)
 } else {
-  locationBackbone <- read.table("/cmg1scratch/PROJECTS/MS_integratomics/Data_integration/locationBackbone.txt", sep="\t", header = TRUE)
+  locationBackbone <- read.table("locationBackbone.txt", sep="\t", header = TRUE)
 }
 
 
@@ -306,7 +306,7 @@ for (i in 5:apply_boot) {
   #For example, if you permuted signals from intergenic regions with gene regions, it would significantly reduce the threshold for a signal being statistically significant
   #Thus, permuting intervals together based on their gene density is done to avoid flooding the results with false positives
   
-  biomartGeneLocations <- read.table("/cmg1scratch/PROJECTS/MS_integratomics/Data_integration/mart_export.txt", sep="\t", header = TRUE) %>%
+  biomartGeneLocations <- read.table("mart_export.txt", sep="\t", header = TRUE) %>%
     dplyr::distinct() %>%
     dplyr::select(Chromosome.scaffold.name, Gene.start..bp., Gene.end..bp., Gene.name, Gene.stable.ID) %>%
     dplyr::rename(Chrom = Chromosome.scaffold.name, Start = Gene.start..bp., End = Gene.end..bp., Gene_name = Gene.name, Ensembl_ID = Gene.stable.ID) %>%
@@ -489,12 +489,7 @@ for (i in 5:apply_boot) {
   result2 <- dplyr::left_join(result2, locationData, by = "intervalNumber") %>%
     dplyr::mutate(arithm_rank_desc = rank(-RS, ties.method = "max"))
   
-  #ensemblData <- locationBackbone %>%
-  #  dplyr::select(intervalNumber, gene_Ensembl_IDs)
-  #result2 <- dplyr::left_join(result2, ensemblData, by = "intervalNumber")
-  #Add row that calculates the expected RP value (Erp = cValue/number of permutations)
-  #Add row that calculates the p-value, in this case the percentage of false positives (PFP), where PFP = Erp/rank
-  
+  #Calculate empirical p-value along with pseudocount, round to 3 decimals
   result2 <- result2 %>%
     dplyr::mutate(empiricalPval = (cValuePseudoCount) / (nPerm+1)) %>%
     dplyr::mutate(empiricalPval = round(empiricalPval, digits = 3))
@@ -510,30 +505,4 @@ for (i in 5:apply_boot) {
     dplyr::select(intervalChrom, intervalNumber, intervalStart, intervalEnd, sourceFiles, fileCount, gene_count, gene_names, gene_Ensembl_IDs, interval_rank, rank_product, cValue, cValuePseudoCount, empiricalPval)
   write.table(results_for_print_raw, file=paste0("Integration_results_raw_bootstrapRun_",i,"_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
   
-  #Output significant results
-  #results_for_print_sig <- results_for_print_raw %>%
-  #  dplyr::filter(empiricalPval <= 0.05)
-  #write.table(results_for_print_sig, file=paste0("Integration_results_significant_bootstrapRun_",i,"_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
-  
-  
 }
-
-
-
-#Output unique gene names mapped to significant intervals
-# sigGenes <- results_for_print_sig %>%
-#   dplyr::select(gene_names) %>%
-#   tidyr::separate_longer_delim(gene_names, delim = ";") %>%
-#   dplyr::distinct() %>%
-#   dplyr::filter(gene_names != "", !is.na(gene_names))
-# write.table(sigGenes, file=paste0("Genes_from_significant_intervals_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
-
-# sigEnsembl <- results_for_print_sig %>%
-#   dplyr::select(gene_Ensembl_IDs) %>%
-#   tidyr::separate_longer_delim(gene_Ensembl_IDs, delim = ";") %>%
-#   dplyr::distinct() %>%
-#   dplyr::filter(gene_Ensembl_IDs != "", !is.na(gene_Ensembl_IDs))
-# write.table(sigEnsembl, file=paste0("EnsemblIDs_from_significant_intervals_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
-
-#Signal per file output
-#write.table(uniqueSourceFiles, file=paste0("Signals_by_file_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)

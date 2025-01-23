@@ -1,20 +1,20 @@
 #INSTALL PACKAGES
 print("Installing packages and loading libraries")
 
-install.packages("dplyr")
-install.packages("ggplot2")
-install.packages("readr")
-install.packages("stringr")
-install.packages("tibble")
-install.packages("data.table")
-install.packages('MASS')
-install.packages("tidyr")
-install.packages("purrr")
-install.packages("furrr")
-install.packages("future")
-install.packages("ggtext")
-install.packages("qqman")
-install.packages("CMplot")
+#install.packages("dplyr")
+#install.packages("ggplot2")
+#install.packages("readr")
+#install.packages("stringr")
+#install.packages("tibble")
+#install.packages("data.table")
+#install.packages('MASS')
+#install.packages("tidyr")
+#install.packages("purrr")
+#install.packages("furrr")
+#install.packages("future")
+#install.packages("ggtext")
+#install.packages("qqman")
+#install.packages("CMplot")
 
 library(CMplot)
 library(qqman)
@@ -55,17 +55,17 @@ print(paste("Output directory set to:", output_dir))
 
 
 #'[Settings]
-workDir <- input_dir
+workDir <- output_dir
 setwd(workDir)
 
 #'[Reading in the data]
 
 print("Reading in real dataset result file")
-fileTarget <- list.files(output_dir, pattern = "^Integration_results_preBoot_raw_", full.names = TRUE, ignore.case = TRUE)
+fileTarget <- list.files(workDir, pattern = "^Integration_results_raw_real", full.names = TRUE, ignore.case = TRUE)
 realData <-  read.table(fileTarget, header = TRUE, sep = "\t")
 
 #Find the bootstrapped datasets
-bootstrappedFiles <- list.files(output_dir, pattern = "^Integration_results_raw_bootstrapRun", full.names = TRUE)
+bootstrappedFiles <- list.files(workDir, pattern = "^Integration_results_raw_bootstrapRun", full.names = TRUE)
 key_column <- "intervalNumber"
 
 print("Appending data from bootstrapped result files.")
@@ -85,61 +85,40 @@ for (i in seq_along(bootstrappedFiles)) {
     dplyr::select(all_of(key_column), empiricalPval) %>%
     dplyr::rename(!!col_name := empiricalPval)
   
-  # Join the current bootstrapped data with realData
+  #Join the current bootstrapped data with realData
   mergedData <- mergedData %>%
     dplyr::left_join(boot_data, by = key_column)
 }
 
-#'[Boot statistics from distribution]
-#We are essentially checking the distribution of the bootstrapped p-values
-#We're doing this by checking each genomic interval's confidence interval through the mean and standard deviation (SD)
-#If the 95% confidence interval (CI) (mean + 1.96*SD) is lower than our alpha (0.05), then this is a good genomic interval
 
-#Old slower implementation
-# mergedData2 <- mergedData %>%
-#   dplyr::rowwise() %>%
-#   dplyr::mutate(
-#     boot_avg = mean(c_across(starts_with("boot_empiricalPval")), na.rm =TRUE),
-#     boot_stdev = sd(c_across(starts_with("boot_empiricalPval")),  na.rm =TRUE)) %>%
-#   dplyr::ungroup()
-
+#'[Boot statistics]
 
 print("Calculating bootstrapped P-value")
-print("This will be done quickly ...")
-
-mergedData2 <- mergedData %>%
+print("This takes a few minutes ...")
+# Assuming mergedData is your dataframe
+mergedData <- mergedData %>%
+  dplyr::rowwise() %>%
   dplyr::mutate(
-    boot_avg = rowMeans(dplyr::select(., starts_with("boot_empiricalPval")), na.rm = TRUE),
-    boot_stdev = apply(dplyr::select(., starts_with("boot_empiricalPval")), 1, sd, na.rm = TRUE)) %>%
-  dplyr::mutate(bootstrap_dist = (boot_avg + 1.96*boot_stdev))
-  
+    count_lower = sum(c_across(starts_with("boot_empiricalPval")) < empiricalPval, na.rm = TRUE),
+    non_empty_cells = sum(!is.na(c_across(starts_with("boot_empiricalPval")))),
+    bootstrap_reliability_Pval = (count_lower + 1) / (non_empty_cells + 1)
+  ) %>%
+  dplyr::ungroup() %>%
+  dplyr::select(-count_lower, -non_empty_cells) %>%
+  dplyr::mutate(bootstrap_reliability_Pval = round(bootstrap_reliability_Pval, digits = 3))
+
 print("Calculated. Outputting results file")
 
-
-
-##'[Boot statistics [old and incorrect]]
-# Assuming mergedData is your dataframe
-# mergedData <- mergedData %>%
-#   dplyr::rowwise() %>%
-#   dplyr::mutate(
-#     count_lower = sum(c_across(starts_with("boot_empiricalPval")) < empiricalPval, na.rm = TRUE),
-#     non_empty_cells = sum(!is.na(c_across(starts_with("boot_empiricalPval")))),
-#     bootstrap_reliability_Pval = (count_lower + 1) / (non_empty_cells + 1)
-#   ) %>%
-#   dplyr::ungroup() %>%
-#   dplyr::select(-count_lower, -non_empty_cells) %>%
-#   dplyr::mutate(bootstrap_reliability_Pval = round(bootstrap_reliability_Pval, digits = 3))
-
-mergedData2 <- mergedData2 %>%
+mergedData2 <- mergedData %>%
   dplyr::select(-starts_with("boot_empiricalPval"))
-write.table(mergedData2, file=paste0(output_dir, "Integration_bootstrappedResults_raw_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
+write.table(mergedData2, file=paste0("Integration_bootstrappedResults_raw_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
 
 print("Outputting graphs")
 
-png(filename = paste0(output_dir, "bootstrappingDistHistogram.png"),
+png(filename = "bootstrappedPvalueHistogram.png",
     width = 1280,
     height = 840)
-ggplot(data = mergedData2, aes(x=bootstrap_dist)) + 
+ggplot(data = mergedData2, aes(x=bootstrap_reliability_Pval)) + 
   geom_histogram(binwidth=1/1000)
 dev.off()
 
@@ -147,9 +126,7 @@ dev.off()
 #Making Manhattan plots
 #_____________________
 #Add -log10(pval)
-mergedData2$NegLog10Signal <- -log10(mergedData2$bootstrap_dist)
-mergedData2 <- mergedData2 %>%
-  dplyr::mutate(NegLog10Signal = replace(NegLog10Signal, NegLog10Signal < 0, 0))
+mergedData2$NegLog10Signal <- -log10(mergedData2$bootstrap_reliability_Pval)
 
 #Sort chromosomes numerically and assign positions for x-axis, define threshold for coloring columns red above the Y-axis line
 mergedData2$intervalChrom <- factor(mergedData2$intervalChrom, levels = unique(mergedData2$intervalChrom))
@@ -160,7 +137,7 @@ chromosome_midpoints <- mergedData2 %>%
   dplyr::group_by(intervalChrom) %>%
   dplyr::summarize(mid_point = mean(Position))
 
-png(filename = paste0(output_dir, "Integ_bootstrap_Manhattan_plot_v1_", Sys.Date(), ".png"),
+png(filename = paste0("Integ_bootstrap_Manhattan_plot_v1_", Sys.Date(), ".png"),
     width = 1600,
     height = 840)
 ggplot(mergedData2, aes(x = Position, y = NegLog10Signal)) +
@@ -170,7 +147,7 @@ ggplot(mergedData2, aes(x = Position, y = NegLog10Signal)) +
   labs(
     title = "Manhattan Plot of Genomic Regions",
     x = "Chromosomes",
-    y = expression(-log[10](bootstrap_dist))
+    y = expression(-log[10](bootstrap_reliability_Pval))
   ) +
   theme_minimal() +
   theme(
@@ -183,3 +160,4 @@ ggplot(mergedData2, aes(x = Position, y = NegLog10Signal)) +
   )
 dev.off()
 
+print("Analysis complete. Results saved in the output directory.")
