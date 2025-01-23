@@ -1,6 +1,6 @@
 #INSTALL PACKAGES
 print("Installing packages and loading libraries")
-install.packages("ggtext")
+remotes::install_github("wilkelab/ggtext", upgrade = "never")
 #install.packages("dplyr")
 #install.packages("ggplot2")
 #install.packages("readr")
