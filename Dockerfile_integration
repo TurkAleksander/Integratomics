@@ -28,7 +28,17 @@ RUN apk update && \
     zip \
     file \
     coreutils \
-    libcurl4-openssl-dev
+    libcurl4-openssl-dev \
+    harfbuzz-dev \
+    fribidi-dev \
+    fontconfig-dev \
+    cairo-dev \
+    pango-dev \
+    libexecinfo-dev \
+    gridtext \
+    systemfonts \
+    textshaping
+
 
 RUN apk --no-cache add --virtual build-deps \
     perl \
