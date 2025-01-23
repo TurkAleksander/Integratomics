@@ -115,7 +115,7 @@ if (!file.exists((paste0(keyFileDir,"/locationBackbone.txt"))))
   locationBackbone[, i] <- apply(locationBackbone[, i], 2, function(x) as.numeric(as.character(x)))
   sapply(locationBackbone, class)
   
-  write.table(locationBackbone, file = "locationBackbone_R-version.txt", sep = "\t", row.names = FALSE, quote = FALSE)
+  write.table(locationBackbone, file = paste0(keyFileDir,"/locationBackbone.txt"), sep = "\t", row.names = FALSE, quote = FALSE)
 } else {
   locationBackbone <- read.table(paste0(keyFileDir,"/locationBackbone.txt"), sep="\t", header = TRUE)
 }
@@ -537,12 +537,12 @@ results_for_print_raw <- result2 %>%
   dplyr::rename(rank_product = RS) %>%
   dplyr::rename(interval_rank = arithm_rank_desc) %>%
   dplyr::select(intervalNumber, intervalStart, intervalEnd, sourceFiles, fileCount, gene_count, gene_names, gene_Ensembl_IDs, interval_rank, rank_product, cValue, cValuePseudoCount, empiricalPval)
-write.table(results_for_print_raw, file=paste0("Integration_results_raw_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
+write.table(results_for_print_raw, file=paste0(output_dir, "Integration_results_preBoot_raw_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
 
 #Output significant results
 results_for_print_sig <- results_for_print_raw %>%
   dplyr::filter(empiricalPval <= 0.05)
-write.table(results_for_print_sig, file=paste0("Integration_results_significant_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
+write.table(results_for_print_sig, file=paste0(output_dir, "Integration_results_preBoot_significant_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
 
 #Output unique gene names mapped to significant intervals
 sigGenes <- results_for_print_sig %>%
@@ -550,21 +550,21 @@ sigGenes <- results_for_print_sig %>%
   tidyr::separate_longer_delim(gene_names, delim = ";") %>%
   dplyr::distinct() %>%
   dplyr::filter(gene_names != "", !is.na(gene_names))
-write.table(sigGenes, file=paste0("Genes_from_significant_intervals_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
+write.table(sigGenes, file=paste0(output_dir, "Genes_from_preBoot_significant_intervals_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
 
 sigEnsembl <- results_for_print_sig %>%
   dplyr::select(gene_Ensembl_IDs) %>%
   tidyr::separate_longer_delim(gene_Ensembl_IDs, delim = ";") %>%
   dplyr::distinct() %>%
   dplyr::filter(gene_Ensembl_IDs != "", !is.na(gene_Ensembl_IDs))
-write.table(sigEnsembl, file=paste0("EnsemblIDs_from_significant_intervals_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
+write.table(sigEnsembl, file=paste0(output_dir, "EnsemblIDs_from_preBoot_significant_intervals_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
 
-write.table(uniqueSourceFiles, file=paste0("Signals_by_file_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
+write.table(uniqueSourceFiles, file=paste0(output_dir, "Signals_by_file_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
 
 #'[PLOT OUTPUTS]
 print("Creating P-value histogram and various Manhattan plots")
 
-png(filename = "empiricalPvalueHistogram.png",
+png(filename = paste0(output_dir, "empiricalPvalueHistogram.png"),
     width = 1280,
     height = 840)
 ggplot(data = result2, aes(x=empiricalPval)) + 
@@ -586,7 +586,7 @@ chromosome_midpoints <- results_for_print_raw %>%
   group_by(intervalChrom) %>%
   summarize(mid_point = mean(Position))
 
-png(filename = paste0("Integ_Manhattan_plot_v1_", Sys.Date(), ".png"),
+png(filename = paste0(output_dir, "Integ_Manhattan_plot_preBoot_v1_", Sys.Date(), ".png"),
     width = 1600,
     height = 840)
 ggplot(results_for_print_raw, aes(x = Position, y = NegLog10Signal)) +
@@ -621,7 +621,7 @@ chromosome_midpoints2 <- Manhattan_results %>%
   group_by(intervalChrom) %>%
   summarize(mid_point = mean(Position))
 
-png(filename = paste0("Integ_Manhattan_plot_v2_", Sys.Date(), ".png"),
+png(filename = paste0(output_dir, "Integ_Manhattan_plot_preBoot_v2_", Sys.Date(), ".png"),
     width = 1600,
     height = 840) 
 ggplot(Manhattan_results, aes(x = Position, y = NegLog10Signal)) +
@@ -643,7 +643,7 @@ ggplot(Manhattan_results, aes(x = Position, y = NegLog10Signal)) +
   )
 dev.off()
 
-png(filename = paste0("Integ_Manhattan_plot_v3_", Sys.Date(), ".png"),
+png(filename = paste0(output_dir, "Integ_Manhattan_plot_preBoot_v3_", Sys.Date(), ".png"),
     width = 1600,
     height = 840) 
 qqman::manhattan(Manhattan_results, chr="intervalChrom", bp="intervalStart", snp="intervalNumber", p="empiricalPval", genomewideline = -log10(0.05) )
@@ -655,7 +655,7 @@ sigIntervals <- Manhattan_results %>%
   dplyr::select(intervalNumber) %>%
   unlist() %>%
   as.vector()
-png(filename = paste0("Integ_Manhattan_plot_v4_", Sys.Date(), ".png"),
+png(filename = paste0(output_dir, "Integ_Manhattan_plot_preBoot_v4_", Sys.Date(), ".png"),
     width = 1600,
     height = 840) 
 qqman::manhattan(Manhattan_results, chr="intervalChrom", bp="intervalStart", snp="intervalNumber", p="empiricalPval", genomewideline = -log10(0.05), highlight = sigIntervals)
@@ -678,7 +678,7 @@ CMplot(Manhattan_results_circ,
        signal.col=c("red"),
        signal.cex=1,
        signal.pch=c(19,19),
-       file.name = paste0("Integ_Manhattan_plot_v5_", Sys.Date()),
+       file.name = paste0(output_dir, "Integ_Manhattan_plot_preBoot_v5_", Sys.Date()),
        file="jpg",
        file.output=TRUE,
        verbose=TRUE,
@@ -687,7 +687,7 @@ CMplot(Manhattan_results_circ,
 
 CMplot(Manhattan_results_circ, plot.type="c", r=1.6,
        outward=TRUE, cir.chr.h=.1 ,chr.den.col="orange",
-       file.name = paste0("Integ_Manhattan_plot_v6_", Sys.Date()),
+       file.name = paste0(output_dir, "Integ_Manhattan_plot_preBoot_v6_", Sys.Date()),
        file="jpg",
        dpi=300, chr.labels=seq(1,25))
 
@@ -699,7 +699,7 @@ CMplot(
   col=c("grey30","grey60"),
   cir.chr.h = 1,
   signal.cex = 0.1,
-  file.name = paste0("Integ_Manhattan_plot_v7_", Sys.Date()),
+  file.name = paste0(output_dir, "Integ_Manhattan_plot_preBoot_v7_", Sys.Date()),
   file = "jpg",
   dpi = 300,
   chr.labels = seq(1, 25)
@@ -713,14 +713,14 @@ CMplot(
   col=c("grey30","grey60"),
   cir.chr.h = 1,
   signal.cex = 0.1,
-  file.name = paste0("Integ_Manhattan_plot_v8_", Sys.Date()),
+  file.name = paste0(output_dir, "Integ_Manhattan_plot_preBoot_v8_", Sys.Date()),
   file = "jpg",
   dpi = 300,
   chr.labels = seq(1, 25)
 )
 
 
-print("Analysis complete!")
+print("Step 1 of analysis complete!")
 
 if (format(Sys.Date(), "%m") == "01" && as.integer(format(Sys.Date(), "%d")) >= 1 && as.integer(format(Sys.Date(), "%d")) <= 5) {
   print("And have a happy new year!")

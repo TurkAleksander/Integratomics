@@ -70,25 +70,26 @@ RUN Rscript -e "remotes::install_version('Rcpp', version = '1.0.13', repos = 'ht
 RUN Rscript -e "remotes::install_version('CMplot', version = '4.5.1', repos = 'https://cloud.r-project.org/')"
 RUN Rscript -e "remotes::install_version('qqman', version = '0.1.9', repos = 'https://cloud.r-project.org/')"
 
-# Stage to clone the GitHub repository
+#Stage to clone the GitHub repository
 FROM alpine:3.20.3 AS clone
-# Install git
+#Install git
 RUN apk update && apk add --no-cache git
-# Add a build argument to force re-download
+#Add a build argument to force re-download
 ARG CACHEBUST=1
 
 #Download necessary files from repository
 RUN git clone https://github.com/TurkAleksander/Integratomics /Integratomics
 
-# Final stage to combine everything
+#Final stage to combine everything
 FROM base
-# Copy the cloned repository from the clone stage
+#Copy the cloned repository from the clone stage
 COPY --from=clone /Integratomics /Integratomics
 
 #Set work dir
 WORKDIR /Integratomics
-#Set entrypoint to allow for running the script
-ENTRYPOINT ["Rscript", "/Integratomics/R_integration_code_dockerVersion.r"]
-
+#Allow the bash script to be executed, set entrypoint to run script on container start
+RUN chmod +x /Integratomics/Scripts_to_run.sh
+ENTRYPOINT ["/Integratomics/Scripts_to_run.sh"]
+#Set the default arguments to run the script
 CMD ["/input", "/output"]
 
