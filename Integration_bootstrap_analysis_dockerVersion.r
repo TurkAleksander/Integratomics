@@ -1,6 +1,6 @@
 #INSTALL PACKAGES
 print("Installing packages and loading libraries")
-remotes::install_github("wilkelab/ggtext", upgrade = "never")
+#remotes::install_github("wilkelab/ggtext", upgrade = "never")
 #install.packages("dplyr")
 #install.packages("ggplot2")
 #install.packages("readr")
@@ -29,7 +29,7 @@ library(tidyr)
 library(purrr)
 library(furrr)
 library(future)
-library(ggtext)
+#library(ggtext)
 
 
 

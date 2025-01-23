@@ -1,6 +1,6 @@
 #INSTALL PACKAGES
 print("Installing packages and loading libraries")
-remotes::install_github("wilkelab/ggtext", upgrade = "never")
+#remotes::install_github("wilkelab/ggtext", upgrade = "never")
 
 library(dplyr)
 library(ggplot2)
@@ -15,7 +15,7 @@ library(furrr)
 library(future)
 library(CMplot)
 library(qqman)
-library(ggtext)
+#library(ggtext)
 
 args <- commandArgs(trailingOnly = TRUE)
 keyFileDir <- "/Integratomics"
