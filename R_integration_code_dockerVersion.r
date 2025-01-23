@@ -1,5 +1,6 @@
 #INSTALL PACKAGES
 print("Installing packages and loading libraries")
+install.packages("ggtext")
 
 library(dplyr)
 library(ggplot2)
