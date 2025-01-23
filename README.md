@@ -18,7 +18,7 @@ File descriptions:
 - **locationBackbone_R-version.txt**: Same as locationBackbone.txt, but constructed using the in-built code ("from scratch"). The only difference is that it uses a Unix line ending ("\n") instead of ("\r\n").
 - **mart_export.txt**: Holds the location (chr, start, end) of protein-coding genes with a UCSC stable-ID on chromosomes 1-22, X, Y and MT (build GRCh38.p14) - 20,037 genes. This file is needed to both estimate gene density of intervals and to see which genes map to them, which is handy for the results.
 
-Note that the Docker container will run three scripts in sequence - the docker versions of R_integration_code, Integration_bootstrapping and Integration_bootstrap_analysis (in this order). The first one calculates the rank sum statistics of your real dataset, the second one calculates the rank sum statistic on 100 bootstrapped datasets and the third one calculates the "reliability" for each interval by comparing the p-values of your real versus your bootstrapped (randomized) data.
+Note that the Docker container will run three scripts in sequence - the docker versions of R_integration_code, Integration_bootstrapping and Integration_bootstrap_analysis (in this order). The first one calculates the rank sum statistics of your real dataset, the second one calculates the rank sum statistic on 100 bootstrapped datasets and the third one calculates the "reliability" for each interval by calculating the 95% confidence interval for the bootstrapped data.
 Colloquially put - if the p-value from your bootstrapped (randomly selected) data is often lower than your real data, then this is not a desirable outcome.
 For _details_ on the integration procedure itself see the **Supplementary Methods** section of the article.
 
