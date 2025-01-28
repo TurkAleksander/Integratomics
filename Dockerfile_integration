@@ -27,12 +27,7 @@ RUN apk update && \
     openblas-dev \
     zip \
     file \
-    coreutils \
-    harfbuzz-dev \
-    fribidi-dev \
-    fontconfig-dev \
-    cairo-dev \
-    pango-dev
+    coreutils
 
 
 RUN apk --no-cache add --virtual build-deps \
