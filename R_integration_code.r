@@ -223,7 +223,7 @@ for (StudyType in unique(studyInfoDF$studyType)) {
     
     # For each interval on locationBackbone, keep only the row from currentFileData
     # with the lowest intervalSignal (p-value)
-    filteredOverlaps <<- overlaps[, .SD[which.max(intervalSignal)], 
+    filteredOverlaps <- overlaps[, .SD[which.max(intervalSignal)], 
                                  by = .(intervalChrom, intervalStart, intervalEnd, sourceFile)]
     
     return(filteredOverlaps)

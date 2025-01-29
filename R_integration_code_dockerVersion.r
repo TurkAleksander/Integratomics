@@ -225,12 +225,12 @@ for (StudyType in unique(studyInfoDF$studyType)) {
     setkey(locationBackbone, intervalChrom, intervalStart, intervalEnd)
 
     # Find overlaps between currentFileData and locationBackbone
-    overlaps <<- foverlaps(currentFileData, locationBackbone, type = "any", nomatch = 0)
+    overlaps <- foverlaps(currentFileData, locationBackbone, type = "any", nomatch = 0)
 
     
     # For each interval on locationBackbone, keep only the row from currentFileData
     # with the lowest intervalSignal (p-value)
-    filteredOverlaps <<- overlaps[, .SD[which.max(intervalSignal)], 
+    filteredOverlaps <- overlaps[, .SD[which.max(intervalSignal)], 
                                  by = .(intervalChrom, intervalStart, intervalEnd, sourceFile)]
     
     return(filteredOverlaps)
@@ -329,7 +329,7 @@ print("Estimating gene densities within intervals")
 #For example, if you permuted signals from intergenic regions with gene regions, it would significantly reduce the threshold for a signal being statistically significant
 #Thus, permuting intervals together based on their gene density is done to avoid flooding the results with false positives
 
-biomartGeneLocations <- read.table(paste0(keyFileDir,"/mart_export.txt"), sep="\t", header = TRUE) %>%
+biomartGeneLocations <- read.table(paste0("/cmg1scratch/PROJECTS/Nina_Mele/Epi_integ/Code/","mart_export.txt"), sep="\t", header = TRUE) %>%
   dplyr::distinct() %>%
   dplyr::select(Chromosome.scaffold.name, Gene.start..bp., Gene.end..bp., Gene.name, Gene.stable.ID) %>%
   dplyr::rename(Chrom = Chromosome.scaffold.name, Start = Gene.start..bp., End = Gene.end..bp., Gene_name = Gene.name, Ensembl_ID = Gene.stable.ID) %>%
@@ -515,10 +515,11 @@ resultRaw <- result2
 
 #Append location data
 locationData <- nonZeroLocations %>%
-  dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, gene_count, gene_names, gene_Ensembl_IDs, arithm_rank_product)
+  dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, gene_names, gene_Ensembl_IDs, arithm_rank_product)
 result2 <- result2 %>%
   dplyr::select(!tidyselect::starts_with("RSPerm"))
-result2 <- dplyr::left_join(result2, locationData, by = "intervalNumber") %>%
+result2 <- dplyr::left_join(result2, locationData, by = "intervalNumber", suffix=c("",".y")) %>%
+  dplyr::select(-ends_with(".x"),-ends_with(".y")) %>%
   dplyr::mutate(arithm_rank_desc = rank(-RS, ties.method = "max"))
 
 #Add row that calculates the expected RP value (Erp = cValue/number of permutations)
@@ -536,7 +537,7 @@ print("Statistics calculated, outputting result files")
 results_for_print_raw <- result2 %>%
   dplyr::rename(rank_product = RS) %>%
   dplyr::rename(interval_rank = arithm_rank_desc) %>%
-  dplyr::select(intervalNumber, intervalStart, intervalEnd, sourceFiles, fileCount, gene_count, gene_names, gene_Ensembl_IDs, interval_rank, rank_product, cValue, cValuePseudoCount, empiricalPval)
+  dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, gene_count, gene_names, gene_Ensembl_IDs, interval_rank, rank_product, cValue, cValuePseudoCount, empiricalPval)
 write.table(results_for_print_raw, file=paste0(output_dir,"/","Integration_results_raw_real_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
 
 #Output significant results
