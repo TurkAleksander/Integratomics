@@ -329,7 +329,7 @@ print("Estimating gene densities within intervals")
 #For example, if you permuted signals from intergenic regions with gene regions, it would significantly reduce the threshold for a signal being statistically significant
 #Thus, permuting intervals together based on their gene density is done to avoid flooding the results with false positives
 
-biomartGeneLocations <- read.table(paste0("/cmg1scratch/PROJECTS/Nina_Mele/Epi_integ/Code/","mart_export.txt"), sep="\t", header = TRUE) %>%
+biomartGeneLocations <- read.table(paste0(keyFileDir,"/mart_export.txt"), sep="\t", header = TRUE) %>%
   dplyr::distinct() %>%
   dplyr::select(Chromosome.scaffold.name, Gene.start..bp., Gene.end..bp., Gene.name, Gene.stable.ID) %>%
   dplyr::rename(Chrom = Chromosome.scaffold.name, Start = Gene.start..bp., End = Gene.end..bp., Gene_name = Gene.name, Ensembl_ID = Gene.stable.ID) %>%
