@@ -7,4 +7,4 @@ Rscript -e "gc()"
 Rscript /Integratomics/Integration_bootstrapping_dockerVersion.r "$@"
 Rscript -e "gc()"
 
-Rscript /Integratomics/Integration_bootstrapping_dockerVersion.r "$@"
+Rscript /Integratomics/Integration_bootstrap_analysis_dockerVersion.r "$@"
