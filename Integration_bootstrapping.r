@@ -127,7 +127,7 @@ print(paste0("Initiating bootstrapping procedure at: ", Sys.time()))
 #Define number of repetitions for bootstrapping
 apply_boot <- 100
 
-for (i in 5:apply_boot) {
+for (i in 1:apply_boot) {
   print(paste0("Current bootstrap cycle: ", i))
   #Create bootstrapped DF
   n_bootstrap <- nrow(studyInfoDF)
