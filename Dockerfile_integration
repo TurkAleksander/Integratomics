@@ -27,7 +27,12 @@ RUN apk update && \
     openblas-dev \
     zip \
     file \
-    coreutils
+    coreutils \
+    fontconfig \
+    freetype \
+    ttf-dejavu \
+    font-noto \
+    font-noto-cjk
 
 
 RUN apk --no-cache add --virtual build-deps \
