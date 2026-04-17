@@ -62,7 +62,7 @@ hg38BaseFile <- read.table("hg38_UCSC_chrom_lengths.txt", sep="\t")
 print("Preparing genome location backbone")
 #Read in or prepare location backbone
 #WARNING: initial preparation could take several hours because it's not paralellized and highly inefficient
-if (!file.exists("hg38_UCSC_chrom_lengths.txt"))
+if (!file.exists("locationBackbone.txt"))
 {
   locationBackbone <- tibble::tibble()
   colnames(locationBackbone) <- c("intervalNumber","intervalChrom", "intervalStart", "intervalEnd")
