@@ -1,6 +1,6 @@
 #!/bin/bash
 #Specify the directory where the Dockerfile is located
-cd /path/to/dockerfile_directory
+cd /scratch/PROJECTS/KT_obesity_integ/Integratomics
 #Build the Docker image, don't forget to specify the name of the image here and later when running the container
 #The dot (.) at the end of the command is important, it tells Docker to look for the Dockerfile in the current directory
 #Added build argument so the Dockerfile always downloads newest Git repository
