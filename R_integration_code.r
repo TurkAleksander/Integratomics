@@ -51,7 +51,7 @@ for (currentFile in txtFiles) {
 colnames(studyInfoDF) <- c("studyFile", "studyType", "studyName", "studyDataType")
 #Clean up input - remove whitespaces and convert to lower
 studyInfoDF <- studyInfoDF %>%
-  mutate(
+  dplyr::mutate(
     studyType = tolower(gsub("\\s+", "", studyType)),
     studyDataType = tolower(gsub("\\s+", "", studyDataType))
   )
