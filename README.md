@@ -1,6 +1,5 @@
 This repo contains all the necessary materials to run your own positional integration analysis, with methods based on Breitling et al. (2004) and Knijnenburg et al. (2009).
 The analysis can be run either directly from R or from within a Docker for stability.
-If you experience problems with the Docker, you may want to check the versions of the dependencies that are being installed for Alpine Linux.
 
 File descriptions:
 - **R_integration_code.r**: Code for running the analysis with placeholder directories. It is NOT recommended to run on a local PC, as the permutation tests are highly RAM-intensive. Both this code and the Docker version are quite comment-rich for clarity.
@@ -21,6 +20,17 @@ File descriptions:
 Note that the Docker container will run three scripts in sequence - the docker versions of R_integration_code, Integration_bootstrapping and Integration_bootstrap_analysis (in this order). The first one calculates the rank sum statistics of your real dataset, the second one calculates the rank sum statistic on 100 bootstrapped datasets and the third one calculates the "reliability" for each interval by calculating the 95% confidence interval for the bootstrapped data.
 Colloquially put - if the p-value from your bootstrapped (randomly selected) data is often lower than your real data, then this is not a desirable outcome.
 For _details_ on the integration procedure itself see the **Supplementary Methods** section of the article.
+
+Common issues:
+If you experience problems with the Docker, you may want to check the versions of the dependencies that are being installed for Alpine Linux.
+Most issues will originate from  input data formatting errors. Some common examples and fixes:
+- Incorrect chromosome data formatting, e.g. "1" instead of "chr1".
+- Faulty exponential numeric values from Excel that were manually curated. These should be manually corrected to avoid errors.
+- Hidden symbols can appear when exporting data from Excel to .txt and from differences between Windows and Linux formatting (such as the endline character).
+The dos2unix command should clear this issue, if it does not, check for characters such as ^M in the files and remove them manually or programatically.
+- Existing files from a previous incomplete run. A prior run may have generated a file in the output directory, resulting in multiple e.g. "...rawData_..." files, which will cause an error. Make sure your output directory is clean before re-running from previous errors.
+
+For other issues, troubleshoot by running the script line-by-line.
 
 Helpful Docker guides:
 - https://docs.docker.com/get-started/docker-overview/
