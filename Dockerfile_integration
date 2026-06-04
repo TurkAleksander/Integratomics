@@ -85,7 +85,7 @@ RUN apk update && apk add --no-cache git
 ARG CACHEBUST=1
 
 #Download necessary files from repository
-RUN git clone https://github.com/TurkAleksander/Integratomics /Integratomics
+RUN git clone -b weighted https://github.com/TurkAleksander/Integratomics /Integratomics
 
 #Final stage to combine everything
 FROM base
@@ -98,5 +98,5 @@ WORKDIR /Integratomics
 RUN chmod +x /Integratomics/Scripts_to_run.sh
 ENTRYPOINT ["/Integratomics/Scripts_to_run.sh"]
 #Set the default arguments to run the script
-CMD ["/input", "/output"]
+CMD ["/input","/weights", "/output"]
 
