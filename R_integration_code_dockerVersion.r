@@ -18,21 +18,21 @@ library(qqman)
 args <- commandArgs(trailingOnly = TRUE)
 keyFileDir <- "/Integratomics"
 
-if (length(args) > 2) {
-  print("Correct directory format: /path/to/input /path/to/output")
-  stop("Error: too many arguments. Please check your arguments and specify input and output directories. If only one argument is provided, it will be treated as both input and output.")
-} else if (length(args) == 2) {
-  input_dir <- args[1]
-  output_dir <- args[2]
-} else if (length(args) == 1) {
-  input_dir <- args[1]
-  output_dir <- args[1]
+if (length(args) > 3) {
+  print("Correct directory format: /path/to/input /path/to/weights /path/to/output")
+  stop("Error: too many arguments. Please check your arguments and specify input, weights and output directories. Each should be its own directory.")
 } else if (length(args) == 0) {
-  print("Correct directory format: /path/to/input /path/to/output")
-  stop("Error: no arguments provided. Please specify input and output directories. If only one argument is provided, it will be treated as both input and output.")
+  print("Correct directory format: /path/to/input /path/to/weights /path/to/output")
+  stop("Error: no arguments provided. Please specify input, weights and output directories. Each should be its own directory.")
 }
 
+input_dir <- args[1]
+weights_dir <- args[2]
+output_dir <- args[3]
+
 print(paste("Input directory set to:", input_dir))
+print(paste("Weights directory set to:", weights_dir))
+print("Note: weights file should be called 'integ_weights.txt' - see example on GitHub")
 print(paste("Output directory set to:", output_dir))
 
 
@@ -189,6 +189,21 @@ cumulativeSourceFiles <- data.table(intervalChrom = character(),
                                     intervalEnd = integer(),
                                     sourceFiles = character(),
                                     fileCount = integer())
+#Specify weights per study type
+#Since weights can be determined any number of ways, we leave this up to the user
+weightsData <- readr::read_tsv(paste0(weights_dir, "/integ_weights.txt"), col_names = FALSE) %>%
+  dplyr::rename(studyType = X1, weight = X2) %>%
+  dplyr::mutate(weight = as.numeric(weight)) %>%
+  dplyr::mutate(studyType = tolower(gsub("\\s+", "", studyType)))
+
+#Health checks for weight data
+if (any(is.na(weightsData))) {
+  stop("Missing values in weights data - check your inputs")
+}
+if (!identical(sort(unique(weightsData$studyType)),
+               sort(unique(studyInfoDF$studyType)))) {
+  stop("Weight types do not match data input types - check your inputs")
+}
 
 for (StudyType in unique(studyInfoDF$studyType)) {
   fileNames <- studyInfoDF %>%
@@ -305,20 +320,35 @@ uniqueSourceFiles$numIntervals <- sapply(uniqueSourceFiles$sourceFiles, function
   sum(str_count(locationBackbone$sourceFiles, fixed(sourceFile)))
 })
 
-#'[ADD ARITHMETIC MEAN OF RANKS - rank product]
-#You can use either geometric or arithmetic mean (Breitling et al. 2016), we used the arithmetic mean
-# Identify columns whose name contains "rank_", apply arithmetic mean across intervals
-# arithm_rank_product is therefore the rank product
-study_rank_cols <- grep("rank_", names(locationBackbone), value = TRUE)
-#geo_mean <- function(x) {
-#  exp(mean(log(x)))
-#}
-locationBackbone[, interval_rank_product := apply(.SD, 1, mean), .SDcols = study_rank_cols]
+#'[ADD WEIGHTED GEOMETRIC MEAN OF RANKS - rank product]
+#You can use either geometric or arithmetic mean (Breitling et al. 2016)
+#For the weighted version, we used the geometric mean version
+# Identify columns whose name contains "rank_", apply weights and geometric mean
+
+study_rank_cols <- grep("^rank_", names(locationBackbone), value = TRUE)
+
+study_names <- sub("^rank_", "", study_rank_cols)
+
+weights <- setNames(weightsData$weight, weightsData$studyType)[study_names]
+
+n_regions <- nrow(locationBackbone)
+
+rank_mat <- as.matrix(locationBackbone[, ..study_rank_cols])
+
+locationBackbone[, weightedRP :=
+                   exp(
+                     rowSums(
+                       sweep(log(rank_mat / n_regions), 2, weights, `*`)
+                     ) / sum(weights)
+                   )
+]
+
+#locationBackbone[, interval_rank_product := apply(.SD, 1, mean), .SDcols = study_rank_cols]
 
 
 # Add a ranking column where ties are assigned the highest rank
 # Example : if three intervals, A, B and C, are tied for 1st place, they will each be assigned the rank "3"
-locationBackbone[, arithm_rank_product := frank(interval_rank_product, ties.method = "max")]
+locationBackbone[, weighted_rank_product := frank(weightedRP, ties.method = "max")]
 
 #'[GENE DENSITY ESTIMATION]
 print("Estimating gene densities within intervals")
@@ -393,11 +423,11 @@ print("Removing intervals with no signals")
 #For the analysis we only need locations that have any signals
 #This is done at this stage so that merging singleton gene density regions can be done accurately (see next section)
 
-#Remove unnecessary columns, keep only intervals with signal (if arithm_rank_product is the same as the lowest rank (length of data), then it's signal-less)
+#Remove unnecessary columns, keep only intervals with signal (if weighted_rank_product is the same as the lowest rank (length of data), then it's signal-less)
 #Data cleanup - Convert all rank_ columns to numerics
 nonZeroLocations <- locationBackbone %>%
-  dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, interval_rank_product, arithm_rank_product, gene_count, gene_names, gene_Ensembl_IDs, dplyr::starts_with("rank_")) %>%
-  dplyr::filter(arithm_rank_product != length(locationBackbone$intervalNumber)) %>%
+  dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, weightedRP, weighted_rank_product, gene_count, gene_names, gene_Ensembl_IDs, dplyr::starts_with("rank_")) %>%
+  dplyr::filter(weighted_rank_product != length(locationBackbone$intervalNumber)) %>%
   dplyr::mutate(across(starts_with("rank_"), as.numeric))
 
 #'[MERGE GENE DENSITIES]
@@ -515,12 +545,12 @@ resultRaw <- result2
 
 #Append location data
 locationData <- nonZeroLocations %>%
-  dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, gene_names, gene_Ensembl_IDs, arithm_rank_product)
+  dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, gene_names, gene_Ensembl_IDs, weighted_rank_product)
 result2 <- result2 %>%
   dplyr::select(!tidyselect::starts_with("RSPerm"))
 result2 <- dplyr::left_join(result2, locationData, by = "intervalNumber", suffix=c("",".y")) %>%
   dplyr::select(-ends_with(".x"),-ends_with(".y")) %>%
-  dplyr::mutate(arithm_rank_desc = rank(-RS, ties.method = "max"))
+  dplyr::mutate(weighted_rank_desc = rank(-RS, ties.method = "max"))
 
 #Add row that calculates the expected RP value (Erp = cValue/number of permutations)
 #Add row that calculates the p-value, in this case the percentage of false positives (PFP), where PFP = Erp/rank
@@ -536,7 +566,7 @@ print("Statistics calculated, outputting result files")
 #Output raw results
 results_for_print_raw <- result2 %>%
   dplyr::rename(rank_product = RS) %>%
-  dplyr::rename(interval_rank = arithm_rank_desc) %>%
+  dplyr::rename(interval_rank = weighted_rank_desc) %>%
   dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, gene_count, gene_names, gene_Ensembl_IDs, interval_rank, rank_product, cValue, cValuePseudoCount, empiricalPval)
 write.table(results_for_print_raw, file=paste0(output_dir,"/","Integration_results_raw_real_", Sys.Date(), ".tsv"), sep = "\t", row.names = FALSE, col.names = TRUE, quote = FALSE)
 

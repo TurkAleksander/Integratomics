@@ -1,0 +1,3 @@
+transcriptomics	1
+epigenomics	2
+proteomics	1

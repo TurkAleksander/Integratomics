@@ -31,7 +31,7 @@ library(future)
 
 
 #'[Settings]
-workDir <- "/your/directory/here"
+workDir <- "/your/directory/here/Data"
 setwd(workDir)
 
 
@@ -57,12 +57,12 @@ studyInfoDF <- studyInfoDF %>%
   )
   
 #Read the base file for chromosome lengths (data from UCSC)
-hg38BaseFile <- read.table("hg38_UCSC_chrom_lengths.txt", sep="\t")
+hg38BaseFile <- read.table("/your/directory/here/Integratomics/hg38_UCSC_chrom_lengths.txt", sep="\t")
 
 print("Preparing genome location backbone")
 #Read in or prepare location backbone
 #WARNING: initial preparation could take several hours because it's not paralellized and highly inefficient
-if (!file.exists("locationBackbone.txt"))
+if (!file.exists("/your/directory/here/Integratomics/locationBackbone.txt"))
 {
   locationBackbone <- tibble::tibble()
   colnames(locationBackbone) <- c("intervalNumber","intervalChrom", "intervalStart", "intervalEnd")
@@ -110,7 +110,7 @@ if (!file.exists("locationBackbone.txt"))
   
   write.table(locationBackbone, file = "locationBackbone_R-version.txt", sep = "\t", row.names = FALSE, quote = FALSE)
 } else {
-  locationBackbone <- read.table("locationBackbone.txt", sep="\t", header = TRUE)
+  locationBackbone <- read.table("/your/directory/here/Integratomics/locationBackbone.txt", sep="\t", header = TRUE)
 }
 
 
@@ -183,14 +183,31 @@ cumulativeSourceFiles <- data.table(intervalChrom = character(),
                                     sourceFiles = character(),
                                     fileCount = integer())
 
+#Specify weights per study type
+#Since weights can be determined any number of ways, we leave this up to the user
+weightsData <- readr::read_tsv("/your/directory/here/integ_weights.txt", col_names = FALSE) %>%
+  dplyr::rename(studyType = X1, weight = X2) %>%
+  dplyr::mutate(weight = as.numeric(weight)) %>%
+  dplyr::mutate(studyType = tolower(gsub("\\s+", "", studyType)))
+
+#Health checks for weight data
+if (any(is.na(weightsData))) {
+  stop("Missing values in weights data - check your inputs")
+}
+if (!identical(sort(unique(weightsData$studyType)),
+               sort(unique(studyInfoDF$studyType)))) {
+  stop("Weight types do not match data input types - check your inputs")
+}
+
 for (StudyType in unique(studyInfoDF$studyType)) {
   fileNames <- studyInfoDF %>%
     dplyr::filter(studyType == StudyType) %>%
     dplyr::select(studyFile) %>%
     unlist()
   
-  print(StudyType)
+  print(paste0("Current type: ", StudyType))
   print(fileNames)
+  # print("Type weight: ", typeWeight)
   
   # Store all signals from the same study type into one dataframe
   fileDataHolder <- rbindlist(lapply(fileNames, function(file) {
@@ -298,20 +315,35 @@ uniqueSourceFiles$numIntervals <- sapply(uniqueSourceFiles$sourceFiles, function
   sum(str_count(locationBackbone$sourceFiles, fixed(sourceFile)))
 })
 
-#'[ADD ARITHMETIC MEAN OF RANKS - rank product]
-#You can use either geometric or arithmetic mean (Breitling et al. 2016), we used the arithmetic mean
-# Identify columns whose name contains "rank_", apply arithmetic mean across intervals
-# arithm_rank_product is therefore the rank product
-study_rank_cols <- grep("rank_", names(locationBackbone), value = TRUE)
-#geo_mean <- function(x) {
-#  exp(mean(log(x)))
-#}
-locationBackbone[, interval_rank_product := apply(.SD, 1, mean), .SDcols = study_rank_cols]
+#'[ADD WEIGHTED GEOMETRIC MEAN OF RANKS - rank product]
+#You can use either geometric or arithmetic mean (Breitling et al. 2016)
+#For the weighted version, we used the geometric mean version
+# Identify columns whose name contains "rank_", apply weights and geometric mean
+
+study_rank_cols <- grep("^rank_", names(locationBackbone), value = TRUE)
+
+study_names <- sub("^rank_", "", study_rank_cols)
+
+weights <- setNames(weightsData$weight, weightsData$studyType)[study_names]
+
+n_regions <- nrow(locationBackbone)
+
+rank_mat <- as.matrix(locationBackbone[, ..study_rank_cols])
+
+locationBackbone[, weightedRP :=
+                   exp(
+                     rowSums(
+                       sweep(log(rank_mat / n_regions), 2, weights, `*`)
+                     ) / sum(weights)
+                   )
+]
+
+#locationBackbone[, interval_rank_product := apply(.SD, 1, mean), .SDcols = study_rank_cols]
 
 
 # Add a ranking column where ties are assigned the highest rank
 # Example : if three intervals, A, B and C, are tied for 1st place, they will each be assigned the rank "3"
-locationBackbone[, arithm_rank_product := frank(interval_rank_product, ties.method = "max")]
+locationBackbone[, weighted_rank_product := frank(weightedRP, ties.method = "max")]
 
 #'[GENE DENSITY ESTIMATION]
 print("Estimating gene densities within intervals")
@@ -322,7 +354,7 @@ print("Estimating gene densities within intervals")
 #For example, if you permuted signals from intergenic regions with gene regions, it would significantly reduce the threshold for a signal being statistically significant
 #Thus, permuting intervals together based on their gene density is done to avoid flooding the results with false positives
 
-biomartGeneLocations <- read.table("mart_export.txt", sep="\t", header = TRUE) %>%
+biomartGeneLocations <- read.table("/your/directory/here/Integratomics/mart_export.txt", sep="\t", header = TRUE) %>%
   dplyr::distinct() %>%
   dplyr::select(Chromosome.scaffold.name, Gene.start..bp., Gene.end..bp., Gene.name, Gene.stable.ID) %>%
   dplyr::rename(Chrom = Chromosome.scaffold.name, Start = Gene.start..bp., End = Gene.end..bp., Gene_name = Gene.name, Ensembl_ID = Gene.stable.ID) %>%
@@ -386,11 +418,11 @@ print("Removing intervals with no signals")
 #For the analysis we only need locations that have any signals
 #This is done at this stage so that merging singleton gene density regions can be done accurately (see next section)
 
-#Remove unnecessary columns, keep only intervals with signal (if arithm_rank_product is the same as the lowest rank (length of data), then it's signal-less)
+#Remove unnecessary columns, keep only intervals with signal (if weighted_rank_product is the same as the lowest rank (length of data), then it's signal-less)
 #Data cleanup - Convert all rank_ columns to numerics
 nonZeroLocations <- locationBackbone %>%
-  dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, interval_rank_product, arithm_rank_product, gene_count, gene_Ensembl_IDs, dplyr::starts_with("rank_")) %>%
-  dplyr::filter(arithm_rank_product != length(locationBackbone$intervalNumber)) %>%
+  dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, weightedRP, weighted_rank_product, gene_count, gene_names, gene_Ensembl_IDs, dplyr::starts_with("rank_")) %>%
+  dplyr::filter(weighted_rank_product != length(locationBackbone$intervalNumber)) %>%
   dplyr::mutate(across(starts_with("rank_"), as.numeric))
 
 #'[MERGE GENE DENSITIES]
@@ -498,7 +530,7 @@ resultRaw <- result2
 
 #Append location data
 locationData <- nonZeroLocations %>%
-  dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, gene_count, gene_names, gene_Ensembl_IDs, arithm_rank_product)
+  dplyr::select(intervalNumber, intervalChrom, intervalStart, intervalEnd, sourceFiles, fileCount, gene_count, gene_Ensembl_IDs, weighted_rank_product)
 result2 <- result2 %>%
   dplyr::select(!tidyselect::starts_with("RSPerm"))
 result2 <- dplyr::left_join(result2, locationData, by = "intervalNumber") %>%
