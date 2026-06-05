@@ -36,21 +36,21 @@ library(future)
 args <- commandArgs(trailingOnly = TRUE)
 keyFileDir <- "/Integratomics"
 
-if (length(args) > 2) {
-  print("Correct directory format: /path/to/input /path/to/output")
-  stop("Error: too many arguments. Please check your arguments and specify input and output directories. If only one argument is provided, it will be treated as both input and output.")
-} else if (length(args) == 2) {
-  input_dir <- args[1]
-  output_dir <- args[2]
-} else if (length(args) == 1) {
-  input_dir <- args[1]
-  output_dir <- args[1]
+if (length(args) > 3) {
+  print("Correct directory format: /path/to/input /path/to/weights /path/to/output")
+  stop("Error: too many arguments. Please check your arguments and specify input, weights and output directories. Each should be its own directory.")
 } else if (length(args) == 0) {
-  print("Correct directory format: /path/to/input /path/to/output")
-  stop("Error: no arguments provided. Please specify input and output directories. If only one argument is provided, it will be treated as both input and output.")
+  print("Correct directory format: /path/to/input /path/to/weights /path/to/output")
+  stop("Error: no arguments provided. Please specify input, weights and output directories. Each should be its own directory.")
 }
 
+input_dir <- args[1]
+weights_dir <- args[2]
+output_dir <- args[3]
+
 print(paste("Input directory set to:", input_dir))
+print(paste("Weights directory set to:", weights_dir))
+print("Note: weights file should be called 'integ_weights.txt' - see example on GitHub")
 print(paste("Output directory set to:", output_dir))
 
 

@@ -189,6 +189,8 @@ cumulativeSourceFiles <- data.table(intervalChrom = character(),
                                     intervalEnd = integer(),
                                     sourceFiles = character(),
                                     fileCount = integer())
+
+print(paste0("Reading in weight data from: ", weights_dir))
 #Specify weights per study type
 #Since weights can be determined any number of ways, we leave this up to the user
 weightsData <- readr::read_tsv(paste0(weights_dir, "/integ_weights.txt"), col_names = FALSE) %>%

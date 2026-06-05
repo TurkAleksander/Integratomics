@@ -474,6 +474,7 @@ for (i in 1:apply_boot) {
       ## perms
       dplyr::group_by(study, perm) %>% 
       dplyr::mutate(sampleRank = sample(rank)) %>% 
+      #mutate(sampleRank = rank[sample.int(dplyr::n())]) %>%
       dplyr::group_by(intervalNumber, perm) %>% 
       dplyr::left_join(dplyr::reframe(., RSperm = mean(sampleRank)), by=c("intervalNumber", "perm")) %>%
       ## summarise

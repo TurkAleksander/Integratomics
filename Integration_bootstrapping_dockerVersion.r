@@ -48,6 +48,10 @@ input_dir <- args[1]
 weights_dir <- args[2]
 output_dir <- args[3]
 
+input_dir <- "/scratch/PROJECTS/Ivana_MS_integ/Integratomics/Sample_data"
+weights_dir <- "/scratch/PROJECTS/Ivana_MS_integ/Integratomics/Weights"
+output_dir <- "/scratch/PROJECTS/Ivana_MS_integ/Output"
+
 print(paste("Input directory set to:", input_dir))
 print(paste("Weights directory set to:", weights_dir))
 print("Note: weights file should be called 'integ_weights.txt' - see example on GitHub")
@@ -81,8 +85,8 @@ studyInfoDF <- studyInfoDF %>%
   )
 
 #Read the base file for chromosome lengths (data from UCSC)
-hg38BaseFile <- read.table(paste0(keyFileDir,"/hg38_UCSC_chrom_lengths.txt"), sep="\t")
-
+#hg38BaseFile <- read.table(paste0(keyFileDir,"/hg38_UCSC_chrom_lengths.txt"), sep="\t")
+hg38BaseFile <- read.table(paste0("/scratch/PROJECTS/Ivana_MS_integ/Integratomics/","/hg38_UCSC_chrom_lengths.txt"), sep="\t")
 print("Preparing genome location backbone")
 #Read in or prepare location backbone
 #WARNING: initial preparation could take several hours because it's not paralellized and highly inefficient
@@ -134,7 +138,9 @@ if (!file.exists((paste0(keyFileDir,"/locationBackbone.txt"))))
   
   write.table(locationBackbone, file = "locationBackbone_R-version.txt", sep = "\t", row.names = FALSE, quote = FALSE)
 } else {
-  locationBackbone <- read.table(paste0(keyFileDir,"/locationBackbone.txt"), sep="\t", header = TRUE)
+  #locationBackbone <- read.table(paste0(keyFileDir,"/locationBackbone.txt"), sep="\t", header = TRUE)
+  locationBackbone <- read.table(paste0("/scratch/PROJECTS/Ivana_MS_integ/Integratomics/","/locationBackbone.txt"), sep="\t", header = TRUE)
+  
 }
 
 
@@ -146,7 +152,7 @@ print(paste0("Initiating bootstrapping procedure at: ", Sys.time()))
 #'[BOOTSTRAPPING PROCEDURE]
 
 #Define number of repetitions for bootstrapping
-apply_boot <- 100
+apply_boot <- 1
 
 for (i in 1:apply_boot) {
   print(paste0("Current bootstrap cycle: ", i))
@@ -189,7 +195,7 @@ for (i in 1:apply_boot) {
                                       fileCount = integer())
   #Specify weights per study type
   #Since weights can be determined any number of ways, we leave this up to the user
-  weightsData <- readr::read_tsv(paste0(keyFileDir,"/Weights/integ_weights.txt"), col_names = FALSE) %>%
+  weightsData <- readr::read_tsv(paste0(weights_dir,"/integ_weights.txt"), col_names = FALSE) %>%
     dplyr::rename(studyType = X1, weight = X2) %>%
     dplyr::mutate(weight = as.numeric(weight)) %>%
     dplyr::mutate(studyType = tolower(gsub("\\s+", "", studyType)))
@@ -357,7 +363,7 @@ for (i in 1:apply_boot) {
   #For example, if you permuted signals from intergenic regions with gene regions, it would significantly reduce the threshold for a signal being statistically significant
   #Thus, permuting intervals together based on their gene density is done to avoid flooding the results with false positives
   
-  biomartGeneLocations <- read.table(paste0(keyFileDir,"/mart_export.txt"), sep="\t", header = TRUE) %>%
+  biomartGeneLocations <- read.table(paste0("/scratch/PROJECTS/Ivana_MS_integ/Integratomics/","/mart_export.txt"), sep="\t", header = TRUE) %>%
     dplyr::distinct() %>%
     dplyr::select(Chromosome.scaffold.name, Gene.start..bp., Gene.end..bp., Gene.name, Gene.stable.ID) %>%
     dplyr::rename(Chrom = Chromosome.scaffold.name, Start = Gene.start..bp., End = Gene.end..bp., Gene_name = Gene.name, Ensembl_ID = Gene.stable.ID) %>%
@@ -493,7 +499,10 @@ for (i in 1:apply_boot) {
       dplyr::mutate(perm = stringr::str_remove(perm, "RSperm") %>% as.integer()) %>% 
       ## perms
       dplyr::group_by(study, perm) %>% 
-      dplyr::mutate(sampleRank = sample(rank)) %>% 
+      # Previous sampling method caused issues, but frankly I don't know why
+      # Testing indicates the new function has identical behavior
+      #dplyr::mutate(sampleRank = sample(rank)) %>% 
+      mutate(sampleRank = rank[sample.int(dplyr::n())]) %>%
       dplyr::group_by(intervalNumber, perm) %>% 
       dplyr::left_join(dplyr::reframe(., RSperm = mean(sampleRank)), by=c("intervalNumber", "perm")) %>%
       ## summarise
@@ -507,6 +516,7 @@ for (i in 1:apply_boot) {
     dplyr::group_modify(~ tibble_rankSum(.x, numPerm = nPerm)) %>%
     dplyr::ungroup()
   print(Sys.time() - start)
+
   
   #'[STATISTICS]
   #Add row that counts how many values in the permuted RP tibble are <= the real RP value (RPperm <= RPreal)
