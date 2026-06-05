@@ -19,7 +19,14 @@ File descriptions:
 
 Note that the Docker container will run three scripts in sequence - the docker versions of R_integration_code, Integration_bootstrapping and Integration_bootstrap_analysis (in this order). The first one calculates the rank sum statistics of your real dataset, the second one calculates the rank sum statistic on 100 bootstrapped datasets and the third one calculates the "reliability" for each interval by calculating the 95% confidence interval for the bootstrapped data.
 Colloquially put - if the p-value from your bootstrapped (randomly selected) data is often lower than your real data, then this is not a desirable outcome.
-For _details_ on the integration procedure itself see the **Supplementary Methods** section of the article.
+For _details_ on the integration procedure itself see the Methods section of the article.
+
+Weighted implementation:
+In this version the user must include a set of weights for each evidence type - the decision of the weight settings itself is up to the user. Colloquially put, the user can determine which evidence types are deemed more or less important.
+This version calculates ranks from the weighted geometric mean, as describe by Maver and Peterlin, 2011 (10.1093/bioinformatics/btr313), instead of the arithmetic mean.
+It also uses a slightly different sampling function, but testing showed the same behavior.
+Weights are defined in a two-column, tab-separated file with no header.
+This file must contain all the same evidence types as your input data in the first column and their respective weights (from 1 up to N) in the second column and must be named integ_weights.txt.
 
 Common issues:
 If you experience problems with the Docker, you may want to check the versions of the dependencies that are being installed for Alpine Linux.
