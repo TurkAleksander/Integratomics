@@ -81,8 +81,8 @@ studyInfoDF <- studyInfoDF %>%
   )
 
 #Read the base file for chromosome lengths (data from UCSC)
-#hg38BaseFile <- read.table(paste0(keyFileDir,"/hg38_UCSC_chrom_lengths.txt"), sep="\t")
-hg38BaseFile <- read.table(paste0("/scratch/PROJECTS/Ivana_MS_integ/Integratomics/","/hg38_UCSC_chrom_lengths.txt"), sep="\t")
+
+hg38BaseFile <- read.table(paste0(keyFileDir,"/hg38_UCSC_chrom_lengths.txt"), sep="\t")
 print("Preparing genome location backbone")
 #Read in or prepare location backbone
 #WARNING: initial preparation could take several hours because it's not paralellized and highly inefficient
@@ -134,9 +134,8 @@ if (!file.exists((paste0(keyFileDir,"/locationBackbone.txt"))))
   
   write.table(locationBackbone, file = "locationBackbone_R-version.txt", sep = "\t", row.names = FALSE, quote = FALSE)
 } else {
-  #locationBackbone <- read.table(paste0(keyFileDir,"/locationBackbone.txt"), sep="\t", header = TRUE)
-  locationBackbone <- read.table(paste0("/scratch/PROJECTS/Ivana_MS_integ/Integratomics/","/locationBackbone.txt"), sep="\t", header = TRUE)
   
+  locationBackbone <- read.table(paste0(keyFileDir,"/locationBackbone.txt"), sep="\t", header = TRUE)
 }
 
 
@@ -359,7 +358,7 @@ for (i in 1:apply_boot) {
   #For example, if you permuted signals from intergenic regions with gene regions, it would significantly reduce the threshold for a signal being statistically significant
   #Thus, permuting intervals together based on their gene density is done to avoid flooding the results with false positives
   
-  biomartGeneLocations <- read.table(paste0("/scratch/PROJECTS/Ivana_MS_integ/Integratomics/","/mart_export.txt"), sep="\t", header = TRUE) %>%
+  biomartGeneLocations <- read.table(paste0(keyFileDir,"/mart_export.txt"), sep="\t", header = TRUE) %>%
     dplyr::distinct() %>%
     dplyr::select(Chromosome.scaffold.name, Gene.start..bp., Gene.end..bp., Gene.name, Gene.stable.ID) %>%
     dplyr::rename(Chrom = Chromosome.scaffold.name, Start = Gene.start..bp., End = Gene.end..bp., Gene_name = Gene.name, Ensembl_ID = Gene.stable.ID) %>%
