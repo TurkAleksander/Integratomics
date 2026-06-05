@@ -48,10 +48,6 @@ input_dir <- args[1]
 weights_dir <- args[2]
 output_dir <- args[3]
 
-input_dir <- "/scratch/PROJECTS/Ivana_MS_integ/Integratomics/Sample_data"
-weights_dir <- "/scratch/PROJECTS/Ivana_MS_integ/Integratomics/Weights"
-output_dir <- "/scratch/PROJECTS/Ivana_MS_integ/Output"
-
 print(paste("Input directory set to:", input_dir))
 print(paste("Weights directory set to:", weights_dir))
 print("Note: weights file should be called 'integ_weights.txt' - see example on GitHub")
