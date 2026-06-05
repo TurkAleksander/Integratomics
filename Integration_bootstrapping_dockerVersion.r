@@ -147,7 +147,7 @@ print(paste0("Initiating bootstrapping procedure at: ", Sys.time()))
 #'[BOOTSTRAPPING PROCEDURE]
 
 #Define number of repetitions for bootstrapping
-apply_boot <- 1
+apply_boot <- 100
 
 for (i in 1:apply_boot) {
   print(paste0("Current bootstrap cycle: ", i))
